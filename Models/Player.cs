@@ -12,7 +12,7 @@
         public int Overall { get; set; }
         public bool isReal { get; set; }
 
-        public Player(string fname,string lname,string pos,int age,int num,string nat,Club club, int ov,bool real)
+        public Player(string fname,string lname,string pos,int age,int num,Nation nat,Club club, int ov,bool real)
         {
             FisrtName = fname;
             LastName = lname;
