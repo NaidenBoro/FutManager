@@ -16,7 +16,7 @@ namespace FutManager.Controllers
         
         public string Players()
         {
-            return "Not created"; // todo
+            return "Not created";
         }
 
     }
