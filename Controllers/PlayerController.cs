@@ -4,9 +4,9 @@ namespace FutManager.Controllers
 {
     public class PlayerController : Controller
     {
-        public string Index()
+        public IActionResult Index()
         {
-            return "Not created";
+            return View();
         }
 
         public IActionResult Create()
