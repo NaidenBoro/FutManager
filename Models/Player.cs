@@ -7,12 +7,12 @@
         public string Position { get; set; }
         public int Age { get; set; }
         public int ShirtNumber { get; set; }
-        public string Nationality { get; set; }
-        public string Club { get; set; }
-        public int Overal { get; set; }
+        public Nation Nationality { get; set; }
+        public Club Club { get; set; }
+        public int Overall { get; set; }
         public bool isReal { get; set; }
 
-        public Player(string fname,string lname,string pos,int age,int num,string nat,string club, int ov,bool real)
+        public Player(string fname,string lname,string pos,int age,int num,string nat,Club club, int ov,bool real)
         {
             FisrtName = fname;
             LastName = lname;
@@ -21,7 +21,7 @@
             ShirtNumber = num;
             Nationality = nat;
             Club = club;
-            Overal = ov;
+            Overall = ov;
             isReal = real;
         }
     }
