@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ntbor\\Desktop\\Stuff\\Coding\\C#\\FutManager\\FutManager.csproj": {}
+    "C:\\Users\\ntbor\\Desktop\\Test\\FutManager\\FutManager.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ntbor\\Desktop\\Stuff\\Coding\\C#\\FutManager\\FutManager.csproj": {
+    "C:\\Users\\ntbor\\Desktop\\Test\\FutManager\\FutManager.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ntbor\\Desktop\\Stuff\\Coding\\C#\\FutManager\\FutManager.csproj",
+        "projectUniqueName": "C:\\Users\\ntbor\\Desktop\\Test\\FutManager\\FutManager.csproj",
         "projectName": "FutManager",
-        "projectPath": "C:\\Users\\ntbor\\Desktop\\Stuff\\Coding\\C#\\FutManager\\FutManager.csproj",
+        "projectPath": "C:\\Users\\ntbor\\Desktop\\Test\\FutManager\\FutManager.csproj",
         "packagesPath": "C:\\Users\\ntbor\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ntbor\\Desktop\\Stuff\\Coding\\C#\\FutManager\\obj\\",
+        "outputPath": "C:\\Users\\ntbor\\Desktop\\Test\\FutManager\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -44,6 +44,12 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[6.0.2, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -62,7 +68,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.200\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     }
