@@ -1,7 +1,5 @@
 ﻿@model IEnumerable<FutManager.Models.Nation>
-@{
-    List<Nation> listNations = ViewBag.Nations;  
-}
+
 <p>
     <a asp-action="Create">Create New</a>
 </p>
@@ -24,7 +22,7 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in listNations) {
+@foreach (var item in Model) {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Id)

@@ -7,7 +7,9 @@
         public string LastName { get; set; }
         public int Age { get; set; }
         public int NationalityId { get; set; }
+        public Nation? Nation { get; set; }
         public int ClubId { get; set; }
+        public Club? Club { get; set; }
         public int Rating { get; set; }
         public bool isReal { get; set; }
 

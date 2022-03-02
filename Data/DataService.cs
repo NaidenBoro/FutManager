@@ -50,7 +50,9 @@ namespace FutManager.Data
             Clubs.Add(new Club(4,"CSKA", "Efbet Liga", 20));
             Clubs.Add(new Club(5, "PSG", "Ligue 1", 20));
             Clubs.Add(new Club(6, "BVB", "Bundesliga", 20));
-            Clubs.Add(new Club(7, "Real Madrid", "la Liga", 20));
+            Clubs.Add(new Club(7, "Real Madrid", "La Liga", 20));
+            Clubs.Add(new Club(8, "Roma", "Serie A", 20));
+            Clubs.Add(new Club(9, "Liverpool", "Premier League", 20));
 
             return Clubs;
         }
@@ -156,7 +158,7 @@ namespace FutManager.Data
                                       "Valverde",
                                       58,
                                       GetNations().Where(nat => nat.Name == "Spain").First().Id,
-                                      GetClubs().Where(c => c.Name == "None").First().Id,
+                                      GetClubs().Where(c => c.Name == "Levski").First().Id,
                                       80,
                                       true));
             Managers.Add(new Manager(5,
@@ -172,7 +174,7 @@ namespace FutManager.Data
                                       "Kanev",
                                       17,
                                       GetNations().Where(nat => nat.Name == "Bulgaria").First().Id,
-                                      GetClubs().Where(c => c.Name == "Vtori otbor").First().Id,
+                                      GetClubs().Where(c => c.Name == "Real Madrid").First().Id,
                                       99,
                                       false));
 

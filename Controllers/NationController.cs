@@ -1,4 +1,5 @@
 ﻿using FutManager.Data;
+using FutManager.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FutManager.Controllers
@@ -11,8 +12,8 @@ namespace FutManager.Controllers
         }
         public IActionResult Nations()
         {
-            ViewBag.Nations = DataService.GetNations();
-            return View();
+            List<Nation> nations = DataService.GetNations();
+            return View(nations);
         }
     }
 }
