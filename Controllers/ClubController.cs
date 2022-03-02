@@ -1,4 +1,5 @@
 ﻿using FutManager.Data;
+using FutManager.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FutManager.Controllers
@@ -11,8 +12,9 @@ namespace FutManager.Controllers
         }
         public IActionResult Clubs()
         {
-            ViewBag.Clubs = DataService.GetClubs();
-            return View();
+            List<Club> clubs = DataService.GetClubs();
+
+            return View(clubs);
         }
     }
 }
