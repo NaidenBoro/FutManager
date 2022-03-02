@@ -1,9 +1,4 @@
 ﻿@model IEnumerable<FutManager.Models.Player>
-@{
-    List<Nation> listNations = ViewBag.Nations;  
-    List<Club> listClubs = ViewBag.Clubs;  
-    List<Player> listPlayers = ViewBag.Players;  
-}
 <p>
     <a asp-action="Create">Create New</a>
 </p>
@@ -44,7 +39,7 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in listPlayers) {
+@foreach (var item in Model) {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Id)
@@ -65,10 +60,10 @@
                 @Html.DisplayFor(modelItem => item.ShirtNumber)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => listNations.Where(x => x.Id == item.NationalityId).First().Name)
+                @Html.DisplayFor(modelItem => item.Nation.Name)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => listClubs.Where(x => x.Id == item.ClubId).First().Name)
+                @Html.DisplayFor(modelItem => item.Club.Name)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Overall)
