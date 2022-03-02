@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using FutManager.Data;
+using Microsoft.AspNetCore.Mvc;
 
 namespace FutManager.Controllers
 {
@@ -6,6 +7,11 @@ namespace FutManager.Controllers
     {
         public IActionResult Index()
         {
+            return View();
+        }
+        public IActionResult Clubs()
+        {
+            ViewBag.Clubs = DataService.GetClubs();
             return View();
         }
     }
