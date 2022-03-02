@@ -49,8 +49,8 @@ namespace FutManager.Data
             Clubs.Add(new Club(3,"Levski", "Efbet Liga", 20));
             Clubs.Add(new Club(4,"CSKA", "Efbet Liga", 20));
             Clubs.Add(new Club(5, "PSG", "Ligue 1", 20));
-            Clubs.Add(new Club(5, "BVB", "Bundesliga", 20));
-            Clubs.Add(new Club(5, "Real Madrid", "la Liga", 20));
+            Clubs.Add(new Club(6, "BVB", "Bundesliga", 20));
+            Clubs.Add(new Club(7, "Real Madrid", "la Liga", 20));
 
             return Clubs;
         }

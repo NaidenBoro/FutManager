@@ -1,0 +1,87 @@
+﻿@model IEnumerable<FutManager.Models.Player>
+@{
+    List<Nation> listNations = ViewBag.Nations;  
+    List<Club> listClubs = ViewBag.Clubs;  
+    List<Player> listPlayers = ViewBag.Players;  
+}
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FisrtName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Position)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Age)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ShirtNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NationalityId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ClubId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Overall)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.isReal)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in listPlayers) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FisrtName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Position)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Age)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ShirtNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => listNations.Where(x => x.Id == item.NationalityId).First().Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => listClubs.Where(x => x.Id == item.ClubId).First().Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Overall)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.isReal)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

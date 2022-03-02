@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using FutManager.Data;
+using Microsoft.AspNetCore.Mvc;
 
 namespace FutManager.Controllers
 {
@@ -14,9 +15,12 @@ namespace FutManager.Controllers
             return View();
         }
         
-        public string Players()
+        public IActionResult Players()
         {
-            return "Not created";
+            ViewBag.Nations = DataService.GetNations();
+            ViewBag.Clubs = DataService.GetClubs();
+            ViewBag.Players = DataService.GetPlayers();
+            return View();
         }
 
     }
