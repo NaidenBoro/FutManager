@@ -50,8 +50,133 @@ namespace FutManager.Data
             Clubs.Add(new Club(4,"CSKA", "Efbet Liga", 20));
             Clubs.Add(new Club(5, "PSG", "Ligue 1", 20));
             Clubs.Add(new Club(5, "BVB", "Bundesliga", 20));
+            Clubs.Add(new Club(5, "Real Madrid", "la Liga", 20));
 
             return Clubs;
+        }
+
+        public static List<Player> GetPlayers()
+        {
+            List<Player> Players = new List<Player>();
+
+            Players.Add(new Player( 1,
+                                    "Lionel",
+                                    "Messi",
+                                    "Forward",
+                                    34,
+                                    30,
+                                    GetNations().Where(nat => nat.Name == "Argentina").First().Id,
+                                    GetClubs().Where(c => c.Name == "PSG").First().Id,
+                                    93,
+                                    true));
+            Players.Add(new Player( 2,
+                                    "Cristiano",
+                                    "Ronaldo",
+                                    "Forward",
+                                    37,
+                                    7,
+                                    GetNations().Where(nat => nat.Name == "Portugal").First().Id,
+                                    GetClubs().Where(c => c.Name == "Manchester United").First().Id,
+                                    91,
+                                    true));
+            Players.Add(new Player( 3,
+                                    "Neymar",
+                                    "Jr",
+                                    "Forward",
+                                    30,
+                                    10,
+                                    GetNations().Where(nat => nat.Name == "Brazil").First().Id,
+                                    GetClubs().Where(c => c.Name == "PSG").First().Id,
+                                    91,
+                                    true));
+            Players.Add(new Player( 4,
+                                    "Kylian",
+                                    "Mbappe",
+                                    "Forward",
+                                    23,
+                                    7,
+                                    GetNations().Where(nat => nat.Name == "France").First().Id,
+                                    GetClubs().Where(c => c.Name == "PSG").First().Id,
+                                    91,
+                                    true));
+            Players.Add(new Player( 5,
+                                    "Erling",
+                                    "Haaland",
+                                    "Forward",
+                                    21,
+                                    9,
+                                    GetNations().Where(nat => nat.Name == "Norway").First().Id,
+                                    GetClubs().Where(c => c.Name == "BVB").First().Id,
+                                    88,
+                                    true));
+            Players.Add(new Player( 6,
+                                    "Viksata",
+                                    "Georgiev",
+                                    "Forward",
+                                    17,
+                                    11,
+                                    GetNations().Where(nat => nat.Name == "Bulgaria").First().Id,
+                                    GetClubs().Where(c => c.Name == "Real Madrid").First().Id,
+                                    99,
+                                    false));
+
+            return Players;
+        }
+
+        public static List<Manager> GetManagers()
+        {
+            List<Manager> Managers = new List<Manager>();
+
+            Managers.Add(new Manager(1,
+                                      "Pep",
+                                      "Guardiola",
+                                      51,
+                                      GetNations().Where(nat => nat.Name == "Spain").First().Id,
+                                      GetClubs().Where(c => c.Name == "Manchester City").First().Id,
+                                      90,
+                                      true));
+            Managers.Add(new Manager(2,
+                                      "Jose",
+                                      "Mourinho",
+                                      59,
+                                      GetNations().Where(nat => nat.Name == "Portugal").First().Id,
+                                      GetClubs().Where(c => c.Name == "Roma").First().Id,
+                                      90,
+                                      true));
+            Managers.Add(new Manager(3,
+                                      "Stoicho",
+                                      "Mladenov",
+                                      64,
+                                      GetNations().Where(nat => nat.Name == "Bulgaria").First().Id,
+                                      GetClubs().Where(c => c.Name == "CSKA").First().Id,
+                                      60,
+                                      true));
+            Managers.Add(new Manager(4,
+                                      "Ernesto",
+                                      "Valverde",
+                                      58,
+                                      GetNations().Where(nat => nat.Name == "Spain").First().Id,
+                                      GetClubs().Where(c => c.Name == "None").First().Id,
+                                      80,
+                                      true));
+            Managers.Add(new Manager(5,
+                                      "Jurgen",
+                                      "Klopp",
+                                      54,
+                                      GetNations().Where(nat => nat.Name == "Germany").First().Id,
+                                      GetClubs().Where(c => c.Name == "Liverpool").First().Id,
+                                      91,
+                                      true));
+            Managers.Add(new Manager(6 ,
+                                      "Ico",
+                                      "Kanev",
+                                      17,
+                                      GetNations().Where(nat => nat.Name == "Bulgaria").First().Id,
+                                      GetClubs().Where(c => c.Name == "Vtori otbor").First().Id,
+                                      99,
+                                      false));
+
+            return Managers;
         }
     }
 }

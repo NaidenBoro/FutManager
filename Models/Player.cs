@@ -2,38 +2,41 @@
 {
     public class Player
     {
+        public int Id { get; set; }
         public string FisrtName { get; set; }
         public string LastName { get; set; }
         public string Position { get; set; }
         public int Age { get; set; }
         public int ShirtNumber { get; set; }
-        public Nation? Nationality { get; set; }
-        public Club? Club { get; set; }
+        public int NationalityId { get; set; }
+        public int ClubId { get; set; }
         public int Overall { get; set; }
         public bool isReal { get; set; }
 
-        public Player(string fname,string lname,string pos,int age,int num,Nation nat,Club club, int ov,bool real)
+        public Player(int id, string fname,string lname,string pos,int age,int num,int nat,int club, int ov,bool real)
         {
+            Id = id;
             FisrtName = fname;
             LastName = lname;
             Position = pos;
             Age = age;
             ShirtNumber = num;
-            Nationality = nat;
-            Club = club;
+            NationalityId = nat;
+            ClubId = club;
             Overall = ov;
             isReal = real;
         }
 
         public Player()
         {
+            Id = -1;
             FisrtName = "Uknown";
             LastName = "Uknown";
             Position = "Uknown";
             Age = 0;
             ShirtNumber = 0;
-            Nationality = null;
-            Club = null;
+            NationalityId = -1;
+            ClubId = -1;
             Overall = 0;
             isReal = false;
         }
