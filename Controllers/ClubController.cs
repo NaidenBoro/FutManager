@@ -16,5 +16,17 @@ namespace FutManager.Controllers
 
             return View(clubs);
         }
+
+        public IActionResult Create()
+        {
+            return View();
+        }
+        public IActionResult Add(int id,string name,string league,int rating)
+        {
+            Club club = new Club(id, name, league, rating);
+            DataService.AddClub(club);
+            return View("Index");
+        }
+
     }
 }

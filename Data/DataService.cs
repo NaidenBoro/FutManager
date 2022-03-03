@@ -4,12 +4,28 @@ namespace FutManager.Data
 {
     public class DataService
     {
-        public static List<Nation> GetNations()
+        private static List<Club> Clubs;
+        private static List<Nation> Nations;
+        private static List<Player> Players;
+        private static List<Manager> Managers;
+
+        public static void Initialize()
         {
-            List<Nation> Nations = new List<Nation>();
-            Nations.Add(new Nation(1,"Bulgaria", "UEFA", 70));
-            Nations.Add(new Nation(2,"Italy", "UEFA", 83));
-            Nations.Add(new Nation(3,"USA", "CONCACAF", 75));
+            Clubs = new List<Club>();
+            Clubs.Add(new Club(1, "Manchester United", "Premire League", 90));
+            Clubs.Add(new Club(2, "Manchester City", "Premire League", 95));
+            Clubs.Add(new Club(3, "Levski", "Efbet Liga", 20));
+            Clubs.Add(new Club(4, "CSKA", "Efbet Liga", 20));
+            Clubs.Add(new Club(5, "PSG", "Ligue 1", 20));
+            Clubs.Add(new Club(6, "BVB", "Bundesliga", 20));
+            Clubs.Add(new Club(7, "Real Madrid", "La Liga", 20));
+            Clubs.Add(new Club(8, "Roma", "Serie A", 20));
+            Clubs.Add(new Club(9, "Liverpool", "Premier League", 20));
+
+            Nations = new List<Nation>();
+            Nations.Add(new Nation(1, "Bulgaria", "UEFA", 70));
+            Nations.Add(new Nation(2, "Italy", "UEFA", 83));
+            Nations.Add(new Nation(3, "USA", "CONCACAF", 75));
             Nations.Add(new Nation(4, "Spain", "UEFA", 84));
             Nations.Add(new Nation(5, "Mexico", "CONCACAF", 78));
             Nations.Add(new Nation(6, "Brazil", "CONMEBOL", 84));
@@ -38,30 +54,10 @@ namespace FutManager.Data
             Nations.Add(new Nation(29, "Iceland", "UEFA", 71));
             Nations.Add(new Nation(30, "Northern Ireland", "UEFA", 70));
             Nations.Add(new Nation(31, "Russia", "UEFA", 75));
-            return Nations;
-        }
 
-        public static List<Club> GetClubs()
-        {
-            List<Club> Clubs = new List<Club>();
-            Clubs.Add(new Club(1,"Manchester United", "Premire League", 90));
-            Clubs.Add(new Club(2,"Manchester City", "Premire League", 95));
-            Clubs.Add(new Club(3,"Levski", "Efbet Liga", 20));
-            Clubs.Add(new Club(4,"CSKA", "Efbet Liga", 20));
-            Clubs.Add(new Club(5, "PSG", "Ligue 1", 20));
-            Clubs.Add(new Club(6, "BVB", "Bundesliga", 20));
-            Clubs.Add(new Club(7, "Real Madrid", "La Liga", 20));
-            Clubs.Add(new Club(8, "Roma", "Serie A", 20));
-            Clubs.Add(new Club(9, "Liverpool", "Premier League", 20));
+            Players = new List<Player>();
 
-            return Clubs;
-        }
-
-        public static List<Player> GetPlayers()
-        {
-            List<Player> Players = new List<Player>();
-
-            Players.Add(new Player( 1,
+            Players.Add(new Player(1,
                                     "Lionel",
                                     "Messi",
                                     "Forward",
@@ -71,7 +67,7 @@ namespace FutManager.Data
                                     GetClubs().Where(c => c.Name == "PSG").First().Id,
                                     93,
                                     true));
-            Players.Add(new Player( 2,
+            Players.Add(new Player(2,
                                     "Cristiano",
                                     "Ronaldo",
                                     "Forward",
@@ -81,7 +77,7 @@ namespace FutManager.Data
                                     GetClubs().Where(c => c.Name == "Manchester United").First().Id,
                                     91,
                                     true));
-            Players.Add(new Player( 3,
+            Players.Add(new Player(3,
                                     "Neymar",
                                     "Jr",
                                     "Forward",
@@ -91,7 +87,7 @@ namespace FutManager.Data
                                     GetClubs().Where(c => c.Name == "PSG").First().Id,
                                     91,
                                     true));
-            Players.Add(new Player( 4,
+            Players.Add(new Player(4,
                                     "Kylian",
                                     "Mbappe",
                                     "Forward",
@@ -101,7 +97,7 @@ namespace FutManager.Data
                                     GetClubs().Where(c => c.Name == "PSG").First().Id,
                                     91,
                                     true));
-            Players.Add(new Player( 5,
+            Players.Add(new Player(5,
                                     "Erling",
                                     "Haaland",
                                     "Forward",
@@ -111,7 +107,7 @@ namespace FutManager.Data
                                     GetClubs().Where(c => c.Name == "BVB").First().Id,
                                     88,
                                     true));
-            Players.Add(new Player( 6,
+            Players.Add(new Player(6,
                                     "Viksata",
                                     "Georgiev",
                                     "Forward",
@@ -122,12 +118,7 @@ namespace FutManager.Data
                                     99,
                                     false));
 
-            return Players;
-        }
-
-        public static List<Manager> GetManagers()
-        {
-            List<Manager> Managers = new List<Manager>();
+            Managers = new List<Manager>();
 
             Managers.Add(new Manager(1,
                                       "Pep",
@@ -169,7 +160,7 @@ namespace FutManager.Data
                                       GetClubs().Where(c => c.Name == "Liverpool").First().Id,
                                       91,
                                       true));
-            Managers.Add(new Manager(6 ,
+            Managers.Add(new Manager(6,
                                       "Ico",
                                       "Kanev",
                                       17,
@@ -177,6 +168,30 @@ namespace FutManager.Data
                                       GetClubs().Where(c => c.Name == "Real Madrid").First().Id,
                                       99,
                                       false));
+        }
+        public static List<Nation> GetNations()
+        {
+            
+            return Nations;
+        }
+
+        public static List<Club> GetClubs()
+        {
+            return Clubs;
+        }
+
+        public static void AddClub(Club club)
+        {
+            Clubs.Add(club);
+        }
+
+        public static List<Player> GetPlayers()
+        {
+            return Players;
+        }
+
+        public static List<Manager> GetManagers()
+        {           
 
             return Managers;
         }

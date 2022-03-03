@@ -30,5 +30,16 @@ namespace FutManager.Controllers
             return View(players);
         }
 
+        public IActionResult Details(int id)
+        {
+            List<Club> clubs = DataService.GetClubs();
+            List<Nation> nations = DataService.GetNations();
+            Player player = DataService.GetPlayers().FirstOrDefault(x => x.Id == id);
+            player.Club = clubs.FirstOrDefault(y => y.Id == player.ClubId);
+            player.Nation = nations.FirstOrDefault(y => y.Id == player.NationalityId);
+
+            return View(player);
+        }
+
     }
 }
