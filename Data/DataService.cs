@@ -176,7 +176,10 @@ namespace FutManager.Data
         {
             Players.Add(new Player(Players.Count + 1, first_name, last_name, position, age, shirtnumber, nationalityId, clubId, overall, isReal));
         }
-
+        internal static void AddManager(string first_name, string last_name,  int age, int nationalityId, int clubId, int rating, bool isReal)
+        {
+            Managers.Add(new Manager(Managers.Count + 1, first_name, last_name,  age, nationalityId, clubId, rating, isReal));
+        }
         public static List<Nation> GetNations()
         {
             
