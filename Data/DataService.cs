@@ -180,9 +180,15 @@ namespace FutManager.Data
             return Clubs;
         }
 
-        public static void AddClub(Club club)
+        public static void AddClub(string name, string league, int rating)
         {
-            Clubs.Add(club);
+            Clubs.Add(new Club(Clubs.Count+1,name,league,rating));
+        }
+        public static void DeleteClub(int id)
+        {
+            Players.Remove(Players.FirstOrDefault(x => x.ClubId == id));
+            Managers.Remove(Managers.FirstOrDefault(x => x.ClubId == id));
+            Clubs.Remove(Clubs.FirstOrDefault(x => x.Id==id));
         }
 
         public static List<Player> GetPlayers()

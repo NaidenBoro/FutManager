@@ -17,11 +17,22 @@ namespace FutManager.Controllers
         {
             return View();
         }
-        public IActionResult Add(int id,string name,string league,int rating)
+        public RedirectToActionResult Add(string name,string league,int rating)
         {
-            Club club = new Club(id, name, league, rating);
-            DataService.AddClub(club);
-            return View("Index");
+            DataService.AddClub(name, league, rating);
+            return RedirectToAction(actionName: "Index");
+        }
+        public IActionResult Delete(int id)
+        {
+            return View(id);
+        }
+        public RedirectToActionResult Remove(int id,string password)
+        {
+            if(password == "password")
+            {
+                DataService.DeleteClub(id);
+            }
+            return RedirectToAction(actionName: "Index");
         }
 
     }
