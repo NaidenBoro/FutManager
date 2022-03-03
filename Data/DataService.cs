@@ -12,6 +12,7 @@ namespace FutManager.Data
         public static void Initialize()
         {
             Clubs = new List<Club>();
+            Clubs.Add(new Club(0, "No Club", "No League", 0));
             Clubs.Add(new Club(1, "Manchester United", "Premire League", 90));
             Clubs.Add(new Club(2, "Manchester City", "Premire League", 95));
             Clubs.Add(new Club(3, "Levski", "Efbet Liga", 20));
@@ -169,6 +170,14 @@ namespace FutManager.Data
                                       99,
                                       false));
         }
+
+        internal static void EditClub(int id, string name, string league, int rating)
+        {
+            Clubs.FirstOrDefault(x => x.Id == id).Name=name;
+            Clubs.FirstOrDefault(x => x.Id == id).League=league;
+            Clubs.FirstOrDefault(x => x.Id == id).Rating=rating;
+        }
+
         public static List<Nation> GetNations()
         {
             
@@ -182,13 +191,32 @@ namespace FutManager.Data
 
         public static void AddClub(string name, string league, int rating)
         {
-            Clubs.Add(new Club(Clubs.Count+1,name,league,rating));
+            Clubs.Add(new Club(Clubs.Count,name,league,rating));
         }
         public static void DeleteClub(int id)
         {
-            Players.Remove(Players.FirstOrDefault(x => x.ClubId == id));
-            Managers.Remove(Managers.FirstOrDefault(x => x.ClubId == id));
-            Clubs.Remove(Clubs.FirstOrDefault(x => x.Id==id));
+            try
+            {
+                if (id != 0)
+                {
+                    while (Players.FirstOrDefault(x => x.ClubId == id)!=null) 
+                    {
+                        Players.FirstOrDefault(x => x.ClubId == id).ClubId = 0;
+                    }
+                    while (Managers.FirstOrDefault(x => x.ClubId == id) != null)
+                    {
+                        Managers.FirstOrDefault(x => x.ClubId == id).ClubId = 0;
+                    }
+                    Clubs.Remove(Clubs.FirstOrDefault(x => x.Id == id));
+                }
+                else
+                {
+                    throw new Exception("Cannot delete this club");
+                }
+            }catch (Exception ex)
+            {
+
+            }
         }
 
         public static List<Player> GetPlayers()
