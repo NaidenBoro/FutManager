@@ -24,6 +24,7 @@ namespace FutManager.Data
             Clubs.Add(new Club(9, "Liverpool", "Premier League", 20));
 
             Nations = new List<Nation>();
+            Nations.Add(new Nation(0, "No Nation", "No Confederation", 0));
             Nations.Add(new Nation(1, "Bulgaria", "UEFA", 70));
             Nations.Add(new Nation(2, "Italy", "UEFA", 83));
             Nations.Add(new Nation(3, "USA", "CONCACAF", 75));
@@ -171,17 +172,62 @@ namespace FutManager.Data
                                       false));
         }
 
-        internal static void EditClub(int id, string name, string league, int rating)
-        {
-            Clubs.FirstOrDefault(x => x.Id == id).Name=name;
-            Clubs.FirstOrDefault(x => x.Id == id).League=league;
-            Clubs.FirstOrDefault(x => x.Id == id).Rating=rating;
-        }
-
         public static List<Nation> GetNations()
         {
             
             return Nations;
+        }
+
+        public static void AddNation(string name, string confederation, int rating)
+        {
+            Nations.Add(new Nation(Nations.Count, name, confederation, rating));
+        }
+        public static void DeleteNation(int id)
+        {
+            try
+            {
+                if (id != 0)
+                {
+                    while (Players.FirstOrDefault(x => x.NationalityId == id) != null)
+                    {
+                        Players.FirstOrDefault(x => x.NationalityId == id).NationalityId = 0;
+                    }
+                    while (Managers.FirstOrDefault(x => x.NationalityId == id) != null)
+                    {
+                        Managers.FirstOrDefault(x => x.NationalityId == id).NationalityId = 0;
+                    }
+                    Nations.Remove(Nations.FirstOrDefault(x => x.Id == id));
+                }
+                else
+                {
+                    throw new Exception("Cannot delete this nation");
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        internal static void EditNation(int id, string name, string confederation, int rating)
+        {
+            try
+            {
+                if (id != 0)
+                {
+                    Nations.FirstOrDefault(x => x.Id == id).Name = name;
+                    Nations.FirstOrDefault(x => x.Id == id).Confederation = confederation;
+                    Nations.FirstOrDefault(x => x.Id == id).Rating = rating;
+                }
+                else
+                {
+                    throw new Exception("Cannot edit this nation");
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
 
         public static List<Club> GetClubs()
@@ -214,6 +260,27 @@ namespace FutManager.Data
                     throw new Exception("Cannot delete this club");
                 }
             }catch (Exception ex)
+            {
+
+            }
+        }
+
+        internal static void EditClub(int id, string name, string league, int rating)
+        {
+            try
+            {
+                if (id != 0)
+                {
+                    Clubs.FirstOrDefault(x => x.Id == id).Name = name;
+                    Clubs.FirstOrDefault(x => x.Id == id).League = league;
+                    Clubs.FirstOrDefault(x => x.Id == id).Rating = rating;
+                }
+                else
+                {
+                    throw new Exception("Cannot edit this club");
+                }
+            }
+            catch (Exception ex)
             {
 
             }
