@@ -6,11 +6,7 @@ namespace FutManager.Controllers
 {
     public class NationController : Controller
     {
-        public IActionResult Index()
-        {
-            return View();
-        }
-        public IActionResult Nations()
+        public IActionResult Index()        
         {
             List<Nation> nations = DataService.GetNations();
             return View(nations);

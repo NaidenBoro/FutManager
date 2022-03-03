@@ -6,17 +6,12 @@ namespace FutManager.Controllers
 {
     public class PlayerController : Controller
     {
-        public IActionResult Index()
-        {
-            return View();
-        }
-
         public IActionResult Create()
         {
             return View();
         }
 
-        public IActionResult Players()
+        public IActionResult Index()
         {
             List<Club> clubs = DataService.GetClubs();
             List<Nation> nations = DataService.GetNations();

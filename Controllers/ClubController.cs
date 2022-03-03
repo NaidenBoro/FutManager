@@ -8,10 +8,6 @@ namespace FutManager.Controllers
     {
         public IActionResult Index()
         {
-            return View();
-        }
-        public IActionResult Clubs()
-        {
             List<Club> clubs = DataService.GetClubs();
 
             return View(clubs);

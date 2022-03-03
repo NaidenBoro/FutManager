@@ -8,10 +8,6 @@ namespace FutManager.Controllers
     {
         public IActionResult Index()
         {
-            return View();
-        }
-        public IActionResult Managers()
-        {
             List<Club> clubs = DataService.GetClubs();
             List<Nation> nations = DataService.GetNations();
             List<Manager> managers = new List<Manager>(DataService.GetManagers());
