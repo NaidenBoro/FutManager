@@ -172,6 +172,11 @@ namespace FutManager.Data
                                       false));
         }
 
+        internal static void AddPlayer(string first_name, string last_name, string position, int age, int shirtnumber, int nationalityId, int clubId, int overall, bool isReal)
+        {
+            Players.Add(new Player(Players.Count + 1, first_name, last_name, position, age, shirtnumber, nationalityId, clubId, overall, isReal));
+        }
+
         public static List<Nation> GetNations()
         {
             
