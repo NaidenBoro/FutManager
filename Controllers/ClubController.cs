@@ -46,6 +46,10 @@ namespace FutManager.Controllers
             }
             return RedirectToAction(actionName: "Index");
         }
+        public IActionResult Details(int id)
+        {
 
+            return View(DataService.GetClubs().FirstOrDefault(x => x.Id == id));
+        }
     }
 }
