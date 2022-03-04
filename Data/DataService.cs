@@ -13,8 +13,8 @@ namespace FutManager.Data
         {
             Clubs = new List<Club>();
             Clubs.Add(new Club(0, "No Club", "No League", 0));
-            Clubs.Add(new Club(1, "Manchester United", "Premire League", 90));
-            Clubs.Add(new Club(2, "Manchester City", "Premire League", 95));
+            Clubs.Add(new Club(1, "Manchester United", "Premier League", 90));
+            Clubs.Add(new Club(2, "Manchester City", "Premier League", 95));
             Clubs.Add(new Club(3, "Levski", "Efbet Liga", 20));
             Clubs.Add(new Club(4, "CSKA", "Efbet Liga", 20));
             Clubs.Add(new Club(5, "PSG", "Ligue 1", 20));
