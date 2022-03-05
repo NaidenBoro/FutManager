@@ -8,9 +8,10 @@ namespace FutManager.Controllers
     {
         public IActionResult Create()
         {
-            ViewBag.Nationions = DataService.GetNations();
-            ViewBag.Clubs = DataService.GetClubs();
-            return View();
+            ManagerAndClubsAndNations x = new ManagerAndClubsAndNations();
+            x.Nations = DataService.GetNations();
+            x.Clubs = DataService.GetClubs();
+            return View(x);
         }
         public RedirectToActionResult Add(string first_name, string last_name,  int nationalityId, int clubId, int age, int rating, bool isReal)
         {

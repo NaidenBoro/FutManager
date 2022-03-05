@@ -1,8 +1,4 @@
-﻿@model FutManager.Models.Player
-@{
-    List<Nation> Nations = ViewBag.Nationions;
-    List<Club> Clubs = ViewBag.Clubs;
-}
+﻿@model FutManager.Data.PlayerAndClubsAndNations
 
 <h4>Player</h4>
 <hr />
@@ -12,30 +8,30 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="FisrtName" class="control-label"></label>
-                <input asp-for="FisrtName" class="form-control" name="first_name"/>
+                <input class="form-control" name="first_name"/>
                 <span asp-validation-for="FisrtName" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="LastName" class="control-label"></label>
-                <input asp-for="LastName" class="form-control" name="last_name"/>
+                <input class="form-control" name="last_name"/>
                 <span asp-validation-for="LastName" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Position" class="control-label"></label>
-                <select asp-for="Position" class="form-control">
+                <select class="form-control" name="position">
                     <option value="" selected disabled hidden>Choose here</option>
-                    <option value="gk">Goalkeeper</option>
-                    <option value="def">Defender</option>
-                    <option value="mid">Midfielder</option> 
-                    <option value="forw">Forward</option> 
+                    <option value="Goalkeeper">Goalkeeper</option>
+                    <option value="Defender">Defender</option>
+                    <option value="Midfielder">Midfielder</option> 
+                    <option value="Forward">Forward</option> 
                 </select>
                 <span asp-validation-for="Position" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="NationalityId" class="control-label"></label>
-                <select asp-for="NationalityId" class="form-control">
+                <select class="form-control" name="nationalityId">
                     <option value="" selected disabled hidden>Choose here</option>
-                    @foreach(var item in Nations)
+                    @foreach(var item in Model.Nations)
                     {
                         <option value="@item.Id">@item.Name</option>
                     }
@@ -44,9 +40,9 @@
             </div>
             <div class="form-group">
                 <label asp-for="ClubId" class="control-label"></label>
-                <select asp-for="ClubId" class="form-control">
+                <select class="form-control" name="clubId">
                     <option value="" selected disabled hidden>Choose here</option>
-                    @foreach(var item in Clubs)
+                    @foreach(var item in Model.Clubs)
                     {
                         <option value="@item.Id">@item.Name</option>
                     }
@@ -55,17 +51,17 @@
             </div>
             <div class="form-group">
                 <label asp-for="Age" class="control-label"></label>
-                <input asp-for="Age" class="form-control" />
+                <input class="form-control" name="age" />
                 <span asp-validation-for="Age" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="ShirtNumber" class="control-label"></label>
-                <input asp-for="ShirtNumber" class="form-control" name="shirtnumber" />
+                <input class="form-control" name="shirtnumber" />
                 <span asp-validation-for="ShirtNumber" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Overall" class="control-label"></label>
-                <input asp-for="Overall" class="form-control" />
+                <input class="form-control" name="overall"/>
                 <span asp-validation-for="Overall" class="text-danger"></span>
             </div>
             <div class="form-group form-check">
