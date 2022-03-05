@@ -263,13 +263,33 @@ namespace FutManager.Data
                                       true));
         }
 
+        internal static void DeletePlayer(int id)
+        {
+            Players.Remove(Players.FirstOrDefault(x => x.Id == id));
+            Console.WriteLine(id);
+        }
+
+        internal static void EditPlayer(int id, string first_name, string last_name, string position, int nationalityId, int clubId, int age, int shirtnumber, int overall, bool isReal)
+        {
+            Players.FirstOrDefault(x => x.Id == id).Age=age;
+            Players.FirstOrDefault(x => x.Id == id).FisrtName=first_name;
+            Players.FirstOrDefault(x => x.Id == id).LastName=last_name;
+            Players.FirstOrDefault(x => x.Id == id).Position=position;
+            Players.FirstOrDefault(x => x.Id == id).NationalityId=nationalityId;
+            Players.FirstOrDefault(x => x.Id == id).ClubId=clubId;
+            Players.FirstOrDefault(x => x.Id == id).ShirtNumber=shirtnumber;
+            Players.FirstOrDefault(x => x.Id == id).Overall=overall;
+            Players.FirstOrDefault(x => x.Id == id).isReal=isReal;
+
+        }
+
         internal static void AddPlayer(string first_name, string last_name, string position, int age, int shirtnumber, int nationalityId, int clubId, int overall, bool isReal)
         {
-            Players.Add(new Player(Players.Count + 1, first_name, last_name, position, age, shirtnumber, nationalityId, clubId, overall, isReal));
+            Players.Add(new Player(Players.Last().Id + 1, first_name, last_name, position, age, shirtnumber, nationalityId, clubId, overall, isReal));
         }
         internal static void AddManager(string first_name, string last_name,  int age, int nationalityId, int clubId, int rating, bool isReal)
         {
-            Managers.Add(new Manager(Managers.Count + 1, first_name, last_name,  age, nationalityId, clubId, rating, isReal));
+            Managers.Add(new Manager(Managers.Last().Id + 1, first_name, last_name,  age, nationalityId, clubId, rating, isReal));
         }
         public static List<Nation> GetNations()
         {
@@ -279,7 +299,7 @@ namespace FutManager.Data
 
         public static void AddNation(string name, string confederation, int rating)
         {
-            Nations.Add(new Nation(Nations.Count, name, confederation, rating));
+            Nations.Add(new Nation(Nations.Last().Id+1, name, confederation, rating));
         }
         public static void DeleteNation(int id)
         {
@@ -336,7 +356,7 @@ namespace FutManager.Data
 
         public static void AddClub(string name, string league, int rating)
         {
-            Clubs.Add(new Club(Clubs.Count,name,league,rating));
+            Clubs.Add(new Club(Clubs.Last().Id + 1, name,league,rating));
         }
         public static void DeleteClub(int id)
         {

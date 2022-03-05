@@ -6,6 +6,9 @@ namespace FutManager.Data
     {
         public List<Nation>? Nations;
         public List<Club>? Clubs;
+        public Player? player;
+
+
     }
 
     public class ManagerAndClubsAndNations : Manager
