@@ -8,6 +8,7 @@ namespace FutManager.Data
         private static List<Nation> Nations;
         private static List<Player> Players;
         private static List<Manager> Managers;
+        private static List<Draft> Drafts;
 
         public static void Initialize()
         {
@@ -261,6 +262,9 @@ namespace FutManager.Data
                                       GetClubs().Where(c => c.Name == "BVB").First().Id,
                                       88,
                                       true));
+            Drafts = new List<Draft>();
+
+            Drafts.Add(new Draft("Some Draft", "Naiden", 1, 1, 2, 3, 4, 5, 6, 7, 2));
         }
         public static List<Club> GetClubs()
         {
@@ -422,6 +426,11 @@ namespace FutManager.Data
             Managers.FirstOrDefault(x => x.Id == id).Rating = rating;
             Managers.FirstOrDefault(x => x.Id == id).isReal = isReal;
 
+        }
+
+        public static List<Draft> GetDrafts()
+        {
+            return Drafts;
         }
     }
 }

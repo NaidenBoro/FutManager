@@ -16,28 +16,28 @@
                 @Html.DisplayNameFor(model => model.Type)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.GoalkeeperId)
+                Goalkeeper
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.LeftDefenderId)
+                Left Defender
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.RightDefenderId)
+                Right Defender
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.LeftMidfielderId)
+                Left Midfielder
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.RightMidfielderId)
+                Right Midfielder
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.LeftForwardId)
+                Left Forward
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.RightForwardId)
+                Right Forward
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ManagerId)
+                Manager
             </th>
             <th></th>
         </tr>
@@ -55,25 +55,25 @@
                 @Html.DisplayFor(modelItem => item.Type)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.GoalkeeperId)
+                @Html.DisplayFor(modelItem => item.Goalkeeper.FisrtName) @Html.DisplayFor(modelItem => item.Goalkeeper.LastName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.LeftDefenderId)
+                @Html.DisplayFor(modelItem => item.LeftDefender.FisrtName) @Html.DisplayFor(modelItem => item.LeftDefender.LastName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.RightDefenderId)
+                @Html.DisplayFor(modelItem => item.RightDefender.FisrtName) @Html.DisplayFor(modelItem => item.RightDefender.LastName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.LeftMidfielderId)
+                @Html.DisplayFor(modelItem => item.LeftMidfielder.FisrtName) @Html.DisplayFor(modelItem => item.LeftMidfielder.LastName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.RightMidfielderId)
+                @Html.DisplayFor(modelItem => item.RightMidfielder.FisrtName) @Html.DisplayFor(modelItem => item.RightMidfielder.LastName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.LeftForwardId)
+                @Html.DisplayFor(modelItem => item.LeftForward.FisrtName) @Html.DisplayFor(modmodelItemel => item.LeftForward.LastName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.RightForwardId)
+                @Html.DisplayFor(modelItem => item.RightForward.FisrtName) @Html.DisplayFor(modelItem => item.RightForward.LastName)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.ManagerId)
