@@ -15,5 +15,6 @@ namespace FutManager.Data
     {
         public List<Nation>? Nations;
         public List<Club>? Clubs;
+        internal Manager? manager;
     }
 }

@@ -262,44 +262,69 @@ namespace FutManager.Data
                                       88,
                                       true));
         }
-
-        internal static void DeletePlayer(int id)
+        public static List<Club> GetClubs()
         {
-            Players.Remove(Players.FirstOrDefault(x => x.Id == id));
-            Console.WriteLine(id);
+            return Clubs;
+        }
+        public static void AddClub(string name, string league, int rating)
+        {
+            Clubs.Add(new Club(Clubs.Last().Id + 1, name, league, rating));
+        }
+        public static void DeleteClub(int id)
+        {
+            try
+            {
+                if (id != 0)
+                {
+                    while (Players.FirstOrDefault(x => x.ClubId == id) != null)
+                    {
+                        Players.FirstOrDefault(x => x.ClubId == id).ClubId = 0;
+                    }
+                    while (Managers.FirstOrDefault(x => x.ClubId == id) != null)
+                    {
+                        Managers.FirstOrDefault(x => x.ClubId == id).ClubId = 0;
+                    }
+                    Clubs.Remove(Clubs.FirstOrDefault(x => x.Id == id));
+                }
+                else
+                {
+                    throw new Exception("Cannot delete this club");
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+        internal static void EditClub(int id, string name, string league, int rating)
+        {
+            try
+            {
+                if (id != 0)
+                {
+                    Clubs.FirstOrDefault(x => x.Id == id).Name = name;
+                    Clubs.FirstOrDefault(x => x.Id == id).League = league;
+                    Clubs.FirstOrDefault(x => x.Id == id).Rating = rating;
+                }
+                else
+                {
+                    throw new Exception("Cannot edit this club");
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
 
-        internal static void EditPlayer(int id, string first_name, string last_name, string position, int nationalityId, int clubId, int age, int shirtnumber, int overall, bool isReal)
-        {
-            Players.FirstOrDefault(x => x.Id == id).Age=age;
-            Players.FirstOrDefault(x => x.Id == id).FisrtName=first_name;
-            Players.FirstOrDefault(x => x.Id == id).LastName=last_name;
-            Players.FirstOrDefault(x => x.Id == id).Position=position;
-            Players.FirstOrDefault(x => x.Id == id).NationalityId=nationalityId;
-            Players.FirstOrDefault(x => x.Id == id).ClubId=clubId;
-            Players.FirstOrDefault(x => x.Id == id).ShirtNumber=shirtnumber;
-            Players.FirstOrDefault(x => x.Id == id).Overall=overall;
-            Players.FirstOrDefault(x => x.Id == id).isReal=isReal;
-
-        }
-
-        internal static void AddPlayer(string first_name, string last_name, string position, int age, int shirtnumber, int nationalityId, int clubId, int overall, bool isReal)
-        {
-            Players.Add(new Player(Players.Last().Id + 1, first_name, last_name, position, age, shirtnumber, nationalityId, clubId, overall, isReal));
-        }
-        internal static void AddManager(string first_name, string last_name,  int age, int nationalityId, int clubId, int rating, bool isReal)
-        {
-            Managers.Add(new Manager(Managers.Last().Id + 1, first_name, last_name,  age, nationalityId, clubId, rating, isReal));
-        }
         public static List<Nation> GetNations()
         {
-            
+
             return Nations;
         }
-
         public static void AddNation(string name, string confederation, int rating)
         {
-            Nations.Add(new Nation(Nations.Last().Id+1, name, confederation, rating));
+            Nations.Add(new Nation(Nations.Last().Id + 1, name, confederation, rating));
         }
         public static void DeleteNation(int id)
         {
@@ -327,7 +352,6 @@ namespace FutManager.Data
 
             }
         }
-
         internal static void EditNation(int id, string name, string confederation, int rating)
         {
             try
@@ -349,71 +373,55 @@ namespace FutManager.Data
             }
         }
 
-        public static List<Club> GetClubs()
-        {
-            return Clubs;
-        }
-
-        public static void AddClub(string name, string league, int rating)
-        {
-            Clubs.Add(new Club(Clubs.Last().Id + 1, name,league,rating));
-        }
-        public static void DeleteClub(int id)
-        {
-            try
-            {
-                if (id != 0)
-                {
-                    while (Players.FirstOrDefault(x => x.ClubId == id)!=null) 
-                    {
-                        Players.FirstOrDefault(x => x.ClubId == id).ClubId = 0;
-                    }
-                    while (Managers.FirstOrDefault(x => x.ClubId == id) != null)
-                    {
-                        Managers.FirstOrDefault(x => x.ClubId == id).ClubId = 0;
-                    }
-                    Clubs.Remove(Clubs.FirstOrDefault(x => x.Id == id));
-                }
-                else
-                {
-                    throw new Exception("Cannot delete this club");
-                }
-            }catch (Exception ex)
-            {
-
-            }
-        }
-
-        internal static void EditClub(int id, string name, string league, int rating)
-        {
-            try
-            {
-                if (id != 0)
-                {
-                    Clubs.FirstOrDefault(x => x.Id == id).Name = name;
-                    Clubs.FirstOrDefault(x => x.Id == id).League = league;
-                    Clubs.FirstOrDefault(x => x.Id == id).Rating = rating;
-                }
-                else
-                {
-                    throw new Exception("Cannot edit this club");
-                }
-            }
-            catch (Exception ex)
-            {
-
-            }
-        }
-
         public static List<Player> GetPlayers()
         {
             return Players;
         }
+        internal static void AddPlayer(string first_name, string last_name, string position, int age, int shirtnumber, int nationalityId, int clubId, int overall, bool isReal)
+        {
+            Players.Add(new Player(Players.Last().Id + 1, first_name, last_name, position, age, shirtnumber, nationalityId, clubId, overall, isReal));
+        }
+        internal static void DeletePlayer(int id)
+        {
+            Players.Remove(Players.FirstOrDefault(x => x.Id == id));
+        }
+        internal static void EditPlayer(int id, string first_name, string last_name, string position, int nationalityId, int clubId, int age, int shirtnumber, int overall, bool isReal)
+        {
+            Players.FirstOrDefault(x => x.Id == id).Age = age;
+            Players.FirstOrDefault(x => x.Id == id).FisrtName = first_name;
+            Players.FirstOrDefault(x => x.Id == id).LastName = last_name;
+            Players.FirstOrDefault(x => x.Id == id).Position = position;
+            Players.FirstOrDefault(x => x.Id == id).NationalityId = nationalityId;
+            Players.FirstOrDefault(x => x.Id == id).ClubId = clubId;
+            Players.FirstOrDefault(x => x.Id == id).ShirtNumber = shirtnumber;
+            Players.FirstOrDefault(x => x.Id == id).Overall = overall;
+            Players.FirstOrDefault(x => x.Id == id).isReal = isReal;
+
+        }
 
         public static List<Manager> GetManagers()
-        {           
+        {
 
             return Managers;
+        }
+        internal static void AddManager(string first_name, string last_name, int age, int nationalityId, int clubId, int rating, bool isReal)
+        {
+            Managers.Add(new Manager(Managers.Last().Id + 1, first_name, last_name, age, nationalityId, clubId, rating, isReal));
+        }
+        internal static void DeleteManager(int id)
+        {
+            Managers.Remove(Managers.FirstOrDefault(x => x.Id == id));
+        }
+        internal static void EditManager(int id, string first_name, string last_name, int nationalityId, int clubId, int age, int rating, bool isReal)
+        {
+            Managers.FirstOrDefault(x => x.Id == id).Age = age;
+            Managers.FirstOrDefault(x => x.Id == id).FisrtName = first_name;
+            Managers.FirstOrDefault(x => x.Id == id).LastName = last_name;
+            Managers.FirstOrDefault(x => x.Id == id).NationalityId = nationalityId;
+            Managers.FirstOrDefault(x => x.Id == id).ClubId = clubId;
+            Managers.FirstOrDefault(x => x.Id == id).Rating = rating;
+            Managers.FirstOrDefault(x => x.Id == id).isReal = isReal;
+
         }
     }
 }

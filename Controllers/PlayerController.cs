@@ -56,14 +56,18 @@ namespace FutManager.Controllers
             return View(x);
         }
 
-        public RedirectToActionResult ConfirmEdit(int id, string first_name, string last_name, string position, int nationalityId, int clubId, int age, int shirtnumber, int overall, bool isReal)
+        public RedirectToActionResult ConfirmEdit(int id, string first_name, string last_name, string position, int nationalityId, int clubId, int age, int shirtnumber, int overall, bool isReal,string password)
         {
-            DataService.EditPlayer(id,first_name,last_name,position, nationalityId, clubId, age, shirtnumber, overall, isReal);
+            if (password == "password")
+            {
+                DataService.EditPlayer(id, first_name, last_name, position, nationalityId, clubId, age, shirtnumber, overall, isReal);
+            }
             return RedirectToAction(actionName: "Index");
         }
         public IActionResult Delete(int id)
         {
-            return View(id);
+            Player player = DataService.GetPlayers().FirstOrDefault(x => x.Id == id);
+            return View(player);
         }
 
         public RedirectToActionResult Remove(int id, string password)

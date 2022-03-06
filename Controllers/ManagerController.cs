@@ -41,5 +41,39 @@ namespace FutManager.Controllers
 
             return View(manager);
         }
+
+        public IActionResult Delete(int id)
+        {
+            Manager manager = DataService.GetManagers().FirstOrDefault(y => y.Id == id);
+            return View(manager);
+        }
+
+        public RedirectToActionResult Remove(int id, string password)
+        {
+            if (password == "password")
+            {
+                DataService.DeleteManager(id);
+            }
+            return RedirectToAction(actionName: "Index");
+        }
+
+        public IActionResult Edit(int id)
+        {
+            ManagerAndClubsAndNations x = new ManagerAndClubsAndNations();
+
+            x.manager = DataService.GetManagers().FirstOrDefault(y => y.Id == id);
+            x.Clubs = DataService.GetClubs();
+            x.Nations = DataService.GetNations();
+
+            return View(x);
+        }
+
+        public RedirectToActionResult ConfirmEdit(int id, string first_name, string last_name, int nationalityId, int clubId, int age, int rating, bool isReal,string password)
+        {
+            if (password == "password") {
+                DataService.EditManager(id, first_name, last_name, nationalityId, clubId, age, rating, isReal);
+            }
+            return RedirectToAction(actionName: "Index");
+        }
     }
 }
