@@ -81,25 +81,31 @@ namespace FutManager.Controllers
             players = players.Except(rightMidfielders).ToList();
 
             // Forwards
-            List<Player> leftForwards = players.Where(y => y.Position == "Forwards").OrderBy(y => rnd.Next()).Take(4).ToList();
+            List<Player> leftForwards = players.Where(y => y.Position == "Forward").OrderBy(y => rnd.Next()).Take(4).ToList();
             if (leftForwards.Count < 4)
             {
-                leftForwards.AddRange(players.Where(y => y.Position != "Forwards").OrderBy(y => rnd.Next()).Take(4 - leftForwards.Count));
+                leftForwards.AddRange(players.Where(y => y.Position != "Forward").OrderBy(y => rnd.Next()).Take(4 - leftForwards.Count));
             }
             x.LeftForwards = leftForwards;
             players = players.Except(leftForwards).ToList();
 
 
-            List<Player> rightForwards = players.Where(y => y.Position == "Forwards").OrderBy(y => rnd.Next()).Take(4).ToList();
+            List<Player> rightForwards = players.Where(y => y.Position == "Forward").OrderBy(y => rnd.Next()).Take(4).ToList();
             if (rightForwards.Count < 4)
             {
-                rightForwards.AddRange(players.Where(y => y.Position != "Forwards").OrderBy(y => rnd.Next()).Take(4 - rightForwards.Count));
+                rightForwards.AddRange(players.Where(y => y.Position != "Forward").OrderBy(y => rnd.Next()).Take(4 - rightForwards.Count));
             }
             x.RightForwards = rightForwards;
             players = players.Except(rightForwards).ToList();
 
 
             return View(x);
+        }
+
+        public RedirectToActionResult Add(string name, string creator, int GoalkeeperId, int LeftDefenderId, int RightDefenderId, int LeftMidfielderId, int RightMidfielderId,int LeftForwardId, int RightForwardId)
+        {
+            DataService.AddDraft(name,creator,GoalkeeperId,LeftDefenderId,RightDefenderId,LeftMidfielderId,RightMidfielderId,LeftForwardId,RightForwardId);
+            return RedirectToAction(actionName: "Index");
         }
     }
 }

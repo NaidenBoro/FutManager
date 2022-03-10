@@ -219,6 +219,16 @@ namespace FutManager.Data
                                    GetClubs().Where(c => c.Name == "BVB").First().Id,
                                    83,
                                    true));
+            Players.Add(new Player(16,
+                                   "Ico",
+                                   "Kotva",
+                                   "Midfielder",
+                                   33,
+                                   28,
+                                   GetNations().Where(nat => nat.Name == "Belgium").First().Id,
+                                   GetClubs().Where(c => c.Name == "BVB").First().Id,
+                                   83,
+                                   true));
             Players.Add(new Player(17,
                                    "Perling",
                                    "Paaland",
@@ -249,7 +259,7 @@ namespace FutManager.Data
                                    GetClubs().Where(c => c.Name == "BVB").First().Id,
                                    88,
                                    true));
-            
+
             Players.Add(new Player(20,
                                    "Serling",
                                    "Saaland",
@@ -260,7 +270,7 @@ namespace FutManager.Data
                                    GetClubs().Where(c => c.Name == "BVB").First().Id,
                                    88,
                                    true));
-            
+
             Players.Add(new Player(21,
                                    "Ferling",
                                    "Faaland",
@@ -271,7 +281,7 @@ namespace FutManager.Data
                                    GetClubs().Where(c => c.Name == "BVB").First().Id,
                                    88,
                                    true));
-            
+
             Players.Add(new Player(22,
                                    "Werling",
                                    "Waaland",
@@ -282,7 +292,7 @@ namespace FutManager.Data
                                    GetClubs().Where(c => c.Name == "BVB").First().Id,
                                    88,
                                    true));
-            
+
             Players.Add(new Player(23,
                                    "Rerling",
                                    "Raaland",
@@ -422,6 +432,9 @@ namespace FutManager.Data
 
             Drafts.Add(new Draft("Some Draft", "Naiden", 1, 1, 2, 3, 4, 5, 6, 7, 2));
         }
+
+
+
         public static List<Club> GetClubs()
         {
             return Clubs;
@@ -587,6 +600,10 @@ namespace FutManager.Data
         public static List<Draft> GetDrafts()
         {
             return Drafts;
+        }
+        internal static void AddDraft(string name, string creator, int GoalkeeperId, int LeftDefenderId, int RightDefenderId, int LeftMidfielderId, int RightMidfielder, int LeftForward, int RightForward)
+        {
+            Drafts.Add(new Draft(name, creator, 1, GoalkeeperId, LeftDefenderId, RightDefenderId, LeftMidfielderId, RightMidfielder, LeftForward, RightForward, 3));
         }
     }
 }
