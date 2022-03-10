@@ -148,8 +148,8 @@ namespace FutManager.Data
                                     81,
                                     true));
             Players.Add(new Player(9,
+                                    "Pablo",
                                     "Gavi",
-                                    " ",
                                     "Midfielder",
                                     17,
                                     30,
@@ -188,8 +188,8 @@ namespace FutManager.Data
                                     83,
                                     true));
             Players.Add(new Player(13,
-                                   "Jude",
-                                   "Bellingham",
+                                   "Bude",
+                                   "Jellingham2",
                                    "Midfielder",
                                    18,
                                    22,
@@ -601,9 +601,9 @@ namespace FutManager.Data
         {
             return Drafts;
         }
-        internal static void AddDraft(string name, string creator, int GoalkeeperId, int LeftDefenderId, int RightDefenderId, int LeftMidfielderId, int RightMidfielder, int LeftForward, int RightForward)
+        internal static void AddDraft(string name, string creator, int GoalkeeperId, int LeftDefenderId, int RightDefenderId, int LeftMidfielderId, int RightMidfielder, int LeftForward, int RightForward, int Manager)
         {
-            Drafts.Add(new Draft(name, creator, 1, GoalkeeperId, LeftDefenderId, RightDefenderId, LeftMidfielderId, RightMidfielder, LeftForward, RightForward, 3));
+            Drafts.Add(new Draft(name, creator, 1, GoalkeeperId, LeftDefenderId, RightDefenderId, LeftMidfielderId, RightMidfielder, LeftForward, RightForward, Manager));
         }
     }
 }

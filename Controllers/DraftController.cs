@@ -28,6 +28,7 @@ namespace FutManager.Controllers
         {
             DraftAndPlayersAndManager x = new DraftAndPlayersAndManager();
             List<Player> players = new List<Player>(DataService.GetPlayers());
+            List<Manager> managers = new List<Manager>(DataService.GetManagers());
 
             /*if(players.Count() < 28)
             {
@@ -98,13 +99,17 @@ namespace FutManager.Controllers
             x.RightForwards = rightForwards;
             players = players.Except(rightForwards).ToList();
 
+            //Manager
+            List<Manager> coaches = managers.OrderBy(y => rnd.Next()).Take(4).ToList();
+            x.Managers = coaches;
+            managers = managers.Except(coaches).ToList();
 
             return View(x);
         }
 
-        public RedirectToActionResult Add(string name, string creator, int GoalkeeperId, int LeftDefenderId, int RightDefenderId, int LeftMidfielderId, int RightMidfielderId,int LeftForwardId, int RightForwardId)
+        public RedirectToActionResult Add(string name, string creator, int GoalkeeperId, int LeftDefenderId, int RightDefenderId, int LeftMidfielderId, int RightMidfielderId,int LeftForwardId, int RightForwardId, int ManagerId)
         {
-            DataService.AddDraft(name,creator,GoalkeeperId,LeftDefenderId,RightDefenderId,LeftMidfielderId,RightMidfielderId,LeftForwardId,RightForwardId);
+            DataService.AddDraft(name,creator,GoalkeeperId,LeftDefenderId,RightDefenderId,LeftMidfielderId,RightMidfielderId,LeftForwardId,RightForwardId,ManagerId);
             return RedirectToAction(actionName: "Index");
         }
     }
