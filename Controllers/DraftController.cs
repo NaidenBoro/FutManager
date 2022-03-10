@@ -1,6 +1,7 @@
 ﻿using FutManager.Data;
 using FutManager.Models;
 using Microsoft.AspNetCore.Mvc;
+using System.Linq;
 
 namespace FutManager.Controllers
 {
@@ -21,6 +22,25 @@ namespace FutManager.Controllers
                 x.RightMidfielder = players.FirstOrDefault(y => y.Id == x.RightMidfielderId);
             });
             return View(drafts);
+        }
+
+        public IActionResult Create()
+        {
+            DraftAndPlayersAndManager x = new DraftAndPlayersAndManager();
+            List<Player> players = new List<Player>(DataService.GetPlayers());
+            Random rnd = new Random();
+            List<Player> goalkeepers = players.Where(y => y.Position == "Goalkeeper").OrderBy(y => rnd.Next()).Take(4).ToList();
+            if (goalkeepers.Count < 4)
+            {
+                goalkeepers.AddRange(players.Where(y => y.Position != "Goalkeeper").OrderBy(y => rnd.Next()).Take(4-goalkeepers.Count));
+            }
+            Console.WriteLine(goalkeepers.Last().Id);
+            x.GoalKeeper = goalkeepers;
+
+
+
+            
+            return View(x);
         }
     }
 }

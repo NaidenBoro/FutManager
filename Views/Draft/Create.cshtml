@@ -1,0 +1,87 @@
+﻿@model FutManager.Data.DraftAndPlayersAndManager
+
+<h4>DraftAndPlayersAndManager</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Creator" class="control-label"></label>
+                <input asp-for="Creator" class="form-control" />
+                <span asp-validation-for="Creator" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Type" class="control-label"></label>
+                <input asp-for="Type" class="form-control" />
+                <span asp-validation-for="Type" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GoalkeeperId" class="control-label"></label>
+                <input asp-for="GoalkeeperId" class="form-control" />
+                <span asp-validation-for="GoalkeeperId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LeftDefenderId" class="control-label"></label>
+                <input asp-for="LeftDefenderId" class="form-control" />
+                <span asp-validation-for="LeftDefenderId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RightDefenderId" class="control-label"></label>
+                <input asp-for="RightDefenderId" class="form-control" />
+                <span asp-validation-for="RightDefenderId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LeftMidfielderId" class="control-label"></label>
+                <input asp-for="LeftMidfielderId" class="form-control" />
+                <span asp-validation-for="LeftMidfielderId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RightMidfielderId" class="control-label"></label>
+                <input asp-for="RightMidfielderId" class="form-control" />
+                <span asp-validation-for="RightMidfielderId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LeftForwardId" class="control-label"></label>
+                <input asp-for="LeftForwardId" class="form-control" />
+                <span asp-validation-for="LeftForwardId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RightForwardId" class="control-label"></label>
+                <input asp-for="RightForwardId" class="form-control" />
+                <span asp-validation-for="RightForwardId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ManagerId" class="control-label"></label>
+                <input asp-for="ManagerId" class="form-control" />
+                <span asp-validation-for="ManagerId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label name="Goalkeeper" class="control-label"></label>
+                <select class="form-control" name="Goalkeeper">
+                    <option value="" selected disabled hidden>Choose here</option>
+                    <option value="0">@Model.GoalKeeper[0].FisrtName @Model.GoalKeeper[0].LastName</option>
+                    <option value="1">@Model.GoalKeeper[1].FisrtName @Model.GoalKeeper[1].LastName</option>
+                    <option value="2">@Model.GoalKeeper[2].FisrtName @Model.GoalKeeper[2].LastName</option> 
+                    <option value="3">@Model.GoalKeeper[3].FisrtName @Model.GoalKeeper[3].LastName</option> 
+                </select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
