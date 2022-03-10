@@ -17,58 +17,76 @@
                 <span asp-validation-for="Creator" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Type" class="control-label"></label>
-                <input asp-for="Type" class="form-control" />
-                <span asp-validation-for="Type" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="GoalkeeperId" class="control-label"></label>
-                <input asp-for="GoalkeeperId" class="form-control" />
-                <span asp-validation-for="GoalkeeperId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="LeftDefenderId" class="control-label"></label>
-                <input asp-for="LeftDefenderId" class="form-control" />
-                <span asp-validation-for="LeftDefenderId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="RightDefenderId" class="control-label"></label>
-                <input asp-for="RightDefenderId" class="form-control" />
-                <span asp-validation-for="RightDefenderId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="LeftMidfielderId" class="control-label"></label>
-                <input asp-for="LeftMidfielderId" class="form-control" />
-                <span asp-validation-for="LeftMidfielderId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="RightMidfielderId" class="control-label"></label>
-                <input asp-for="RightMidfielderId" class="form-control" />
-                <span asp-validation-for="RightMidfielderId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="LeftForwardId" class="control-label"></label>
-                <input asp-for="LeftForwardId" class="form-control" />
-                <span asp-validation-for="LeftForwardId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="RightForwardId" class="control-label"></label>
-                <input asp-for="RightForwardId" class="form-control" />
-                <span asp-validation-for="RightForwardId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ManagerId" class="control-label"></label>
-                <input asp-for="ManagerId" class="form-control" />
-                <span asp-validation-for="ManagerId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label name="Goalkeeper" class="control-label"></label>
+                <label name="Goalkeeper" class="control-label">Goalkeeper</label>
                 <select class="form-control" name="Goalkeeper">
                     <option value="" selected disabled hidden>Choose here</option>
-                    <option value="0">@Model.GoalKeeper[0].FisrtName @Model.GoalKeeper[0].LastName</option>
-                    <option value="1">@Model.GoalKeeper[1].FisrtName @Model.GoalKeeper[1].LastName</option>
-                    <option value="2">@Model.GoalKeeper[2].FisrtName @Model.GoalKeeper[2].LastName</option> 
-                    <option value="3">@Model.GoalKeeper[3].FisrtName @Model.GoalKeeper[3].LastName</option> 
+                    <option value="0">@Model.GoalKeepers[0].FisrtName @Model.GoalKeepers[0].LastName</option>
+                    <option value="1">@Model.GoalKeepers[1].FisrtName @Model.GoalKeepers[1].LastName</option>
+                    <option value="2">@Model.GoalKeepers[2].FisrtName @Model.GoalKeepers[2].LastName</option> 
+                    <option value="3">@Model.GoalKeepers[3].FisrtName @Model.GoalKeepers[3].LastName</option> 
+                </select>
+            </div>
+            <!--
+            <div class="form-group">
+                <label name="LeftDefender" class="control-label">Left Defender</label>
+                <select class="form-control" name="LeftDefender">
+                    <option value="" selected disabled hidden>Choose here</option>
+                    <option value="0">@Model.LeftDefenders[0].FisrtName @Model.LeftDefenders[0].LastName</option>
+                    <option value="1">@Model.LeftDefenders[1].FisrtName @Model.LeftDefenders[1].LastName</option>
+                    <option value="2">@Model.LeftDefenders[2].FisrtName @Model.LeftDefenders[2].LastName</option> 
+                    <option value="3">@Model.LeftDefenders[3].FisrtName @Model.LeftDefenders[3].LastName</option> 
+                </select>
+            </div>
+            <div class="form-group">
+                <label name="RightDefender" class="control-label">Right Defender</label>
+                <select class="form-control" name="RightDefender">
+                    <option value="" selected disabled hidden>Choose here</option>
+                    <option value="0">@Model.RightDefenders[0].FisrtName @Model.RightDefenders[0].LastName</option>
+                    <option value="1">@Model.RightDefenders[1].FisrtName @Model.RightDefenders[1].LastName</option>
+                    <option value="2">@Model.RightDefenders[2].FisrtName @Model.RightDefenders[2].LastName</option> 
+                    <option value="3">@Model.RightDefenders[3].FisrtName @Model.RightDefenders[3].LastName</option> 
+                </select>
+            </div>
+            -->
+            <!--<div class="form-group">
+                <label name="LeftMidfielder" class="control-label">Left Midfielder</label>
+                <select class="form-control" name="LeftMidfielder">
+                    <option value="" selected disabled hidden>Choose here</option>
+                    <option value="0">@Model.LeftMidfielders[0].FisrtName @Model.LeftMidfielders[0].LastName</option>
+                    <option value="1">@Model.LeftMidfielders[1].FisrtName @Model.LeftMidfielders[1].LastName</option>
+                    <option value="2">@Model.LeftMidfielders[2].FisrtName @Model.LeftMidfielders[2].LastName</option> 
+                    <option value="3">@Model.LeftMidfielders[3].FisrtName @Model.LeftMidfielders[3].LastName</option> 
+                </select>
+            </div>
+            <div class="form-group">
+                <label name="RightMidfielder" class="control-label">Right Midfileder</label>
+                <select class="form-control" name="RightMidfielder">
+                    <option value="" selected disabled hidden>Choose here</option>
+                    <option value="0">@Model.RightMidfielders[0].FisrtName @Model.RightMidfielders[0].LastName</option>
+                    <option value="1">@Model.RightMidfielders[1].FisrtName @Model.RightMidfielders[1].LastName</option>
+                    <option value="2">@Model.RightMidfielders[2].FisrtName @Model.RightMidfielders[2].LastName</option> 
+                    <option value="3">@Model.RightMidfielders[3].FisrtName @Model.RightMidfielders[3].LastName</option> 
+                </select>
+            </div>
+            -->
+            <div class="form-group">
+                <label name="LeftForwards" class="control-label">Left Forwards</label>
+                <select class="form-control" name="LeftForwards">
+                    <option value="" selected disabled hidden>Choose here</option>
+                    <option value="0">@Model.LeftForwards[0].FisrtName @Model.LeftForwards[0].LastName</option>
+                    <option value="1">@Model.LeftForwards[1].FisrtName @Model.LeftForwards[1].LastName</option>
+                    <option value="2">@Model.LeftForwards[2].FisrtName @Model.LeftForwards[2].LastName</option> 
+                    <option value="3">@Model.LeftForwards[3].FisrtName @Model.LeftForwards[3].LastName</option> 
+                </select>
+            </div>
+            <div class="form-group">
+                <label name="RightForwards" class="control-label">Right Forwards</label>
+                <select class="form-control" name="RightForwards">
+                    <option value="" selected disabled hidden>Choose here</option>
+                    <option value="0">@Model.RightForwards[0].FisrtName @Model.RightForwards[0].LastName</option>
+                    <option value="1">@Model.RightForwards[1].FisrtName @Model.RightForwards[1].LastName</option>
+                    <option value="2">@Model.RightForwards[2].FisrtName @Model.RightForwards[2].LastName</option> 
+                    <option value="3">@Model.RightForwards[3].FisrtName @Model.RightForwards[3].LastName</option> 
                 </select>
             </div>
             <div class="form-group">

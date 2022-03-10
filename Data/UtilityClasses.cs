@@ -18,25 +18,25 @@ namespace FutManager.Data
 
     public class DraftAndPlayersAndManager : Draft
     {
-        public List<Player>? GoalKeeper;
-        public List<Player>? RightDefender;
-        public List<Player>? LeftDefender;
-        public List<Player>? RightMidfielder;
-        public List<Player>? LeftMidfielder;
-        public List<Player>? RightForward;
-        public List<Player>? LeftForward;
+        public List<Player>? GoalKeepers;
+        public List<Player>? RightDefenders;
+        public List<Player>? LeftDefenders;
+        public List<Player>? RightMidfielders;
+        public List<Player>? LeftMidfielders;
+        public List<Player>? RightForwards;
+        public List<Player>? LeftForwards;
         public List<Manager>? Managers;
         public Draft? draft;
         
         public DraftAndPlayersAndManager()
         {
-            GoalKeeper = new List<Player>();
-            RightDefender = new List<Player>();
-            LeftDefender = new List<Player>();
-            RightMidfielder = new List<Player>();
-            LeftMidfielder = new List<Player>();
-            RightForward = new List<Player>();
-            LeftForward = new List<Player>();
+            GoalKeepers = new List<Player>();
+            RightDefenders = new List<Player>();
+            LeftDefenders = new List<Player>();
+            RightMidfielders = new List<Player>();
+            LeftMidfielders = new List<Player>();
+            RightForwards = new List<Player>();
+            LeftForwards = new List<Player>();
             Managers = new List<Manager>();
         }
     }
