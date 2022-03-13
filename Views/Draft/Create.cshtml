@@ -18,23 +18,25 @@
             </div>
             <div class="form-group">
                 <label name="Goalkeeper" class="control-label">Goalkeeper</label>
-                <select class="form-control" name="GoalkeeperId">
+                <select asp-for="GoalkeeperId" class="form-control" name="GoalkeeperId">
                     <option value="" selected disabled hidden>Choose here</option>
                     <option value="@Model.GoalKeepers[0].Id">@Model.GoalKeepers[0].FisrtName @Model.GoalKeepers[0].LastName</option>
                     <option value="@Model.GoalKeepers[1].Id">@Model.GoalKeepers[1].FisrtName @Model.GoalKeepers[1].LastName</option>
                     <option value="@Model.GoalKeepers[2].Id">@Model.GoalKeepers[2].FisrtName @Model.GoalKeepers[2].LastName</option> 
-                    <option value="@Model.GoalKeepers[3].Id">@Model.GoalKeepers[3].FisrtName @Model.GoalKeepers[3].LastName</option> 
+                    <option value="@Model.GoalKeepers[3].Id">@Model.GoalKeepers[3].FisrtName @Model.GoalKeepers[3].LastName</option>                    
                 </select>
+                <span asp-validation-for="GoalkeeperId" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label name="LeftDefender" class="control-label">Left Defender</label>
-                <select class="form-control" name="LeftDefenderId">
+                <select asp-for="LeftDefenderId" class="form-control" name="LeftDefenderId">
                     <option value="" selected disabled hidden>Choose here</option>
                     <option value="@Model.LeftDefenders[0].Id">@Model.LeftDefenders[0].FisrtName @Model.LeftDefenders[0].LastName</option>
                     <option value="@Model.LeftDefenders[1].Id">@Model.LeftDefenders[1].FisrtName @Model.LeftDefenders[1].LastName</option>
                     <option value="@Model.LeftDefenders[2].Id">@Model.LeftDefenders[2].FisrtName @Model.LeftDefenders[2].LastName</option> 
                     <option value="@Model.LeftDefenders[3].Id">@Model.LeftDefenders[3].FisrtName @Model.LeftDefenders[3].LastName</option> 
                 </select>
+                <span asp-validation-for="LeftDefenderId" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label name="RightDefender" class="control-label">Right Defender</label>
