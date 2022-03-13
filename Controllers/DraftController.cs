@@ -131,5 +131,18 @@ namespace FutManager.Controllers
             DataService.AddDraft(name,creator,GoalkeeperId,LeftDefenderId,RightDefenderId,LeftMidfielderId,RightMidfielderId,LeftForwardId,RightForwardId,ManagerId);
             return RedirectToAction(actionName: "Index");
         }
+
+        public IActionResult Delete(int id)
+        {
+            return View(id);
+        }
+        public RedirectToActionResult Remove(int id, string password)
+        {
+            if (password == "password")
+            {
+                DataService.DeleteDraft(id);
+            }
+            return RedirectToAction(actionName: "Index");
+        }
     }
 }
