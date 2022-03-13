@@ -2,10 +2,9 @@
 {
     public class Draft
     {
+        public int Id { get; set; }
         public string Name { get; set; }
         public string Creator { get; set; }
-        //Type - 1 for only real playes, 2 for only fake players, 3 with both fake and real
-        public int Type { get; set; }
         public int GoalkeeperId { get; set; }
         public Player? Goalkeeper { get; set; }
         public int LeftDefenderId { get; set; }
@@ -23,11 +22,11 @@
         public int ManagerId { get; set; }
         public Manager? Manager { get; set; }
 
-        public Draft(string name,string creator,int type, int goalk,int LDef,int RDef,int LMid,int RMid,int LForw,int RForw, int manager)
+        public Draft(int id,string name,string creator, int goalk,int LDef,int RDef,int LMid,int RMid,int LForw,int RForw, int manager)
         {
+            Id = id;
             Name = name;
             Creator = creator;
-            Type = type;
             GoalkeeperId = goalk;            
             LeftDefenderId = LDef;
             RightDefenderId = RDef;
@@ -41,9 +40,8 @@
 
         public Draft()
         {
-            Name = "Unknown";
-            Creator = "Unknwon";
-            Type = 3;
+            Name = "";
+            Creator = "";
         }
 
     }

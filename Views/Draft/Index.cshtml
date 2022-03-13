@@ -13,9 +13,6 @@
                 @Html.DisplayNameFor(model => model.Creator)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Type)
-            </th>
-            <th>
                 Goalkeeper
             </th>
             <th>
@@ -52,9 +49,6 @@
                 @Html.DisplayFor(modelItem => item.Creator)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Type)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.Goalkeeper.FisrtName) @Html.DisplayFor(modelItem => item.Goalkeeper.LastName)
             </td>
             <td>
@@ -76,11 +70,10 @@
                 @Html.DisplayFor(modelItem => item.RightForward.FisrtName) @Html.DisplayFor(modelItem => item.RightForward.LastName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ManagerId)
+                @Html.DisplayFor(modelItem => item.Manager.FisrtName) @Html.DisplayFor(modelItem => item.Manager.LastName)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { item.Id}) |
                 @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
             </td>
         </tr>

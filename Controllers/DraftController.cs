@@ -11,6 +11,7 @@ namespace FutManager.Controllers
         {
             List<Draft> drafts = DataService.GetDrafts();
             List<Player> players = new List<Player>(DataService.GetPlayers());
+            List<Manager> managers = new List<Manager>(DataService.GetManagers());
             drafts.ForEach(x =>
             {
                 x.Goalkeeper = players.FirstOrDefault(y => y.Id == x.GoalkeeperId);
@@ -20,6 +21,7 @@ namespace FutManager.Controllers
                 x.RightDefender = players.FirstOrDefault(y => y.Id == x.RightDefenderId);
                 x.RightForward = players.FirstOrDefault(y => y.Id == x.RightForwardId);
                 x.RightMidfielder = players.FirstOrDefault(y => y.Id == x.RightMidfielderId);
+                x.Manager = managers.FirstOrDefault(y => y.Id == x.ManagerId);
             });
             return View(drafts);
         }
@@ -104,6 +106,23 @@ namespace FutManager.Controllers
             x.Managers = coaches;
             managers = managers.Except(coaches).ToList();
 
+            return View(x);
+        }
+
+        public IActionResult Details(int id) {
+            List<Draft> drafts = new List<Draft>(DataService.GetDrafts());
+            Draft x = drafts.FirstOrDefault(y => id == y.Id);
+            List<Player> players = new List<Player>(DataService.GetPlayers());
+            List<Manager> managers = new List<Manager>(DataService.GetManagers());
+            x.Goalkeeper = players.FirstOrDefault(y =>y.Id == x.GoalkeeperId);
+            x.LeftDefender = players.FirstOrDefault(y => y.Id == x.LeftDefenderId);
+            x.RightDefender = players.FirstOrDefault(y =>y.Id == x.RightDefenderId);
+            x.LeftMidfielder = players.FirstOrDefault(y =>y.Id == x.LeftMidfielderId);
+            x.RightMidfielder = players.FirstOrDefault(y =>y.Id == x.RightMidfielderId);
+            x.LeftForward = players.FirstOrDefault(y =>y.Id == x.LeftForwardId);
+            x.RightMidfielder = players.FirstOrDefault(y =>y.Id == x.RightMidfielderId);
+            x.Manager = managers.FirstOrDefault(y =>y.Id == x.ManagerId);
+            
             return View(x);
         }
 

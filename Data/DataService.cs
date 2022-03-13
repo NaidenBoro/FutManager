@@ -430,7 +430,7 @@ namespace FutManager.Data
                                       true));
             Drafts = new List<Draft>();
 
-            Drafts.Add(new Draft("Some Draft", "Naiden", 1, 1, 2, 3, 4, 5, 6, 7, 2));
+            Drafts.Add(new Draft(1,"Some Draft", "Naiden", 1, 2, 3, 4, 5, 6, 7, 2));
         }
 
 
@@ -603,7 +603,7 @@ namespace FutManager.Data
         }
         internal static void AddDraft(string name, string creator, int GoalkeeperId, int LeftDefenderId, int RightDefenderId, int LeftMidfielderId, int RightMidfielder, int LeftForward, int RightForward, int Manager)
         {
-            Drafts.Add(new Draft(name, creator, 1, GoalkeeperId, LeftDefenderId, RightDefenderId, LeftMidfielderId, RightMidfielder, LeftForward, RightForward, Manager));
+            Drafts.Add(new Draft(Drafts.Last().Id + 1, name, creator, GoalkeeperId, LeftDefenderId, RightDefenderId, LeftMidfielderId, RightMidfielder, LeftForward, RightForward, Manager));
         }
     }
 }
