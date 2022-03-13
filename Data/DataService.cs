@@ -9,6 +9,7 @@ namespace FutManager.Data
         private static List<Player> Players;
         private static List<Manager> Managers;
         private static List<Draft> Drafts;
+        private static List<DreamTeam> DreamTeams;
 
         public static void Initialize()
         {
@@ -431,6 +432,10 @@ namespace FutManager.Data
             Drafts = new List<Draft>();
 
             Drafts.Add(new Draft(1,"Some Draft", "Naiden", 1, 2, 3, 4, 5, 6, 7, 2));
+
+            DreamTeams = new List<DreamTeam>();
+
+            DreamTeams.Add(new DreamTeam(1, "Some Dream Team", "Martin", 2, 4, 8, 9, 11, 23, 6, 9));
         }        
 
         public static List<Club> GetClubs()
@@ -606,6 +611,19 @@ namespace FutManager.Data
         internal static void DeleteDraft(int id)
         {
             Drafts.Remove(Drafts.FirstOrDefault(x => x.Id == id));
+        }
+
+        public static List<DreamTeam> GetDreamTeams()
+        {
+            return DreamTeams;
+        }
+        internal static void AddDreamTeam(string name, string creator, int GoalkeeperId, int LeftDefenderId, int RightDefenderId, int LeftMidfielderId, int RightMidfielder, int LeftForward, int RightForward, int Manager)
+        {
+            DreamTeams.Add(new DreamTeam(Drafts.Last().Id + 1, name, creator, GoalkeeperId, LeftDefenderId, RightDefenderId, LeftMidfielderId, RightMidfielder, LeftForward, RightForward, Manager));
+        }
+        internal static void DeleteDreamteam(int id)
+        {
+            DreamTeams.Remove(DreamTeams.FirstOrDefault(x => x.Id == id));
         }
     }
 }

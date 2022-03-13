@@ -1,0 +1,82 @@
+﻿@model IEnumerable<FutManager.Models.DreamTeam>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Creator)
+            </th>
+            <th>
+                Goalkeeper
+            </th>
+            <th>
+                Left Defender
+            </th>
+            <th>
+                Right Defender
+            </th>
+            <th>
+                Left Midfielder
+            </th>
+            <th>
+                Right Midfielder
+            </th>
+            <th>
+                Left Forward
+            </th>
+            <th>
+                Right Forward
+            </th>
+            <th>
+                Manager
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Creator)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Goalkeeper.FisrtName) @Html.DisplayFor(modelItem => item.Goalkeeper.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LeftDefender.FisrtName) @Html.DisplayFor(modelItem => item.LeftDefender.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RightDefender.FisrtName) @Html.DisplayFor(modelItem => item.RightDefender.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LeftMidfielder.FisrtName) @Html.DisplayFor(modelItem => item.LeftMidfielder.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RightMidfielder.FisrtName) @Html.DisplayFor(modelItem => item.RightMidfielder.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LeftForward.FisrtName) @Html.DisplayFor(modmodelItemel => item.LeftForward.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RightForward.FisrtName) @Html.DisplayFor(modelItem => item.RightForward.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Manager.FisrtName) @Html.DisplayFor(modelItem => item.Manager.LastName)
+            </td>
+            <td>
+                @Html.ActionLink("Details", "Details", new { item.Id}) |
+                @Html.ActionLink("Delete", "Delete", new { item.Id })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
