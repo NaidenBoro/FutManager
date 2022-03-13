@@ -9,22 +9,23 @@
             <div class="form-group">
                
                 <label asp-for="FisrtName" class="control-label"></label>
-                <input class="form-control" name="first_name"/>
+                <input  asp-for="FisrtName" class="form-control" name="first_name"/>
                 <span asp-validation-for="FisrtName" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="LastName" class="control-label"></label>
-                <input class="form-control" name="last_name"/>
+                <input  asp-for="LastName" class="form-control" name="last_name"/>
                 <span asp-validation-for="LastName" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Age" class="control-label"></label>
-                <input class="form-control" name="age" />
+                <input asp-for="Age" class="form-control" name="age" />
                 <span asp-validation-for="Age" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="NationalityId" class="control-label"></label>
-                <select class="form-control" name="nationalityId">
+                <label name="Nationality" class="control-label">Nationality</label>
+                <select asp-for="NationalityId" class="form-control" name="nationalityId">
+                    
                     <option value="" selected disabled hidden>Choose here</option>
                     @foreach(var item in Model.Nations)
                     {
@@ -35,7 +36,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="ClubId" class="control-label"></label>
-                 <select class="form-control" name="clubId">
+                 <select  asp-for="ClubId" class="form-control" name="clubId">
                     <option value="" selected disabled hidden>Choose here</option>
                     @foreach(var item in Model.Clubs)
                     {
@@ -46,7 +47,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="Rating" class="control-label"></label>
-                <input class="form-control" name="rating" />
+                <input  asp-for="Rating" class="form-control" name="rating" />
                 <span asp-validation-for="Rating" class="text-danger"></span>
             </div>
             <div class="form-group form-check">

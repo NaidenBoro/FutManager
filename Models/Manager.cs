@@ -1,15 +1,20 @@
-﻿namespace FutManager.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace FutManager.Models
 {
     public class Manager
     {
         public int Id { get; set; }
+       
         public string FisrtName { get; set; }
         public string LastName { get; set; }
+        [Range(1, int.MaxValue,ErrorMessage = "Please enter a value bigger than {1}")]
         public int Age { get; set; }
         public int NationalityId { get; set; }
         public Nation? Nation { get; set; }
         public int ClubId { get; set; }
         public Club? Club { get; set; }
+        [Range(1, int.MaxValue, ErrorMessage = "Please enter a value bigger than {1}")]
         public int Rating { get; set; }
         public bool isReal { get; set; }
 
@@ -27,10 +32,13 @@
 
         public Manager()
         {
+            NationalityId = -1;  
+            ClubId = -1;
             Id = -1;
-            FisrtName = "John";
-            LastName = "John";
-            Age = 20;
+            FisrtName = "Uknown";
+            LastName = "Uknown";
+           
+            Age = 0;
             NationalityId = -1;
             ClubId = -1;
             Rating = 0;

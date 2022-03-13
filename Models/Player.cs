@@ -1,4 +1,6 @@
-﻿namespace FutManager.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace FutManager.Models
 {
     public class Player
     {
@@ -6,12 +8,15 @@
         public string FisrtName { get; set; }
         public string LastName { get; set; }
         public string Position { get; set; }
+        [Range(1, int.MaxValue, ErrorMessage = "Please enter a value bigger than {1}")]
         public int Age { get; set; }
+        [Range(1, int.MaxValue, ErrorMessage = "Please enter a value bigger than {1}")]
         public int ShirtNumber { get; set; }
         public int NationalityId { get; set; }
         public Nation? Nation { get; set; }
         public int ClubId { get; set; }
         public Club? Club { get; set; }
+        [Range(1, int.MaxValue, ErrorMessage = "Please enter a value bigger than {1}")]
         public int Overall { get; set; }
         public bool isReal { get; set; }
 
