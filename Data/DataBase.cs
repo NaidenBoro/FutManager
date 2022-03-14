@@ -46,9 +46,9 @@ namespace FutManager.Data
                                     "overall INT, " +
                                     "is_real BOOLEAN, " +
                                     "CONSTRAINT fk_players_nations " +
-                                    "FOREIGN KEY(nationality_id) REFERENCES nations(id), " +
-                                    "CONSTRAINT fk_players_clubs " + 
-                                    "FOREIGN KEY(club_id) REFERENCES clubs(id) " +
+                                    "FOREIGN KEY(nationality_id) REFERENCES nations(id) ON DELETE CASCADE, " +
+                                    "CONSTRAINT fk_players_clubs " +
+                                    "FOREIGN KEY(club_id) REFERENCES clubs(id) ON DELETE CASCADE" +
                                     ")";
 
                 MySqlCommand commandPlayer = new MySqlCommand(sqlPlayer, connection);
@@ -66,13 +66,54 @@ namespace FutManager.Data
                                     "rating INT, " +
                                     "is_real BOOLEAN, " +
                                     "CONSTRAINT fk_managers_nations " +
-                                    "FOREIGN KEY(nationality_id) REFERENCES nations(id), " +
+                                    "FOREIGN KEY(nationality_id) REFERENCES nations(id) ON DELETE CASCADE, " +
                                     "CONSTRAINT fk_managers_clubs " +
-                                    "FOREIGN KEY(club_id) REFERENCES clubs(id) " +
+                                    "FOREIGN KEY(club_id) REFERENCES clubs(id) ON DELETE CASCADE" +
                                     ")";
 
                 MySqlCommand commandManager = new MySqlCommand(sqlManager, connection);
                 commandManager.ExecuteNonQuery();
+
+                string sqlDrafts = "CREATE TABLE IF NOT EXISTS drafts( " +
+                                    "id INT PRIMARY KEY AUTO_INCREMENT, " +
+                                    "name VARCHAR(50) NOT NULL, " +
+                                    "creator VARCHAR(50) NOT NULL, " +
+                                    "goalkeeper_id INT NOT NULL, " +
+                                    "leftdefender_id INT NOT NULL, " +
+                                    "rightdefender_id INT NOT NULL, " +
+                                    "leftmidfielder_id INT NOT NULL, " +
+                                    "rightmidfielder_id INT NOT NULL, " +
+                                    "leftforward_id INT NOT NULL, " +
+                                    "rightforward_id INT NOT NULL, " +
+                                    "manager_id INT NOT NULL, " +
+
+                                    "CONSTRAINT fk_draft_goalkeeper " +
+                                    "FOREIGN KEY(goalkeeper_id) REFERENCES players(id) ON DELETE CASCADE, " +
+
+                                    "CONSTRAINT fk_draft_leftd " +
+                                    "FOREIGN KEY(leftdefender_id) REFERENCES players(id) ON DELETE CASCADE, " +
+
+                                    "CONSTRAINT fk_draft_rightd " +
+                                    "FOREIGN KEY(rightdefender_id) REFERENCES players(id) ON DELETE CASCADE, " +
+
+                                    "CONSTRAINT fk_draft_leftm " +
+                                    "FOREIGN KEY(leftmidfielder_id) REFERENCES players(id) ON DELETE CASCADE, " +
+
+                                    "CONSTRAINT fk_draft_rightm " +
+                                    "FOREIGN KEY(rightmidfielder_id) REFERENCES players(id) ON DELETE CASCADE, " +
+
+                                    "CONSTRAINT fk_draft_leftf " +
+                                    "FOREIGN KEY(leftforward_id) REFERENCES players(id) ON DELETE CASCADE, " +
+
+                                    "CONSTRAINT fk_draft_rightf " +
+                                    "FOREIGN KEY(rightforward_id) REFERENCES players(id) ON DELETE CASCADE, " +
+
+                                    "CONSTRAINT fk_draft_manager " +
+                                    "FOREIGN KEY(manager_id) REFERENCES managers(id) ON DELETE CASCADE" +
+                                    ")";
+
+                MySqlCommand commandDrafts = new MySqlCommand(sqlDrafts, connection);
+                commandDrafts.ExecuteNonQuery();
             }
 
 

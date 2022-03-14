@@ -14,13 +14,7 @@ namespace FutManager.Data
 
         public static void Initialize()
         {
-            Clubs = new List<Club>();
-            
-
-            Nations = new List<Nation>();
-         
-           /*AddNation("No Nation", "No Confederation", 0);
-           AddNation("Bulgaria", "UEFA", 70);
+           /*AddNation("Bulgaria", "UEFA", 70);
            AddNation("Italy", "UEFA", 83);
            AddNation("USA", "CONCACAF", 75);
            AddNation("Spain", "UEFA", 84);
@@ -50,9 +44,8 @@ namespace FutManager.Data
            AddNation( "Finland", "UEFA", 71);
            AddNation( "Iceland", "UEFA", 71);
            AddNation( "Northern Ireland", "UEFA", 70);
-           AddNation( "Russia", "UEFA", 75);*/
+           AddNation( "Russia", "UEFA", 75);
 
-            /*AddClub("No Club", "No League", 0);
             AddClub("Manchester United", "Premier League", 90);
             AddClub("Manchester City", "Premier League", 95);
             AddClub("Levski", "Efbet Liga", 20);
@@ -68,27 +61,14 @@ namespace FutManager.Data
             AddClub("Nice", "Ligue 1", 20);
             AddClub("Hertha BSC", "Bundesliga", 20);
             AddClub("Ajax", "Eredivisie", 20);
-            AddClub("1. FC Koln", "Bundesliga", 20);*/
+            AddClub("1. FC Koln", "Bundesliga", 20);
 
-            Players = new List<Player>();
-
-            /*Players.Add(new Player(1,
-                                    "Lionel",
-                                    "Messi",
-                                    "Forward",
-                                    34,
-                                    30,
-                                    GetNations().Where(nat => nat.Name == "Argentina").First().Id,
-                                    GetClubs().Where(c => c.Name == "PSG").First().Id,
-                                    93,
-                                    true));*/
-
-            /*AddPlayer("Lionel", 
-                        "Messi", 
-                        "Forward", 
-                        34, 
-                        30, 
-                        GetNations().Where(nat => nat.Name == "Argentina").First().Id, 
+            AddPlayer("Lionel",
+                        "Messi",
+                        "Forward",
+                        34,
+                        30,
+                        GetNations().Where(nat => nat.Name == "Argentina").First().Id,
                         GetClubs().Where(c => c.Name == "PSG").First().Id,
                         93,
                         true);
@@ -346,20 +326,9 @@ namespace FutManager.Data
                         GetNations().Where(nat => nat.Name == "Norway").First().Id,
                         GetClubs().Where(c => c.Name == "BVB").First().Id,
                         88,
-                        true);*/
+                        true);
 
-            Managers = new List<Manager>();
-
-            /*Managers.Add(new Manager(1,
-                                      "Pep",
-                                      "Guardiola",
-                                      51,
-                                      GetNations().Where(nat => nat.Name == "Spain").First().Id,
-                                      GetClubs().Where(c => c.Name == "Manchester City").First().Id,
-                                      90,
-                                      true));*/
-
-            /*AddManager("Pep",
+            AddManager("Pep",
                         "Guardiola",
                         51,
                         GetNations().Where(nat => nat.Name == "Spain").First().Id,
@@ -832,15 +801,73 @@ namespace FutManager.Data
 
         public static List<Draft> GetDrafts()
         {
-            return Drafts;
+            MySqlConnection mySqlConnection = DataBase.GetConnection();
+            mySqlConnection.Open();
+            List<Draft> drafts = new List<Draft>();
+
+            using (mySqlConnection)
+            {
+                string sql = "SELECT * FROM drafts";
+                MySqlCommand command = new MySqlCommand(sql, mySqlConnection);
+                MySqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    Draft draft = new Draft();
+                    draft.Id = reader.GetInt32(0);
+                    draft.Name = reader.GetString(1);
+                    draft.Creator = reader.GetString(2);
+                    draft.GoalkeeperId = reader.GetInt32(3);
+                    draft.LeftDefenderId = reader.GetInt32(4);
+                    draft.RightDefenderId = reader.GetInt32(5);
+                    draft.LeftMidfielderId = reader.GetInt32(6);
+                    draft.RightMidfielderId = reader.GetInt32(7);
+                    draft.LeftForwardId = reader.GetInt32(8);
+                    draft.RightForwardId = reader.GetInt32(9);
+                    draft.ManagerId = reader.GetInt32(10);
+
+                    drafts.Add(draft);
+                }
+            }
+
+            return drafts;
         }
-        internal static void AddDraft(string name, string creator, int GoalkeeperId, int LeftDefenderId, int RightDefenderId, int LeftMidfielderId, int RightMidfielder, int LeftForward, int RightForward, int Manager)
+        internal static void AddDraft(string name, string creator, int GoalkeeperId, int LeftDefenderId, int RightDefenderId, int LeftMidfielderId, int RightMidfielderId, int LeftForwardId, int RightForwardId, int ManagerId)
         {
-            Drafts.Add(new Draft(Drafts.Last().Id + 1, name, creator, GoalkeeperId, LeftDefenderId, RightDefenderId, LeftMidfielderId, RightMidfielder, LeftForward, RightForward, Manager));
+            MySqlConnection mySqlConnection = DataBase.GetConnection();
+            mySqlConnection.Open();
+
+            using (mySqlConnection)
+            {
+                string sql = "INSERT INTO drafts(name, creator, goalkeeper_id, leftdefender_id, rightdefender_id, leftmidfielder_id,rightmidfielder_id, leftforward_id,rightforward_id,manager_id) " +
+                                "VALUES (@name, @creator, @goalkeeper_id, @leftdefender_id, @rightdefender_id, @leftmidfielder_id,@rightmidfielder_id, @leftforward_id,@rightforward_id,@manager_id)";
+                MySqlCommand command = new MySqlCommand(sql, mySqlConnection);
+                command.Parameters.AddWithValue("@name", name);
+                command.Parameters.AddWithValue("@creator", creator);
+                command.Parameters.AddWithValue("@goalkeeper_id", GoalkeeperId);
+                command.Parameters.AddWithValue("@leftdefender_id", LeftDefenderId);
+                command.Parameters.AddWithValue("@rightdefender_id", RightDefenderId);
+                command.Parameters.AddWithValue("@leftmidfielder_id", LeftMidfielderId);
+                command.Parameters.AddWithValue("@rightmidfielder_id", RightMidfielderId);
+                command.Parameters.AddWithValue("@leftforward_id", LeftForwardId);
+                command.Parameters.AddWithValue("@rightforward_id", RightForwardId);
+                command.Parameters.AddWithValue("@manager_id", ManagerId);
+                command.ExecuteNonQuery();
+            }
         }
         internal static void DeleteDraft(int id)
         {
-            Drafts.Remove(Drafts.FirstOrDefault(x => x.Id == id));
+            MySqlConnection mySqlConnection = DataBase.GetConnection();
+            mySqlConnection.Open();
+
+            using (mySqlConnection)
+            {
+                string sql = "DELETE FROM drafts " +
+                                "WHERE id = @id";
+                MySqlCommand command = new MySqlCommand(sql, mySqlConnection);
+                command.Parameters.AddWithValue("@id", id);
+                command.ExecuteNonQuery();
+            }
         }
 
         public static List<DreamTeam> GetDreamTeams()
