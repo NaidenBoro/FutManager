@@ -15,59 +15,43 @@ namespace FutManager.Data
         public static void Initialize()
         {
             Clubs = new List<Club>();
-            Clubs.Add(new Club(0, "No Club", "No League", 0));
-            Clubs.Add(new Club(1, "Manchester United", "Premier League", 90));
-            Clubs.Add(new Club(2, "Manchester City", "Premier League", 95));
-            Clubs.Add(new Club(3, "Levski", "Efbet Liga", 20));
-            Clubs.Add(new Club(4, "CSKA", "Efbet Liga", 20));
-            Clubs.Add(new Club(5, "PSG", "Ligue 1", 20));
-            Clubs.Add(new Club(6, "BVB", "Bundesliga", 20));
-            Clubs.Add(new Club(7, "Real Madrid", "La Liga", 20));
-            Clubs.Add(new Club(8, "Roma", "Serie A", 20));
-            Clubs.Add(new Club(9, "Liverpool", "Premier League", 20));
-            Clubs.Add(new Club(10, "Barcelona", "La Liga", 20));
-            Clubs.Add(new Club(11, "Bayern Munich", "Bundesliga", 20));
-            Clubs.Add(new Club(12, "Parva Atomna Kozlodui", "B Okrajna Vraca", 99));
-            Clubs.Add(new Club(13, "Nice", "Ligue 1", 20));
-            Clubs.Add(new Club(14, "Hertha BSC", "Bundesliga", 20));
-            Clubs.Add(new Club(15, "Ajax", "Eredivisie", 20));
-            Clubs.Add(new Club(16, "1. FC Koln", "Bundesliga", 20));
+            
 
             Nations = new List<Nation>();
-            Nations.Add(new Nation(0, "No Nation", "No Confederation", 0));
-            Nations.Add(new Nation(1, "Bulgaria", "UEFA", 70));
-            Nations.Add(new Nation(2, "Italy", "UEFA", 83));
-            Nations.Add(new Nation(3, "USA", "CONCACAF", 75));
-            Nations.Add(new Nation(4, "Spain", "UEFA", 84));
-            Nations.Add(new Nation(5, "Mexico", "CONCACAF", 78));
-            Nations.Add(new Nation(6, "Brazil", "CONMEBOL", 84));
-            Nations.Add(new Nation(7, "Argentina", "CONMEBOL", 84));
-            Nations.Add(new Nation(8, "Brazil", "CONMEBOL", 84));
-            Nations.Add(new Nation(9, "Canada", "CONCACAF", 73));
-            Nations.Add(new Nation(10, "England", "UEFA", 84));
-            Nations.Add(new Nation(11, "Portugal", "UEFA", 84));
-            Nations.Add(new Nation(12, "Belgium", "UEFA", 83));
-            Nations.Add(new Nation(13, "Germany", "UEFA", 83));
-            Nations.Add(new Nation(14, "Netherlands", "UEFA", 82));
-            Nations.Add(new Nation(15, "Denmark", "UEFA", 79));
-            Nations.Add(new Nation(16, "Poland", "UEFA", 77));
-            Nations.Add(new Nation(17, "Austria", "UEFA", 77));
-            Nations.Add(new Nation(18, "Sweden", "UEFA", 77));
-            Nations.Add(new Nation(19, "Czech Republic", "UEFA", 77));
-            Nations.Add(new Nation(20, "Norway", "UEFA", 76));
-            Nations.Add(new Nation(21, "France", "UEFA", 85));
-            Nations.Add(new Nation(22, "Ukraine", "UEFA", 76));
-            Nations.Add(new Nation(23, "Scotland", "UEFA", 75));
-            Nations.Add(new Nation(24, "Greece", "UEFA", 75));
-            Nations.Add(new Nation(25, "Wales", "UEFA", 74));
-            Nations.Add(new Nation(26, "Hungary", "UEFA", 73));
-            Nations.Add(new Nation(27, "Romania", "UEFA", 71));
-            Nations.Add(new Nation(28, "Finland", "UEFA", 71));
-            Nations.Add(new Nation(29, "Iceland", "UEFA", 71));
-            Nations.Add(new Nation(30, "Northern Ireland", "UEFA", 70));
-            Nations.Add(new Nation(31, "Russia", "UEFA", 75));
-
-            /*AddClub("No Club", "No League", 0);
+           //AddNation("No Nation", "No Confederation", 0);
+           AddNation("Bulgaria", "UEFA", 70);
+           AddNation("Italy", "UEFA", 83);
+           AddNation("USA", "CONCACAF", 75);
+           AddNation("Spain", "UEFA", 84);
+           AddNation("Mexico", "CONCACAF", 78);
+           AddNation("Brazil", "CONMEBOL", 84);
+           AddNation("Argentina", "CONMEBOL", 84);
+           AddNation("Brazil", "CONMEBOL", 84);
+           AddNation("Canada", "CONCACAF", 73);
+           AddNation( "England", "UEFA", 84);
+           AddNation( "Portugal", "UEFA", 84);
+           AddNation( "Belgium", "UEFA", 83);
+           AddNation( "Germany", "UEFA", 83);
+           AddNation( "Netherlands", "UEFA", 82);
+           AddNation( "Denmark", "UEFA", 79);
+           AddNation( "Poland", "UEFA", 77);
+           AddNation( "Austria", "UEFA", 77);
+           AddNation( "Sweden", "UEFA", 77);
+           AddNation( "Czech Republic", "UEFA", 77);
+           AddNation( "Norway", "UEFA", 76);
+           AddNation( "France", "UEFA", 85);
+           AddNation( "Ukraine", "UEFA", 76);
+           AddNation( "Scotland", "UEFA", 75);
+           AddNation( "Greece", "UEFA", 75);
+           AddNation( "Wales", "UEFA", 74);
+           AddNation( "Hungary", "UEFA", 73);
+           AddNation( "Romania", "UEFA", 71);
+           AddNation( "Finland", "UEFA", 71);
+           AddNation( "Iceland", "UEFA", 71);
+           AddNation( "Northern Ireland", "UEFA", 70);
+           AddNation( "Russia", "UEFA", 75);
+/*
+            AddClub("No Club", "No League", 0);
             AddClub("Manchester United", "Premier League", 90);
             AddClub("Manchester City", "Premier League", 95);
             AddClub("Levski", "Efbet Liga", 20);
@@ -550,57 +534,78 @@ namespace FutManager.Data
 
         public static List<Nation> GetNations()
         {
+            MySqlConnection mySqlConnection = DataBase.GetConnection();
+            mySqlConnection.Open();
+            List<Nation> nations = new List<Nation>();
 
-            return Nations;
+            using (mySqlConnection)
+            {
+                string sql = "SELECT * FROM nations";
+                MySqlCommand command = new MySqlCommand(sql, mySqlConnection);
+                MySqlDataReader reader = command.ExecuteReader();
+
+
+
+                while (reader.Read())
+                {
+                    Nation nation = new Nation();
+                    nation.Id = reader.GetInt32(0);
+                    nation.Name = reader.GetString(1);
+                    nation.Confederation = reader.GetString(2);
+                    nation.Rating = reader.GetInt32(3);
+
+                    nations.Add(nation);
+                }
+            }
+            return nations;
         }
         public static void AddNation(string name, string confederation, int rating)
+        { 
+        MySqlConnection mySqlConnection = DataBase.GetConnection();
+        mySqlConnection.Open();
+
+            using (mySqlConnection)
+            {
+                string sql = "INSERT INTO nations(name, confederation, rating) " +
+                "VALUES (@name, @confederation, @rating)";
+        MySqlCommand command = new MySqlCommand(sql, mySqlConnection);
+        command.Parameters.AddWithValue("@name", name);
+                command.Parameters.AddWithValue("@confederation", confederation);
+                command.Parameters.AddWithValue("@rating", rating);
+                command.ExecuteNonQuery();
+            }
+}
+        internal static void EditNation(int id, string name, string confederation, int rating)
         {
-            Nations.Add(new Nation(Nations.Last().Id + 1, name, confederation, rating));
+            MySqlConnection mySqlConnection = DataBase.GetConnection();
+            mySqlConnection.Open();
+
+            using (mySqlConnection)
+            {
+                string sql = "UPDATE nations " +
+                    "SET name = @name, confederation = @confederation, rating = @rating " +
+                    "WHERE id = @id";
+
+                MySqlCommand command = new MySqlCommand(sql, mySqlConnection);
+                command.Parameters.AddWithValue("@id", id);
+                command.Parameters.AddWithValue("@name", name);
+                command.Parameters.AddWithValue("@confederation", confederation);
+                command.Parameters.AddWithValue("@rating", rating);
+                command.ExecuteNonQuery();
+            }
         }
         public static void DeleteNation(int id)
         {
-            try
-            {
-                if (id != 0)
-                {
-                    while (Players.FirstOrDefault(x => x.NationalityId == id) != null)
-                    {
-                        Players.FirstOrDefault(x => x.NationalityId == id).NationalityId = 0;
-                    }
-                    while (Managers.FirstOrDefault(x => x.NationalityId == id) != null)
-                    {
-                        Managers.FirstOrDefault(x => x.NationalityId == id).NationalityId = 0;
-                    }
-                    Nations.Remove(Nations.FirstOrDefault(x => x.Id == id));
-                }
-                else
-                {
-                    throw new Exception("Cannot delete this nation");
-                }
-            }
-            catch (Exception ex)
-            {
+            MySqlConnection mySqlConnection = DataBase.GetConnection();
+            mySqlConnection.Open();
 
-            }
-        }
-        internal static void EditNation(int id, string name, string confederation, int rating)
-        {
-            try
+            using (mySqlConnection)
             {
-                if (id != 0)
-                {
-                    Nations.FirstOrDefault(x => x.Id == id).Name = name;
-                    Nations.FirstOrDefault(x => x.Id == id).Confederation = confederation;
-                    Nations.FirstOrDefault(x => x.Id == id).Rating = rating;
-                }
-                else
-                {
-                    throw new Exception("Cannot edit this nation");
-                }
-            }
-            catch (Exception ex)
-            {
-
+                string sql = "DELETE FROM nations " +
+                    "WHERE id = @id";
+                MySqlCommand command = new MySqlCommand(sql, mySqlConnection);
+                command.Parameters.AddWithValue("@id", id);
+                command.ExecuteNonQuery();
             }
         }
 
