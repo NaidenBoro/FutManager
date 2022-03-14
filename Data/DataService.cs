@@ -1,4 +1,5 @@
 ﻿using FutManager.Models;
+using MySql.Data.MySqlClient;
 
 namespace FutManager.Data
 {
