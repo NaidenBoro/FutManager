@@ -13,9 +13,9 @@ namespace FutManager.Controllers
             x.Clubs = DataService.GetClubs();
             return View(x);
         }
-        public RedirectToActionResult Add(string first_name, string last_name,  int nationalityId, int clubId, int age, int rating, bool isReal)
+        public RedirectToActionResult Add(string FirstName, string LastName,  int NationalityId, int ClubId, int Age, int Rating, bool isReal)
         {
-            DataService.AddManager(first_name, last_name, age , nationalityId, clubId, rating, isReal);
+            DataService.AddManager(FirstName, LastName, Age , NationalityId, ClubId, Rating, isReal);
             return RedirectToAction(actionName: "Index");
         }
         public IActionResult Index()
@@ -68,10 +68,10 @@ namespace FutManager.Controllers
             return View(x);
         }
 
-        public RedirectToActionResult ConfirmEdit(int id, string first_name, string last_name, int nationalityId, int clubId, int age, int rating, bool isReal,string password)
+        public RedirectToActionResult ConfirmEdit(int id, string FirstName, string LastName, int NationalityId, int ClubId, int Age, int Rating, bool isReal,string password)
         {
             if (password == "password") {
-                DataService.EditManager(id, first_name, last_name, nationalityId, clubId, age, rating, isReal);
+                DataService.EditManager(id, FirstName, LastName, NationalityId, ClubId, Age, Rating, isReal);
             }
             return RedirectToAction(actionName: "Index");
         }

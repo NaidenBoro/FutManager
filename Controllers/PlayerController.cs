@@ -14,9 +14,9 @@ namespace FutManager.Controllers
             
             return View(x);
         }
-        public RedirectToActionResult Add(string first_name,string last_name,string position,int nationalityId,int clubId,int age,int shirtnumber,int overall,bool isReal)
+        public RedirectToActionResult Add(string First_name,string Last_name,string Position,int NationalityId,int ClubId,int Age,int ShirtNumber,int Overall,bool isReal)
         {
-            DataService.AddPlayer(first_name,last_name,position,age,shirtnumber,nationalityId,clubId,overall,isReal);
+            DataService.AddPlayer(First_name,Last_name,Position,Age,ShirtNumber,NationalityId,ClubId,Overall,isReal);
             return RedirectToAction(actionName: "Index");
         }
 
@@ -56,11 +56,11 @@ namespace FutManager.Controllers
             return View(x);
         }
 
-        public RedirectToActionResult ConfirmEdit(int id, string first_name, string last_name, string position, int nationalityId, int clubId, int age, int shirtnumber, int overall, bool isReal,string password)
+        public RedirectToActionResult ConfirmEdit(int id, string FirstName, string LastName, string Position, int NationalityId, int ClubId, int Age, int Shirtnumber, int Overall, bool isReal,string password)
         {
             if (password == "password")
             {
-                DataService.EditPlayer(id, first_name, last_name, position, nationalityId, clubId, age, shirtnumber, overall, isReal);
+                DataService.EditPlayer(id, FirstName, LastName, Position, NationalityId, ClubId, Age, Shirtnumber, Overall, isReal);
             }
             return RedirectToAction(actionName: "Index");
         }

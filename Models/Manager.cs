@@ -6,7 +6,7 @@ namespace FutManager.Models
     {
         public int Id { get; set; }
        
-        public string FisrtName { get; set; }
+        public string FirstName { get; set; }
         public string LastName { get; set; }
         [Range(1, int.MaxValue,ErrorMessage = "Please enter a value bigger than {1}")]
         public int Age { get; set; }
@@ -21,7 +21,7 @@ namespace FutManager.Models
         public Manager(int id, string fname, string lname, int age, int nat, int club, int rat, bool real)
         {
             Id = id;
-            FisrtName = fname;
+            FirstName = fname;
             LastName = lname;
             Age = age;
             NationalityId = nat;
@@ -35,7 +35,7 @@ namespace FutManager.Models
             NationalityId = -1;  
             ClubId = -1;
             Id = -1;
-            FisrtName = "Uknown";
+            FirstName = "Uknown";
             LastName = "Uknown";
            
             Age = 0;

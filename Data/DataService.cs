@@ -354,6 +354,16 @@ namespace FutManager.Data
                                   GetClubs().Where(c => c.Name == "BVB").First().Id,
                                   88,
                                   true));
+            Players.Add(new Player(29,
+                                  "Vratar",
+                                  "Baaland",
+                                  "Goalkeeper",
+                                  21,
+                                  9,
+                                  GetNations().Where(nat => nat.Name == "Norway").First().Id,
+                                  GetClubs().Where(c => c.Name == "BVB").First().Id,
+                                  88,
+                                  true));
 
             Managers = new List<Manager>();
 
@@ -564,7 +574,7 @@ namespace FutManager.Data
         internal static void EditPlayer(int id, string first_name, string last_name, string position, int nationalityId, int clubId, int age, int shirtnumber, int overall, bool isReal)
         {
             Players.FirstOrDefault(x => x.Id == id).Age = age;
-            Players.FirstOrDefault(x => x.Id == id).FisrtName = first_name;
+            Players.FirstOrDefault(x => x.Id == id).FirstName = first_name;
             Players.FirstOrDefault(x => x.Id == id).LastName = last_name;
             Players.FirstOrDefault(x => x.Id == id).Position = position;
             Players.FirstOrDefault(x => x.Id == id).NationalityId = nationalityId;
@@ -591,7 +601,7 @@ namespace FutManager.Data
         internal static void EditManager(int id, string first_name, string last_name, int nationalityId, int clubId, int age, int rating, bool isReal)
         {
             Managers.FirstOrDefault(x => x.Id == id).Age = age;
-            Managers.FirstOrDefault(x => x.Id == id).FisrtName = first_name;
+            Managers.FirstOrDefault(x => x.Id == id).FirstName = first_name;
             Managers.FirstOrDefault(x => x.Id == id).LastName = last_name;
             Managers.FirstOrDefault(x => x.Id == id).NationalityId = nationalityId;
             Managers.FirstOrDefault(x => x.Id == id).ClubId = clubId;

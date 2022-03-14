@@ -7,39 +7,39 @@
         <form asp-action="ConfirmEdit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>            
             <div class="form-group">
-                <label asp-for="player.FisrtName" class="control-label"></label>
-                <input asp-for="player.FisrtName" class="form-control" name="first_name"/>
-                <span asp-validation-for="player.FisrtName" class="text-danger"></span>
+                <label asp-for="player.FirstName" class="control-label"></label>
+                <input asp-for="player.FirstName" class="form-control" name="FirstName"/>
+                <span asp-validation-for="FirstName" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="player.LastName" class="control-label"></label>
-                <input asp-for="player.LastName" class="form-control" name="last_name"/>
-                <span asp-validation-for="player.LastName" class="text-danger"></span>
+                <input asp-for="player.LastName" class="form-control" name="LastName"/>
+                <span asp-validation-for="LastName" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="player.Position" class="control-label"></label>
-                <select asp-for="player.Position" class="form-control" name="position">
+                <select asp-for="player.Position" class="form-control" name="Position">
                     <option value="" selected disabled hidden>Choose here</option>
                     <option value="Goalkeeper">Goalkeeper</option>
                     <option value="Defender">Defender</option>
                     <option value="Midfielder">Midfielder</option> 
                     <option value="Forward">Forward</option> 
                 </select>
-                <span asp-validation-for="player.Position" class="text-danger"></span>
+                <span asp-validation-for="Position" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="player.Age" class="control-label"></label>
-                <input asp-for="player.Age" class="form-control" name="age"/>
-                <span asp-validation-for="player.Age" class="text-danger"></span>
+                <input asp-for="player.Age" class="form-control" name="Age"/>
+                <span asp-validation-for="Age" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="player.ShirtNumber" class="control-label"></label>
-                <input asp-for="player.ShirtNumber" class="form-control" name="shirtnumber"/>
-                <span asp-validation-for="player.ShirtNumber" class="text-danger"></span>
+                <input asp-for="player.ShirtNumber" class="form-control" name="ShirtNumber"/>
+                <span asp-validation-for="ShirtNumber" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="player.NationalityId" class="control-label"></label>
-                <select asp-for="player.NationalityId" class="form-control" name="nationalityId">
+                <select asp-for="player.NationalityId" class="form-control" name="NationalityId">
                     <option value="" selected disabled hidden>Choose here</option>
                     @foreach(var item in Model.Nations)
                     {
@@ -50,19 +50,19 @@
             </div>
             <div class="form-group">
                 <label asp-for="player.ClubId" class="control-label"></label>
-                <select asp-for="player.ClubId" class="form-control" name="clubId">
+                <select asp-for="player.ClubId" class="form-control" name="ClubId">
                     <option value="" selected disabled hidden>Choose here</option>
                     @foreach(var item in Model.Clubs)
                     {
                         <option value="@item.Id">@item.Name</option>
                     }
                 </select>
-                <span asp-validation-for="player.ClubId" class="text-danger"></span>
+                <span asp-validation-for="ClubId" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="player.Overall" class="control-label"></label>
-                <input asp-for="player.Overall" class="form-control" name="overall"/>
-                <span asp-validation-for="player.Overall" class="text-danger"></span>
+                <input asp-for="player.Overall" class="form-control" name="Overall"/>
+                <span asp-validation-for="Overall" class="text-danger"></span>
             </div>
             <div class="form-group form-check">
                 <label class="form-check-label">

@@ -22,7 +22,7 @@
                     <option value="" selected disabled hidden>Choose here</option>
                     @foreach(var gk in @Model.GoalKeepers)
                     {
-                        <option value="@gk.Id">@gk.FisrtName @gk.LastName</option>
+                        <option value="@gk.Id">@gk.FirstName @gk.LastName</option>
                     }
                 </select>
                 <span asp-validation-for="GoalkeeperId" class="text-danger"></span>
@@ -34,7 +34,7 @@
                     
                     @foreach(var ld in @Model.LeftDefenders)
                     {
-                        <option value="@ld.Id">@ld.FisrtName @ld.LastName</option>
+                        <option value="@ld.Id">@ld.FirstName @ld.LastName</option>
                     }
                 </select>
                 <span asp-validation-for="LeftDefenderId" class="text-danger"></span>
@@ -46,7 +46,7 @@
                     
                     @foreach(var rd in @Model.RightDefenders)
                     {
-                        <option value="@rd.Id">@rd.FisrtName @rd.LastName</option>
+                        <option value="@rd.Id">@rd.FirstName @rd.LastName</option>
                     }
                 </select>
                  <span asp-validation-for="RightDefenderId" class="text-danger"></span>
@@ -58,7 +58,7 @@
                     
                     @foreach(var lm in @Model.LeftMidfielders)
                     {
-                        <option value="@lm.Id">@lm.FisrtName @lm.LastName</option>
+                        <option value="@lm.Id">@lm.FirstName @lm.LastName</option>
                     }
                 </select>
                  <span asp-validation-for="LeftMidfielderId" class="text-danger"></span>
@@ -70,7 +70,7 @@
                     
                     @foreach(var rm in @Model.RightMidfielders)
                     {
-                        <option value="@rm.Id">@rm.FisrtName @rm.LastName</option>
+                        <option value="@rm.Id">@rm.FirstName @rm.LastName</option>
                     }
                 </select>
                  <span asp-validation-for="RightMidfielderId" class="text-danger"></span>
@@ -82,7 +82,7 @@
                     
                     @foreach(var lf in @Model.LeftForwards)
                     {
-                        <option value="@lf.Id">@lf.FisrtName @lf.LastName</option>
+                        <option value="@lf.Id">@lf.FirstName @lf.LastName</option>
                     }
                 </select>
                  <span asp-validation-for="LeftForwardId" class="text-danger"></span>
@@ -94,7 +94,7 @@
                     
                     @foreach(var rf in @Model.RightForwards)
                     {
-                        <option value="@rf.Id">@rf.FisrtName @rf.LastName</option>
+                        <option value="@rf.Id">@rf.FirstName @rf.LastName</option>
                     }
                 </select>
                  <span asp-validation-for="RightForwardId" class="text-danger"></span>
@@ -106,7 +106,7 @@
                     
                     @foreach(var mngr in @Model.Managers)
                     {
-                        <option value="@mngr.Id">@mngr.FisrtName @mngr.LastName</option>
+                        <option value="@mngr.Id">@mngr.FirstName @mngr.LastName</option>
                     }
                 </select>
                  <span asp-validation-for="ManagerId" class="text-danger"></span>
