@@ -16,6 +16,22 @@ namespace FutManager.Controllers
         }
         public RedirectToActionResult Add(string First_name,string Last_name,string Position,int NationalityId,int ClubId,int Age,int ShirtNumber,int Overall,bool isReal)
         {
+            List<string> positions = new List<string>();
+            positions.Add("Goalkeeper");
+           
+            positions.Add("Defender");
+           
+            positions.Add("Midfielder");
+           
+            positions.Add("Forward");
+            if ( positions.Contains(Position))
+            {
+                return RedirectToAction(actionName: "Index", controllerName: "Error");
+            }
+             else if (First_name == null || Last_name == null || Overall < 1 || ShirtNumber<1 || Age<1 || !DataService.GetClubs().Any(y => y.Id == ClubId) || ClubId == 0 || NationalityId == 0 || !DataService.GetNations().Any(y=>y.Id == NationalityId))
+            {
+                return RedirectToAction(actionName: "Index", controllerName: "Error");
+            }
             DataService.AddPlayer(First_name,Last_name,Position,Age,ShirtNumber,NationalityId,ClubId,Overall,isReal);
             return RedirectToAction(actionName: "Index");
         }
@@ -36,6 +52,10 @@ namespace FutManager.Controllers
 
         public IActionResult Details(int id)
         {
+            if (!DataService.GetClubs().Any(y => y.Id == id) || !DataService.GetNations().Any(y => y.Id == id))
+            {
+                return RedirectToAction(actionName: "Index", controllerName: "Error");
+            }
             List<Club> clubs = DataService.GetClubs();
             List<Nation> nations = DataService.GetNations();
             Player player = DataService.GetPlayers().FirstOrDefault(x => x.Id == id);
@@ -48,7 +68,10 @@ namespace FutManager.Controllers
         public IActionResult Edit(int id)
         {
             PlayerAndClubsAndNations x = new PlayerAndClubsAndNations();
-
+            if (!DataService.GetClubs().Any(y => y.Id == id) || id == 0 || !DataService.GetNations().Any(y => y.Id == id))
+            {
+                return RedirectToAction(actionName: "Index", controllerName: "Error");
+            }
             x.player = DataService.GetPlayers().FirstOrDefault(y => y.Id == id);
             x.Clubs = DataService.GetClubs();
             x.Nations = DataService.GetNations();
@@ -58,8 +81,14 @@ namespace FutManager.Controllers
 
         public RedirectToActionResult ConfirmEdit(int id, string FirstName, string LastName, string Position, int NationalityId, int ClubId, int Age, int Shirtnumber, int Overall, bool isReal,string password)
         {
+
             if (password == "password")
-            {
+            { 
+                if (FirstName == null || LastName == null || Overall < 1 || Shirtnumber < 1 || Age < 1 || !DataService.GetClubs().Any(y => y.Id == ClubId) || ClubId == 0 || NationalityId == 0 || !DataService.GetNations().Any(y => y.Id == NationalityId))
+                {
+                    return RedirectToAction(actionName: "Index", controllerName: "Error");
+                }
+                    
                 DataService.EditPlayer(id, FirstName, LastName, Position, NationalityId, ClubId, Age, Shirtnumber, Overall, isReal);
             }
             return RedirectToAction(actionName: "Index");
@@ -74,6 +103,10 @@ namespace FutManager.Controllers
         {
             if (password == "password")
             {
+                if (!DataService.GetClubs().Any(y => y.Id == id) || id == 0 || !DataService.GetNations().Any(y => y.Id == id))
+                {
+                    return RedirectToAction(actionName: "Index", controllerName: "Error");
+                }
                 DataService.DeletePlayer(id);
             }
             return RedirectToAction(actionName: "Index");
