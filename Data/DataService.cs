@@ -19,7 +19,7 @@ namespace FutManager.Data
 
             Nations = new List<Nation>();
          
-          /* AddNation("No Nation", "No Confederation", 0);
+           /*AddNation("No Nation", "No Confederation", 0);
            AddNation("Bulgaria", "UEFA", 70);
            AddNation("Italy", "UEFA", 83);
            AddNation("USA", "CONCACAF", 75);
@@ -51,8 +51,8 @@ namespace FutManager.Data
            AddNation( "Iceland", "UEFA", 71);
            AddNation( "Northern Ireland", "UEFA", 70);
            AddNation( "Russia", "UEFA", 75);*/
-/*
-            AddClub("No Club", "No League", 0);
+
+            /*AddClub("No Club", "No League", 0);
             AddClub("Manchester United", "Premier League", 90);
             AddClub("Manchester City", "Premier League", 95);
             AddClub("Levski", "Efbet Liga", 20);
@@ -72,7 +72,7 @@ namespace FutManager.Data
 
             Players = new List<Player>();
 
-            Players.Add(new Player(1,
+            /*Players.Add(new Player(1,
                                     "Lionel",
                                     "Messi",
                                     "Forward",
@@ -81,293 +81,272 @@ namespace FutManager.Data
                                     GetNations().Where(nat => nat.Name == "Argentina").First().Id,
                                     GetClubs().Where(c => c.Name == "PSG").First().Id,
                                     93,
-                                    true));
-            Players.Add(new Player(2,
-                                    "Cristiano",
-                                    "Ronaldo",
-                                    "Forward",
-                                    37,
-                                    7,
-                                    GetNations().Where(nat => nat.Name == "Portugal").First().Id,
-                                    GetClubs().Where(c => c.Name == "Manchester United").First().Id,
-                                    91,
-                                    true));
-            Players.Add(new Player(3,
-                                    "Neymar",
-                                    "Jr",
-                                    "Forward",
-                                    30,
-                                    10,
-                                    GetNations().Where(nat => nat.Name == "Brazil").First().Id,
-                                    GetClubs().Where(c => c.Name == "PSG").First().Id,
-                                    91,
-                                    true));
-            Players.Add(new Player(4,
-                                    "Kylian",
-                                    "Mbappe",
-                                    "Forward",
-                                    23,
-                                    7,
-                                    GetNations().Where(nat => nat.Name == "France").First().Id,
-                                    GetClubs().Where(c => c.Name == "PSG").First().Id,
-                                    91,
-                                    true));
-            Players.Add(new Player(5,
-                                    "Erling",
-                                    "Haaland",
-                                    "Forward",
-                                    21,
-                                    9,
-                                    GetNations().Where(nat => nat.Name == "Norway").First().Id,
-                                    GetClubs().Where(c => c.Name == "BVB").First().Id,
-                                    88,
-                                    true));
-            Players.Add(new Player(6,
-                                    "Viksata",
-                                    "Georgiev",
-                                    "Forward",
-                                    17,
-                                    11,
-                                    GetNations().Where(nat => nat.Name == "Bulgaria").First().Id,
-                                    GetClubs().Where(c => c.Name == "Real Madrid").First().Id,
-                                    99,
-                                    false));
-            Players.Add(new Player(7,
-                                    "Virgil",
-                                    "van Dijk",
-                                    "Defender",
-                                    30,
-                                    4,
-                                    GetNations().Where(nat => nat.Name == "Netherlands").First().Id,
-                                    GetClubs().Where(c => c.Name == "Liverpool").First().Id,
-                                    89,
-                                    true));
-            Players.Add(new Player(8,
-                                    "Pedri",
-                                    "Gonzalez",
-                                    "Midfielder",
-                                    19,
-                                    16,
-                                    GetNations().Where(nat => nat.Name == "Spain").First().Id,
-                                    GetClubs().Where(c => c.Name == "Barcelona").First().Id,
-                                    81,
-                                    true));
-            Players.Add(new Player(9,
-                                    "Pablo",
-                                    "Gavi",
-                                    "Midfielder",
-                                    17,
-                                    30,
-                                    GetNations().Where(nat => nat.Name == "Spain").First().Id,
-                                    GetClubs().Where(c => c.Name == "Barcelona").First().Id,
-                                    74,
-                                    true));
-            Players.Add(new Player(10,
-                                    "Jadon",
-                                    "Sancho",
-                                    "Midfielder",
-                                    21,
-                                    25,
-                                    GetNations().Where(nat => nat.Name == "England").First().Id,
-                                    GetClubs().Where(c => c.Name == "Barcelona").First().Id,
-                                    87,
-                                    true));
-            Players.Add(new Player(11,
-                                    "Jude",
-                                    "Bellingham",
-                                    "Midfielder",
-                                    18,
-                                    22,
-                                    GetNations().Where(nat => nat.Name == "England").First().Id,
-                                    GetClubs().Where(c => c.Name == "BVB").First().Id,
-                                    81,
-                                    true));
-            Players.Add(new Player(12,
-                                    "Maestro",
-                                    "Kimpembe",
-                                    "Defender",
-                                    26,
-                                    3,
-                                    GetNations().Where(nat => nat.Name == "France").First().Id,
-                                    GetClubs().Where(c => c.Name == "PSG").First().Id,
-                                    83,
-                                    true));
-            Players.Add(new Player(13,
-                                   "Bude",
-                                   "Jellingham2",
-                                   "Midfielder",
-                                   18,
-                                   22,
-                                   GetNations().Where(nat => nat.Name == "England").First().Id,
-                                   GetClubs().Where(c => c.Name == "BVB").First().Id,
-                                   81,
-                                   true));
+                                    true));*/
 
-            Players.Add(new Player(14,
-                                    "Roberto",
-                                    "Firmino",
-                                    "Defender",
-                                    37,
-                                    6,
-                                    GetNations().Where(nat => nat.Name == "Brazil").First().Id,
-                                    GetClubs().Where(c => c.Name == "Liverpool").First().Id,
-                                    85,
-                                    true));
+            /*AddPlayer("Lionel", 
+                        "Messi", 
+                        "Forward", 
+                        34, 
+                        30, 
+                        GetNations().Where(nat => nat.Name == "Argentina").First().Id, 
+                        GetClubs().Where(c => c.Name == "PSG").First().Id,
+                        93,
+                        true);
+            AddPlayer("Cristiano",
+                        "Ronaldo",
+                        "Forward",
+                        37,
+                        7,
+                        GetNations().Where(nat => nat.Name == "Portugal").First().Id,
+                        GetClubs().Where(c => c.Name == "Manchester United").First().Id,
+                        91,
+                        true);
+            AddPlayer("Neymar",
+                        "Jr",
+                        "Forward",
+                        30,
+                        10,
+                        GetNations().Where(nat => nat.Name == "Brazil").First().Id,
+                        GetClubs().Where(c => c.Name == "PSG").First().Id,
+                        91,
+                        true);
+            AddPlayer("Kylian",
+                        "Mbappe",
+                        "Forward",
+                        23,
+                        7,
+                        GetNations().Where(nat => nat.Name == "France").First().Id,
+                        GetClubs().Where(c => c.Name == "PSG").First().Id,
+                        91,
+                        true);
+            AddPlayer("Erling",
+                        "Haaland",
+                        "Forward",
+                        21,
+                        9,
+                        GetNations().Where(nat => nat.Name == "Norway").First().Id,
+                        GetClubs().Where(c => c.Name == "BVB").First().Id,
+                        88,
+                        true);
+            AddPlayer("Viksata",
+                        "Georgiev",
+                        "Forward",
+                        17,
+                        11,
+                        GetNations().Where(nat => nat.Name == "Bulgaria").First().Id,
+                        GetClubs().Where(c => c.Name == "Real Madrid").First().Id,
+                        99,
+                        false);
+            AddPlayer("Virgil",
+                        "van Dijk",
+                        "Defender",
+                        30,
+                        4,
+                        GetNations().Where(nat => nat.Name == "Netherlands").First().Id,
+                        GetClubs().Where(c => c.Name == "Liverpool").First().Id,
+                        89,
+                        true);
+            AddPlayer("Pedri",
+                        "Gonzalez",
+                        "Midfielder",
+                        19,
+                        16,
+                        GetNations().Where(nat => nat.Name == "Spain").First().Id,
+                        GetClubs().Where(c => c.Name == "Barcelona").First().Id,
+                        81,
+                        true);
+            AddPlayer("Pablo",
+                        "Gavi",
+                        "Midfielder",
+                        17,
+                        30,
+                        GetNations().Where(nat => nat.Name == "Spain").First().Id,
+                        GetClubs().Where(c => c.Name == "Barcelona").First().Id,
+                        74,
+                        true);
+            AddPlayer("Jadon",
+                        "Sancho",
+                        "Midfielder",
+                        21,
+                        25,
+                        GetNations().Where(nat => nat.Name == "England").First().Id,
+                        GetClubs().Where(c => c.Name == "Barcelona").First().Id,
+                        87,
+                        true);
+            AddPlayer("Jude",
+                        "Bellingham",
+                        "Midfielder",
+                        18,
+                        22,
+                        GetNations().Where(nat => nat.Name == "England").First().Id,
+                        GetClubs().Where(c => c.Name == "BVB").First().Id,
+                        81,
+                        true);
+            AddPlayer("Maestro",
+                        "Kimpembe",
+                        "Defender",
+                        26,
+                        3,
+                        GetNations().Where(nat => nat.Name == "France").First().Id,
+                        GetClubs().Where(c => c.Name == "PSG").First().Id,
+                        83,
+                        true);
+            AddPlayer("Bude",
+                        "Jellingham2",
+                        "Midfielder",
+                        18,
+                        22,
+                        GetNations().Where(nat => nat.Name == "England").First().Id,
+                        GetClubs().Where(c => c.Name == "BVB").First().Id,
+                        81,
+                        true);
+            AddPlayer("Roberto",
+                        "Firmino",
+                        "Defender",
+                        37,
+                        6,
+                        GetNations().Where(nat => nat.Name == "Brazil").First().Id,
+                        GetClubs().Where(c => c.Name == "Liverpool").First().Id,
+                        85,
+                        true);
 
-            Players.Add(new Player(15,
-                                   "Axel",
-                                   "Witsel",
-                                   "Midfielder",
-                                   33,
-                                   28,
-                                   GetNations().Where(nat => nat.Name == "Belgium").First().Id,
-                                   GetClubs().Where(c => c.Name == "BVB").First().Id,
-                                   83,
-                                   true));
-            Players.Add(new Player(16,
-                                   "Ico",
-                                   "Kotva",
-                                   "Midfielder",
-                                   33,
-                                   28,
-                                   GetNations().Where(nat => nat.Name == "Belgium").First().Id,
-                                   GetClubs().Where(c => c.Name == "BVB").First().Id,
-                                   83,
-                                   true));
-            Players.Add(new Player(17,
-                                   "Perling",
-                                   "Paaland",
-                                   "Forward",
-                                   21,
-                                   9,
-                                   GetNations().Where(nat => nat.Name == "Norway").First().Id,
-                                   GetClubs().Where(c => c.Name == "BVB").First().Id,
-                                   88,
-                                   true));
-            Players.Add(new Player(18,
-                                   "Terling",
-                                   "Taaland",
-                                   "Forward",
-                                   21,
-                                   9,
-                                   GetNations().Where(nat => nat.Name == "Norway").First().Id,
-                                   GetClubs().Where(c => c.Name == "BVB").First().Id,
-                                   88,
-                                   true));
-            Players.Add(new Player(19,
-                                   "Kerling",
-                                   "Kaaland",
-                                   "Forward",
-                                   21,
-                                   9,
-                                   GetNations().Where(nat => nat.Name == "Norway").First().Id,
-                                   GetClubs().Where(c => c.Name == "BVB").First().Id,
-                                   88,
-                                   true));
+            AddPlayer("Axel",
+                        "Witsel",
+                        "Midfielder",
+                        33,
+                        28,
+                        GetNations().Where(nat => nat.Name == "Belgium").First().Id,
+                        GetClubs().Where(c => c.Name == "BVB").First().Id,
+                        83,
+                        true);
+            AddPlayer("Ico",
+                        "Kotva",
+                        "Midfielder",
+                        33,
+                        28,
+                        GetNations().Where(nat => nat.Name == "Belgium").First().Id,
+                        GetClubs().Where(c => c.Name == "BVB").First().Id,
+                        83,
+                        true);
+            AddPlayer("Perling",
+                        "Paaland",
+                        "Forward",
+                        21,
+                        9,
+                        GetNations().Where(nat => nat.Name == "Norway").First().Id,
+                        GetClubs().Where(c => c.Name == "BVB").First().Id,
+                        88,
+                        true);
+            AddPlayer("Terling",
+                        "Taaland",
+                        "Forward",
+                        21,
+                        9,
+                        GetNations().Where(nat => nat.Name == "Norway").First().Id,
+                        GetClubs().Where(c => c.Name == "BVB").First().Id,
+                        88,
+                        true);
+            AddPlayer("Kerling",
+                        "Kaaland",
+                        "Forward",
+                        21,
+                        9,
+                        GetNations().Where(nat => nat.Name == "Norway").First().Id,
+                        GetClubs().Where(c => c.Name == "BVB").First().Id,
+                        88,
+                        true);
+            AddPlayer("Serling",
+                        "Saaland",
+                        "Forward",
+                        21,
+                        9,
+                        GetNations().Where(nat => nat.Name == "Norway").First().Id,
+                        GetClubs().Where(c => c.Name == "BVB").First().Id,
+                        88,
+                        true);
+            AddPlayer("Ferling",
+                        "Faaland",
+                        "Forward",
+                        21,
+                        9,
+                        GetNations().Where(nat => nat.Name == "Norway").First().Id,
+                        GetClubs().Where(c => c.Name == "BVB").First().Id,
+                        88,
+                        true);
 
-            Players.Add(new Player(20,
-                                   "Serling",
-                                   "Saaland",
-                                   "Forward",
-                                   21,
-                                   9,
-                                   GetNations().Where(nat => nat.Name == "Norway").First().Id,
-                                   GetClubs().Where(c => c.Name == "BVB").First().Id,
-                                   88,
-                                   true));
+            AddPlayer("Werling",
+                        "Waaland",
+                        "Forward",
+                        21,
+                        9,
+                        GetNations().Where(nat => nat.Name == "Norway").First().Id,
+                        GetClubs().Where(c => c.Name == "BVB").First().Id,
+                        88,
+                        true);
 
-            Players.Add(new Player(21,
-                                   "Ferling",
-                                   "Faaland",
-                                   "Forward",
-                                   21,
-                                   9,
-                                   GetNations().Where(nat => nat.Name == "Norway").First().Id,
-                                   GetClubs().Where(c => c.Name == "BVB").First().Id,
-                                   88,
-                                   true));
-
-            Players.Add(new Player(22,
-                                   "Werling",
-                                   "Waaland",
-                                   "Forward",
-                                   21,
-                                   9,
-                                   GetNations().Where(nat => nat.Name == "Norway").First().Id,
-                                   GetClubs().Where(c => c.Name == "BVB").First().Id,
-                                   88,
-                                   true));
-
-            Players.Add(new Player(23,
-                                   "Rerling",
-                                   "Raaland",
-                                   "Forward",
-                                   21,
-                                   9,
-                                   GetNations().Where(nat => nat.Name == "Norway").First().Id,
-                                   GetClubs().Where(c => c.Name == "BVB").First().Id,
-                                   88,
-                                   true));
-            Players.Add(new Player(24,
-                                  "Lerling",
-                                  "Laaland",
-                                  "Forward",
-                                  21,
-                                  9,
-                                  GetNations().Where(nat => nat.Name == "Norway").First().Id,
-                                  GetClubs().Where(c => c.Name == "BVB").First().Id,
-                                  88,
-                                  true));
-            Players.Add(new Player(25,
-                                  "Gerling",
-                                  "Gaaland",
-                                  "Forward",
-                                  21,
-                                  9,
-                                  GetNations().Where(nat => nat.Name == "Norway").First().Id,
-                                  GetClubs().Where(c => c.Name == "BVB").First().Id,
-                                  88,
-                                  true));
-            Players.Add(new Player(26,
-                                  "Nerling",
-                                  "Naaland",
-                                  "Forward",
-                                  21,
-                                  9,
-                                  GetNations().Where(nat => nat.Name == "Norway").First().Id,
-                                  GetClubs().Where(c => c.Name == "BVB").First().Id,
-                                  88,
-                                  true));
-            Players.Add(new Player(27,
-                                  "Derling",
-                                  "Daaland",
-                                  "Forward",
-                                  21,
-                                  9,
-                                  GetNations().Where(nat => nat.Name == "Norway").First().Id,
-                                  GetClubs().Where(c => c.Name == "BVB").First().Id,
-                                  88,
-                                  true));
-            Players.Add(new Player(28,
-                                  "Berling",
-                                  "Baaland",
-                                  "Forward",
-                                  21,
-                                  9,
-                                  GetNations().Where(nat => nat.Name == "Norway").First().Id,
-                                  GetClubs().Where(c => c.Name == "BVB").First().Id,
-                                  88,
-                                  true));
-            Players.Add(new Player(29,
-                                  "Vratar",
-                                  "Baaland",
-                                  "Goalkeeper",
-                                  21,
-                                  9,
-                                  GetNations().Where(nat => nat.Name == "Norway").First().Id,
-                                  GetClubs().Where(c => c.Name == "BVB").First().Id,
-                                  88,
-                                  true));
+            AddPlayer("Rerling",
+                        "Raaland",
+                        "Forward",
+                        21,
+                        9,
+                        GetNations().Where(nat => nat.Name == "Norway").First().Id,
+                        GetClubs().Where(c => c.Name == "BVB").First().Id,
+                        88,
+                        true);
+            AddPlayer("Lerling",
+                        "Laaland",
+                        "Forward",
+                        21,
+                        9,
+                        GetNations().Where(nat => nat.Name == "Norway").First().Id,
+                        GetClubs().Where(c => c.Name == "BVB").First().Id,
+                        88,
+                        true);
+            AddPlayer("Gerling",
+                        "Gaaland",
+                        "Forward",
+                        21,
+                        9,
+                        GetNations().Where(nat => nat.Name == "Norway").First().Id,
+                        GetClubs().Where(c => c.Name == "BVB").First().Id,
+                        88,
+                        true);
+            AddPlayer("Nerling",
+                        "Naaland",
+                        "Forward",
+                        21,
+                        9,
+                        GetNations().Where(nat => nat.Name == "Norway").First().Id,
+                        GetClubs().Where(c => c.Name == "BVB").First().Id,
+                        88,
+                        true);
+            AddPlayer("Derling",
+                        "Daaland",
+                        "Forward",
+                        21,
+                        9,
+                        GetNations().Where(nat => nat.Name == "Norway").First().Id,
+                        GetClubs().Where(c => c.Name == "BVB").First().Id,
+                        88,
+                        true);
+            AddPlayer("Berling",
+                        "Baaland",
+                        "Forward",
+                        21,
+                        9,
+                        GetNations().Where(nat => nat.Name == "Norway").First().Id,
+                        GetClubs().Where(c => c.Name == "BVB").First().Id,
+                        88,
+                        true);
+            AddPlayer("Vratar",
+                        "Baaland",
+                        "Goalkeeper",
+                        21,
+                        9,
+                        GetNations().Where(nat => nat.Name == "Norway").First().Id,
+                        GetClubs().Where(c => c.Name == "BVB").First().Id,
+                        88,
+                        true);*/
 
             Managers = new List<Manager>();
 
@@ -490,7 +469,7 @@ namespace FutManager.Data
             using (mySqlConnection)
             {
                 string sql = "INSERT INTO clubs(name, league, rating) " +
-                "VALUES (@name, @league, @rating)";
+                                "VALUES (@name, @league, @rating)";
                 MySqlCommand command = new MySqlCommand(sql, mySqlConnection);
                 command.Parameters.AddWithValue("@name", name);
                 command.Parameters.AddWithValue("@league", league);
@@ -507,7 +486,7 @@ namespace FutManager.Data
             using (mySqlConnection)
             {
                 string sql = "DELETE FROM clubs " +
-                    "WHERE id = @id";
+                                "WHERE id = @id";
                 MySqlCommand command = new MySqlCommand(sql, mySqlConnection);
                 command.Parameters.AddWithValue("@id", id);
                 command.ExecuteNonQuery();
@@ -521,8 +500,8 @@ namespace FutManager.Data
             using (mySqlConnection)
             {
                 string sql = "UPDATE clubs " +
-                    "SET name = @name, league = @league, rating = @rating " +
-                    "WHERE id = @id";
+                                "SET name = @name, league = @league, rating = @rating " +
+                                "WHERE id = @id";
 
                 MySqlCommand command = new MySqlCommand(sql, mySqlConnection);
                 command.Parameters.AddWithValue("@id", id);
@@ -568,9 +547,9 @@ namespace FutManager.Data
             using (mySqlConnection)
             {
                 string sql1 = "INSERT INTO nations(name, confederation, rating) " +
-                "VALUES (@name, @confederation, @rating)";
-        MySqlCommand command1 = new MySqlCommand(sql1, mySqlConnection);
-        command1.Parameters.AddWithValue("@name", name);
+                                "VALUES (@name, @confederation, @rating)";
+                MySqlCommand command1 = new MySqlCommand(sql1, mySqlConnection);
+                command1.Parameters.AddWithValue("@name", name);
                 command1.Parameters.AddWithValue("@confederation", confederation);
                 command1.Parameters.AddWithValue("@rating", rating);
                 command1.ExecuteNonQuery();
@@ -584,8 +563,8 @@ namespace FutManager.Data
             using (mySqlConnection)
             {
                 string sql1 = "UPDATE nations " +
-                    "SET name = @name, confederation = @confederation, rating = @rating " +
-                    "WHERE id = @id";
+                                "SET name = @name, confederation = @confederation, rating = @rating " +
+                                "WHERE id = @id";
 
                 MySqlCommand command1 = new MySqlCommand(sql1, mySqlConnection);
                 command1.Parameters.AddWithValue("@id", id);
@@ -603,7 +582,7 @@ namespace FutManager.Data
             using (mySqlConnection)
             {
                 string sql1 = "DELETE FROM nations " +
-                    "WHERE id = @id";
+                                "WHERE id = @id";
                 MySqlCommand command1 = new MySqlCommand(sql1, mySqlConnection);
                 command1.Parameters.AddWithValue("@id", id);
                 command1.ExecuteNonQuery();
@@ -611,6 +590,104 @@ namespace FutManager.Data
         }
 
         public static List<Player> GetPlayers()
+        {
+            MySqlConnection mySqlConnection = DataBase.GetConnection();
+            mySqlConnection.Open();
+            List<Player> players = new List<Player>();
+
+            using (mySqlConnection)
+            {
+                string sql = "SELECT * FROM players";
+                MySqlCommand command = new MySqlCommand(sql, mySqlConnection);
+                MySqlDataReader reader = command.ExecuteReader();
+
+
+
+                while (reader.Read())
+                {
+                    Player player = new Player();
+                    player.Id = reader.GetInt32(0);
+                    player.FirstName = reader.GetString(1);
+                    player.LastName = reader.GetString(2);
+                    player.Position = reader.GetString(3);
+                    player.Age = reader.GetInt32(4);
+                    player.ShirtNumber = reader.GetInt32(5);
+                    player.NationalityId = reader.GetInt32(6);
+                    player.ClubId = reader.GetInt32(7);
+                    player.Overall = reader.GetInt32(8);
+                    player.isReal = reader.GetBoolean(9);
+
+                    players.Add(player);
+                }
+            }
+
+            return players;
+            //return Players;
+        }
+        public static void AddPlayer(string first_name, string last_name, string position, int age, int shirt_number, int nationality_id, int club_id, int overall, bool is_real)
+        {
+            MySqlConnection mySqlConnection = DataBase.GetConnection();
+            mySqlConnection.Open();
+
+            using (mySqlConnection)
+            {
+                string sql = "INSERT INTO players(first_name, last_name, position, age, shirt_number, nationality_id, club_id, overall, is_real) " +
+                                "VALUES (@first_name, @last_name, @position, @age, @shirt_number, @nationality_id, @club_id, @overall, @is_real)";
+                MySqlCommand command = new MySqlCommand(sql, mySqlConnection);
+                command.Parameters.AddWithValue("@first_name", first_name);
+                command.Parameters.AddWithValue("@last_name", last_name);
+                command.Parameters.AddWithValue("@position", position);
+                command.Parameters.AddWithValue("@age", age);
+                command.Parameters.AddWithValue("@shirt_number", shirt_number);
+                command.Parameters.AddWithValue("@nationality_id", nationality_id);
+                command.Parameters.AddWithValue("@club_id", club_id);
+                command.Parameters.AddWithValue("@overall", overall);
+                command.Parameters.AddWithValue("@is_real", is_real);
+                command.ExecuteNonQuery();
+            }
+        }
+        public static void DeletePlayer(int id)
+        {
+            MySqlConnection mySqlConnection = DataBase.GetConnection();
+            mySqlConnection.Open();
+
+            using (mySqlConnection)
+            {
+                string sql = "DELETE FROM players " +
+                                "WHERE id = @id";
+                MySqlCommand command = new MySqlCommand(sql, mySqlConnection);
+                command.Parameters.AddWithValue("@id", id);
+                command.ExecuteNonQuery();
+            }
+        }
+        public static void EditPlayer(int id, string first_name, string last_name, string position, int nationality_id, int club_id, int age, int shirt_number, int overall, bool is_real)
+        {
+            MySqlConnection mySqlConnection = DataBase.GetConnection();
+            mySqlConnection.Open();
+
+            using (mySqlConnection)
+            {
+                string sql = "UPDATE players " +
+                                "SET first_name = @first_name, last_name = @last_name, position = @position, nationality_id = @nationality_id, club_id = @club_id, age = @age, shirt_number = @shirt_number, overall = @overall, is_real = @is_real " +
+                                "WHERE id = @id";
+
+                MySqlCommand command = new MySqlCommand(sql, mySqlConnection);
+                command.Parameters.AddWithValue("@id", id);
+                command.Parameters.AddWithValue("@first_name", first_name);
+                command.Parameters.AddWithValue("@last_name", last_name);
+                command.Parameters.AddWithValue("@position", position);
+                command.Parameters.AddWithValue("@nationality_id", nationality_id);
+                command.Parameters.AddWithValue("@club_id", club_id);
+                command.Parameters.AddWithValue("@age", age);
+                command.Parameters.AddWithValue("@shirt_number", shirt_number);
+                command.Parameters.AddWithValue("@overall", overall);
+                command.Parameters.AddWithValue("@is_real", is_real);
+                command.ExecuteNonQuery();
+            }
+
+        }
+
+        /*public static List<Player> GetPlayers()
         {
             return Players;
         }
@@ -634,7 +711,7 @@ namespace FutManager.Data
             Players.FirstOrDefault(x => x.Id == id).Overall = overall;
             Players.FirstOrDefault(x => x.Id == id).isReal = isReal;
 
-        }
+        }*/
 
         public static List<Manager> GetManagers()
         {
