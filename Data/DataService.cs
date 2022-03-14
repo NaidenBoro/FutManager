@@ -18,7 +18,7 @@ namespace FutManager.Data
             
 
             Nations = new List<Nation>();
-           //AddNation("No Nation", "No Confederation", 0);
+           AddNation("No Nation", "No Confederation", 0);
            AddNation("Bulgaria", "UEFA", 70);
            AddNation("Italy", "UEFA", 83);
            AddNation("USA", "CONCACAF", 75);
@@ -540,9 +540,9 @@ namespace FutManager.Data
 
             using (mySqlConnection)
             {
-                string sql = "SELECT * FROM nations";
-                MySqlCommand command = new MySqlCommand(sql, mySqlConnection);
-                MySqlDataReader reader = command.ExecuteReader();
+                string sql1 = "SELECT * FROM nations";
+                MySqlCommand command1 = new MySqlCommand(sql1, mySqlConnection);
+                MySqlDataReader reader = command1.ExecuteReader();
 
 
 
@@ -566,13 +566,13 @@ namespace FutManager.Data
 
             using (mySqlConnection)
             {
-                string sql = "INSERT INTO nations(name, confederation, rating) " +
+                string sql1 = "INSERT INTO nations(name, confederation, rating) " +
                 "VALUES (@name, @confederation, @rating)";
-        MySqlCommand command = new MySqlCommand(sql, mySqlConnection);
-        command.Parameters.AddWithValue("@name", name);
-                command.Parameters.AddWithValue("@confederation", confederation);
-                command.Parameters.AddWithValue("@rating", rating);
-                command.ExecuteNonQuery();
+        MySqlCommand command1 = new MySqlCommand(sql1, mySqlConnection);
+        command1.Parameters.AddWithValue("@name", name);
+                command1.Parameters.AddWithValue("@confederation", confederation);
+                command1.Parameters.AddWithValue("@rating", rating);
+                command1.ExecuteNonQuery();
             }
 }
         internal static void EditNation(int id, string name, string confederation, int rating)
@@ -582,16 +582,16 @@ namespace FutManager.Data
 
             using (mySqlConnection)
             {
-                string sql = "UPDATE nations " +
+                string sql1 = "UPDATE nations " +
                     "SET name = @name, confederation = @confederation, rating = @rating " +
                     "WHERE id = @id";
 
-                MySqlCommand command = new MySqlCommand(sql, mySqlConnection);
-                command.Parameters.AddWithValue("@id", id);
-                command.Parameters.AddWithValue("@name", name);
-                command.Parameters.AddWithValue("@confederation", confederation);
-                command.Parameters.AddWithValue("@rating", rating);
-                command.ExecuteNonQuery();
+                MySqlCommand command1 = new MySqlCommand(sql1, mySqlConnection);
+                command1.Parameters.AddWithValue("@id", id);
+                command1.Parameters.AddWithValue("@name", name);
+                command1.Parameters.AddWithValue("@confederation", confederation);
+                command1.Parameters.AddWithValue("@rating", rating);
+                command1.ExecuteNonQuery();
             }
         }
         public static void DeleteNation(int id)
@@ -601,11 +601,11 @@ namespace FutManager.Data
 
             using (mySqlConnection)
             {
-                string sql = "DELETE FROM nations " +
+                string sql1 = "DELETE FROM nations " +
                     "WHERE id = @id";
-                MySqlCommand command = new MySqlCommand(sql, mySqlConnection);
-                command.Parameters.AddWithValue("@id", id);
-                command.ExecuteNonQuery();
+                MySqlCommand command1 = new MySqlCommand(sql1, mySqlConnection);
+                command1.Parameters.AddWithValue("@id", id);
+                command1.ExecuteNonQuery();
             }
         }
 
