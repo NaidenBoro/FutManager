@@ -28,7 +28,7 @@ namespace FutManager.Controllers
         }
         public IActionResult Delete(int id)
         {
-            if (!DataService.GetClubs().Any(c => c.Id == id) || id == 0)
+            if (!DataService.GetClubs().Any(c => c.Id == id))
             {
                 return RedirectToAction(actionName: "Index", controllerName: "Error");
             }
@@ -36,7 +36,7 @@ namespace FutManager.Controllers
         }
         public RedirectToActionResult Remove(int id,string password)
         {
-            if(!DataService.GetClubs().Any(c => c.Id == id) || id==0)
+            if(!DataService.GetClubs().Any(c => c.Id == id))
             {
                 return RedirectToAction(actionName: "Index", controllerName: "Error");
             }
@@ -48,7 +48,7 @@ namespace FutManager.Controllers
         }
         public IActionResult Edit(int id)
         {
-            if(!DataService.GetClubs().Any(y => y.Id == id) || id==0)
+            if(!DataService.GetClubs().Any(y => y.Id == id))
             {
                 return RedirectToAction(actionName: "Index", controllerName: "Error");
             }
@@ -56,7 +56,7 @@ namespace FutManager.Controllers
         }
         public RedirectToActionResult EditConfirmed(string name, string league, int rating, string password,int id)
         {
-            if(name==null|| league==null|| rating < 1|| !DataService.GetClubs().Any(y => y.Id == id) || id == 0)
+            if(name==null|| league==null|| rating < 1|| !DataService.GetClubs().Any(y => y.Id == id))
             {
                 return RedirectToAction(actionName: "Index", controllerName: "Error");
             }

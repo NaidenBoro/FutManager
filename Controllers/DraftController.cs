@@ -110,6 +110,10 @@ namespace FutManager.Controllers
         }
 
         public IActionResult Details(int id) {
+            if(!DataService.GetDrafts().Any(x=>x.Id == id))
+            {
+                return RedirectToAction(actionName: "Index", controllerName: "Error");
+            }
             List<Draft> drafts = new List<Draft>(DataService.GetDrafts());
             Draft x = drafts.FirstOrDefault(y => id == y.Id);
             List<Player> players = new List<Player>(DataService.GetPlayers());
@@ -128,16 +132,28 @@ namespace FutManager.Controllers
 
         public RedirectToActionResult Add(string name, string creator, int GoalkeeperId, int LeftDefenderId, int RightDefenderId, int LeftMidfielderId, int RightMidfielderId,int LeftForwardId, int RightForwardId, int ManagerId)
         {
+            if (name==null||creator==null||!DataService.GetPlayers().Any(x=>x.Id==GoalkeeperId) || !DataService.GetPlayers().Any(x => x.Id == LeftDefenderId) || !DataService.GetPlayers().Any(x => x.Id == RightDefenderId) || !DataService.GetPlayers().Any(x => x.Id == LeftMidfielderId) || !DataService.GetPlayers().Any(x => x.Id == RightMidfielderId) || !DataService.GetPlayers().Any(x => x.Id == LeftForwardId) || !DataService.GetPlayers().Any(x => x.Id == RightForwardId) || !DataService.GetManagers().Any(x => x.Id == ManagerId))
+            {
+                return RedirectToAction(actionName: "Index", controllerName: "Error");
+            }
             DataService.AddDraft(name,creator,GoalkeeperId,LeftDefenderId,RightDefenderId,LeftMidfielderId,RightMidfielderId,LeftForwardId,RightForwardId,ManagerId);
             return RedirectToAction(actionName: "Index");
         }
 
         public IActionResult Delete(int id)
         {
+            if (!DataService.GetDrafts().Any(x => x.Id == id))
+            {
+                return RedirectToAction(actionName: "Index", controllerName: "Error");
+            }
             return View(id);
         }
         public RedirectToActionResult Remove(int id, string password)
         {
+            if (!DataService.GetDrafts().Any(x => x.Id == id))
+            {
+                return RedirectToAction(actionName: "Index", controllerName: "Error");
+            }
             if (password == "password")
             {
                 DataService.DeleteDraft(id);

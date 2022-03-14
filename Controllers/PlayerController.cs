@@ -28,7 +28,7 @@ namespace FutManager.Controllers
             {
                 return RedirectToAction(actionName: "Index", controllerName: "Error");
             }
-             else if (First_name == null || Last_name == null || Overall < 1 || ShirtNumber<1 || Age<1 || !DataService.GetClubs().Any(y => y.Id == ClubId) || ClubId == 0 || NationalityId == 0 || !DataService.GetNations().Any(y=>y.Id == NationalityId))
+             else if (First_name == null || Last_name == null || Overall < 1 || ShirtNumber<1 || Age<1 || !DataService.GetClubs().Any(y => y.Id == ClubId) || !DataService.GetNations().Any(y=>y.Id == NationalityId))
             {
                 return RedirectToAction(actionName: "Index", controllerName: "Error");
             }
@@ -91,7 +91,7 @@ namespace FutManager.Controllers
             positions.Add("Forward");
             if (password == "password")
             { 
-                if (FirstName == null || LastName == null || Overall < 1 || Shirtnumber < 1 || Age < 1 || !DataService.GetClubs().Any(y => y.Id == ClubId) || ClubId == 0 || NationalityId == 0 || !DataService.GetNations().Any(y => y.Id == NationalityId))
+                if (FirstName == null || LastName == null || Overall < 1 || Shirtnumber < 1 || Age < 1 || !DataService.GetClubs().Any(y => y.Id == ClubId) || !DataService.GetNations().Any(y => y.Id == NationalityId))
                 {
                     return RedirectToAction(actionName: "Index", controllerName: "Error");
                 }

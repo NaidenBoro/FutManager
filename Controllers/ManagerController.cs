@@ -15,7 +15,7 @@ namespace FutManager.Controllers
         }
         public RedirectToActionResult Add(string FirstName, string LastName,  int NationalityId, int ClubId, int Age, int Rating, bool isReal)
         {
-            if (FirstName == null || LastName == null || Rating < 1  || Age < 1 || !DataService.GetClubs().Any(y => y.Id == ClubId) || ClubId == 0 || NationalityId == 0 || !DataService.GetNations().Any(y => y.Id == NationalityId))
+            if (FirstName == null || LastName == null || Rating < 1  || Age < 1 || !DataService.GetClubs().Any(y => y.Id == ClubId) || !DataService.GetNations().Any(y => y.Id == NationalityId))
             {
                 return RedirectToAction(actionName: "Index", controllerName: "Error");
             }
@@ -90,12 +90,13 @@ namespace FutManager.Controllers
 
         public RedirectToActionResult ConfirmEdit(int id, string FirstName, string LastName, int NationalityId, int ClubId, int Age, int Rating, bool isReal,string password)
         {
+            if (FirstName == null || LastName == null || Rating < 1 || Age < 1 || !DataService.GetClubs().Any(y => y.Id == ClubId) || !DataService.GetNations().Any(y => y.Id == NationalityId))
+            {
+                return RedirectToAction(actionName: "Index", controllerName: "Error");
+            }
             if (password == "password") 
             {
-                if (FirstName == null || LastName == null || Rating < 1 || Age < 1 || !DataService.GetClubs().Any(y => y.Id == ClubId) || ClubId == 0 || NationalityId == 0 || !DataService.GetNations().Any(y => y.Id == NationalityId))
-                {
-                    return RedirectToAction(actionName: "Index", controllerName: "Error");
-                }
+                
                 DataService.EditManager(id, FirstName, LastName, NationalityId, ClubId, Age, Rating, isReal);
             }
             return RedirectToAction(actionName: "Index");

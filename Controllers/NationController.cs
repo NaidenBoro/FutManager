@@ -28,7 +28,7 @@ namespace FutManager.Controllers
         public IActionResult Delete(int id)
         {
 
-            if ( id == 0 || !DataService.GetNations().Any(y => y.Id == id))
+            if (!DataService.GetNations().Any(y => y.Id == id))
             {
                 return RedirectToAction(actionName: "Index", controllerName: "Error");
             }
@@ -36,19 +36,20 @@ namespace FutManager.Controllers
         }
         public RedirectToActionResult Remove(int id, string password)
         {
+            if (!DataService.GetNations().Any(c => c.Id == id))
+            {
+                return RedirectToAction(actionName: "Index", controllerName: "Error");
+            }
             if (password == "password")
             {
-                if (!DataService.GetNations().Any(c => c.Id == id) || id == 0)
-                {
-                    return RedirectToAction(actionName: "Index", controllerName: "Error");
-                }
+                
                 DataService.DeleteNation(id);
             }
             return RedirectToAction(actionName: "Index");
         }
         public IActionResult Edit(int id)
         {
-            if (!DataService.GetNations().Any(c => c.Id == id) || id == 0)
+            if (!DataService.GetNations().Any(c => c.Id == id))
             {
                 return RedirectToAction(actionName: "Index", controllerName: "Error");
             }
@@ -56,12 +57,13 @@ namespace FutManager.Controllers
         }
         public RedirectToActionResult EditConfirmed(string name, string confederation, int rating, string password, int id)
         {
+            if (!DataService.GetNations().Any(c => c.Id == id) || name == null || confederation == null || rating < 1)
+            {
+                return RedirectToAction(actionName: "Index", controllerName: "Error");
+            }
             if (password == "password")
             {
-                if (!DataService.GetNations().Any(c => c.Id == id) || id == 0 || name == null || confederation == null || rating < 1)
-                {
-                    return RedirectToAction(actionName: "Index", controllerName: "Error");
-                }
+                
                 DataService.EditNation(id, name, confederation, rating);
             }
             return RedirectToAction(actionName: "Index");
