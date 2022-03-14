@@ -141,6 +141,7 @@ namespace FutManager.Controllers
             {
                 return RedirectToAction(actionName: "Index", controllerName: "Error");
             }
+
             DataService.AddDreamTeam(name, creator, GoalkeeperId, LeftDefenderId, RightDefenderId, LeftMidfielderId, RightMidfielderId, LeftForwardId, RightForwardId, ManagerId);
             return RedirectToAction(actionName: "Index");
         }

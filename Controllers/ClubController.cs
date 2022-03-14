@@ -28,6 +28,10 @@ namespace FutManager.Controllers
         }
         public IActionResult Delete(int id)
         {
+            if (!DataService.GetClubs().Any(c => c.Id == id) || id == 0)
+            {
+                return RedirectToAction(actionName: "Index", controllerName: "Error");
+            }
             return View(id);
         }
         public RedirectToActionResult Remove(int id,string password)
