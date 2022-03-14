@@ -129,6 +129,18 @@ namespace FutManager.Controllers
 
         public RedirectToActionResult Add(string name, string creator, int GoalkeeperId, int LeftDefenderId, int RightDefenderId, int LeftMidfielderId, int RightMidfielderId, int LeftForwardId, int RightForwardId, int ManagerId)
         {
+            List<int> ids = new List<int>();
+            ids.Add(GoalkeeperId);
+            ids.Add(LeftDefenderId);
+            ids.Add(RightDefenderId);
+            ids.Add(LeftMidfielderId);
+            ids.Add(RightMidfielderId);
+            ids.Add(LeftForwardId);
+            ids.Add(RightForwardId);
+            if (ids.Count != ids.Distinct().ToList().Count)
+            {
+                return RedirectToAction(actionName: "Index", controllerName: "Error");
+            }
             DataService.AddDreamTeam(name, creator, GoalkeeperId, LeftDefenderId, RightDefenderId, LeftMidfielderId, RightMidfielderId, LeftForwardId, RightForwardId, ManagerId);
             return RedirectToAction(actionName: "Index");
         }
