@@ -18,7 +18,8 @@ namespace FutManager.Data
             
 
             Nations = new List<Nation>();
-           AddNation("No Nation", "No Confederation", 0);
+         
+          /* AddNation("No Nation", "No Confederation", 0);
            AddNation("Bulgaria", "UEFA", 70);
            AddNation("Italy", "UEFA", 83);
            AddNation("USA", "CONCACAF", 75);
@@ -49,7 +50,7 @@ namespace FutManager.Data
            AddNation( "Finland", "UEFA", 71);
            AddNation( "Iceland", "UEFA", 71);
            AddNation( "Northern Ireland", "UEFA", 70);
-           AddNation( "Russia", "UEFA", 75);
+           AddNation( "Russia", "UEFA", 75);*/
 /*
             AddClub("No Club", "No League", 0);
             AddClub("Manchester United", "Premier League", 90);
