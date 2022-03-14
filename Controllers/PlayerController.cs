@@ -24,7 +24,7 @@ namespace FutManager.Controllers
             positions.Add("Midfielder");
            
             positions.Add("Forward");
-            if ( positions.Contains(Position))
+            if ( !positions.Contains(Position))
             {
                 return RedirectToAction(actionName: "Index", controllerName: "Error");
             }
@@ -95,7 +95,7 @@ namespace FutManager.Controllers
                 {
                     return RedirectToAction(actionName: "Index", controllerName: "Error");
                 }
-                 else if (positions.Contains(Position))
+                 else if (!positions.Contains(Position))
                 {
                     return RedirectToAction(actionName: "Index", controllerName: "Error");
                 }

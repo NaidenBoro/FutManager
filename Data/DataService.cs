@@ -67,6 +67,24 @@ namespace FutManager.Data
             Nations.Add(new Nation(30, "Northern Ireland", "UEFA", 70));
             Nations.Add(new Nation(31, "Russia", "UEFA", 75));
 
+            /*AddClub("No Club", "No League", 0);
+            AddClub("Manchester United", "Premier League", 90);
+            AddClub("Manchester City", "Premier League", 95);
+            AddClub("Levski", "Efbet Liga", 20);
+            AddClub("CSKA", "Efbet Liga", 20);
+            AddClub("PSG", "Ligue 1", 20);
+            AddClub("BVB", "Bundesliga", 20);
+            AddClub("Real Madrid", "La Liga", 20);
+            AddClub("Roma", "Serie A", 20);
+            AddClub("Liverpool", "Premier League", 20);
+            AddClub("Barcelona", "La Liga", 20);
+            AddClub("Bayern Munich", "Bundesliga", 20);
+            AddClub("Parva Atomna Kozlodui", "B Okrajna Vraca", 99);
+            AddClub("Nice", "Ligue 1", 20);
+            AddClub("Hertha BSC", "Bundesliga", 20);
+            AddClub("Ajax", "Eredivisie", 20);
+            AddClub("1. FC Koln", "Bundesliga", 20);*/
+
             Players = new List<Player>();
 
             Players.Add(new Player(1,
@@ -447,60 +465,86 @@ namespace FutManager.Data
             DreamTeams = new List<DreamTeam>();
 
             DreamTeams.Add(new DreamTeam(1, "Some Dream Team", "Martin", 2, 4, 8, 9, 11, 23, 6, 9));
+
+            
         }        
 
         public static List<Club> GetClubs()
         {
-            return Clubs;
+            MySqlConnection mySqlConnection = DataBase.GetConnection();
+            mySqlConnection.Open();
+            List<Club> clubs = new List<Club>();
+
+            using (mySqlConnection)
+            {
+                string sql = "SELECT * FROM clubs";
+                MySqlCommand command = new MySqlCommand(sql, mySqlConnection);
+                MySqlDataReader reader = command.ExecuteReader();
+
+                
+
+                while (reader.Read())
+                {
+                    Club club = new Club();
+                    club.Id=reader.GetInt32(0);
+                    club.Name=reader.GetString(1);
+                    club.League=reader.GetString(2);
+                    club.Rating=reader.GetInt32(3);
+
+                    clubs.Add(club);
+                }
+            }
+            return clubs;
+            //return Clubs;
         }
         public static void AddClub(string name, string league, int rating)
         {
-            Clubs.Add(new Club(Clubs.Last().Id + 1, name, league, rating));
+            MySqlConnection mySqlConnection = DataBase.GetConnection();
+            mySqlConnection.Open();
+
+            using (mySqlConnection)
+            {
+                string sql = "INSERT INTO clubs(name, league, rating) " +
+                "VALUES (@name, @league, @rating)";
+                MySqlCommand command = new MySqlCommand(sql, mySqlConnection);
+                command.Parameters.AddWithValue("@name", name);
+                command.Parameters.AddWithValue("@league", league);
+                command.Parameters.AddWithValue("@rating", rating);
+                command.ExecuteNonQuery();
+            }
+
         }
         public static void DeleteClub(int id)
         {
-            try
-            {
-                if (id != 0)
-                {
-                    while (Players.FirstOrDefault(x => x.ClubId == id) != null)
-                    {
-                        Players.FirstOrDefault(x => x.ClubId == id).ClubId = 0;
-                    }
-                    while (Managers.FirstOrDefault(x => x.ClubId == id) != null)
-                    {
-                        Managers.FirstOrDefault(x => x.ClubId == id).ClubId = 0;
-                    }
-                    Clubs.Remove(Clubs.FirstOrDefault(x => x.Id == id));
-                }
-                else
-                {
-                    throw new Exception("Cannot delete this club");
-                }
-            }
-            catch (Exception ex)
-            {
+            MySqlConnection mySqlConnection = DataBase.GetConnection();
+            mySqlConnection.Open();
 
+            using (mySqlConnection)
+            {
+                string sql = "DELETE FROM clubs " +
+                    "WHERE id = @id";
+                MySqlCommand command = new MySqlCommand(sql, mySqlConnection);
+                command.Parameters.AddWithValue("@id", id);
+                command.ExecuteNonQuery();
             }
         }
         internal static void EditClub(int id, string name, string league, int rating)
         {
-            try
-            {
-                if (id != 0)
-                {
-                    Clubs.FirstOrDefault(x => x.Id == id).Name = name;
-                    Clubs.FirstOrDefault(x => x.Id == id).League = league;
-                    Clubs.FirstOrDefault(x => x.Id == id).Rating = rating;
-                }
-                else
-                {
-                    throw new Exception("Cannot edit this club");
-                }
-            }
-            catch (Exception ex)
-            {
+            MySqlConnection mySqlConnection = DataBase.GetConnection();
+            mySqlConnection.Open();
 
+            using (mySqlConnection)
+            {
+                string sql = "UPDATE clubs " +
+                    "SET name = @name, league = @league, rating = @rating " +
+                    "WHERE id = @id";
+
+                MySqlCommand command = new MySqlCommand(sql, mySqlConnection);
+                command.Parameters.AddWithValue("@id", id);
+                command.Parameters.AddWithValue("@name", name);
+                command.Parameters.AddWithValue("@league", league);
+                command.Parameters.AddWithValue("@rating", rating);
+                command.ExecuteNonQuery();
             }
         }
 
@@ -588,7 +632,6 @@ namespace FutManager.Data
 
         public static List<Manager> GetManagers()
         {
-
             return Managers;
         }
         internal static void AddManager(string first_name, string last_name, int age, int nationalityId, int clubId, int rating, bool isReal)
@@ -635,6 +678,6 @@ namespace FutManager.Data
         internal static void DeleteDreamteam(int id)
         {
             DreamTeams.Remove(DreamTeams.FirstOrDefault(x => x.Id == id));
-        }
+        }        
     }
 }
