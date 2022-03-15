@@ -14,37 +14,37 @@ namespace FutManager.Data
 
         public static void Initialize()
         {
-           /*AddNation("Bulgaria", "UEFA", 70);
-           AddNation("Italy", "UEFA", 83);
-           AddNation("USA", "CONCACAF", 75);
-           AddNation("Spain", "UEFA", 84);
-           AddNation("Mexico", "CONCACAF", 78);
-           AddNation("Brazil", "CONMEBOL", 84);
-           AddNation("Argentina", "CONMEBOL", 84);
-           AddNation("Brazil", "CONMEBOL", 84);
-           AddNation("Canada", "CONCACAF", 73);
-           AddNation( "England", "UEFA", 84);
-           AddNation( "Portugal", "UEFA", 84);
-           AddNation( "Belgium", "UEFA", 83);
-           AddNation( "Germany", "UEFA", 83);
-           AddNation( "Netherlands", "UEFA", 82);
-           AddNation( "Denmark", "UEFA", 79);
-           AddNation( "Poland", "UEFA", 77);
-           AddNation( "Austria", "UEFA", 77);
-           AddNation( "Sweden", "UEFA", 77);
-           AddNation( "Czech Republic", "UEFA", 77);
-           AddNation( "Norway", "UEFA", 76);
-           AddNation( "France", "UEFA", 85);
-           AddNation( "Ukraine", "UEFA", 76);
-           AddNation( "Scotland", "UEFA", 75);
-           AddNation( "Greece", "UEFA", 75);
-           AddNation( "Wales", "UEFA", 74);
-           AddNation( "Hungary", "UEFA", 73);
-           AddNation( "Romania", "UEFA", 71);
-           AddNation( "Finland", "UEFA", 71);
-           AddNation( "Iceland", "UEFA", 71);
-           AddNation( "Northern Ireland", "UEFA", 70);
-           AddNation( "Russia", "UEFA", 75);*/
+            /*AddNation("Bulgaria", "UEFA", 70);
+            AddNation("Italy", "UEFA", 83);
+            AddNation("USA", "CONCACAF", 75);
+            AddNation("Spain", "UEFA", 84);
+            AddNation("Mexico", "CONCACAF", 78);
+            AddNation("Brazil", "CONMEBOL", 84);
+            AddNation("Argentina", "CONMEBOL", 84);
+            AddNation("Brazil", "CONMEBOL", 84);
+            AddNation("Canada", "CONCACAF", 73);
+            AddNation( "England", "UEFA", 84);
+            AddNation( "Portugal", "UEFA", 84);
+            AddNation( "Belgium", "UEFA", 83);
+            AddNation( "Germany", "UEFA", 83);
+            AddNation( "Netherlands", "UEFA", 82);
+            AddNation( "Denmark", "UEFA", 79);
+            AddNation( "Poland", "UEFA", 77);
+            AddNation( "Austria", "UEFA", 77);
+            AddNation( "Sweden", "UEFA", 77);
+            AddNation( "Czech Republic", "UEFA", 77);
+            AddNation( "Norway", "UEFA", 76);
+            AddNation( "France", "UEFA", 85);
+            AddNation( "Ukraine", "UEFA", 76);
+            AddNation( "Scotland", "UEFA", 75);
+            AddNation( "Greece", "UEFA", 75);
+            AddNation( "Wales", "UEFA", 74);
+            AddNation( "Hungary", "UEFA", 73);
+            AddNation( "Romania", "UEFA", 71);
+            AddNation( "Finland", "UEFA", 71);
+            AddNation( "Iceland", "UEFA", 71);
+            AddNation( "Northern Ireland", "UEFA", 70);
+            AddNation( "Russia", "UEFA", 75);*/
 
             /*AddClub("Manchester United", "Premier League", 90);
             AddClub("Manchester City", "Premier League", 95);
