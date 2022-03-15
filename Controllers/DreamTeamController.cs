@@ -125,7 +125,7 @@ namespace FutManager.Controllers
             x.LeftMidfielder = players.FirstOrDefault(y => y.Id == x.LeftMidfielderId);
             x.RightMidfielder = players.FirstOrDefault(y => y.Id == x.RightMidfielderId);
             x.LeftForward = players.FirstOrDefault(y => y.Id == x.LeftForwardId);
-            x.RightMidfielder = players.FirstOrDefault(y => y.Id == x.RightMidfielderId);
+            x.RightForward = players.FirstOrDefault(y => y.Id == x.RightForwardId);
             x.Manager = managers.FirstOrDefault(y => y.Id == x.ManagerId);
 
             return View(x);
@@ -170,7 +170,7 @@ namespace FutManager.Controllers
             }
             if (password == "password")
             {
-                DataService.DeleteDreamteam(id);
+                DataService.DeleteDreamTeam(id);
             }
             return RedirectToAction(actionName: "Index");
         }

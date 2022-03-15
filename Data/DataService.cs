@@ -44,9 +44,9 @@ namespace FutManager.Data
            AddNation( "Finland", "UEFA", 71);
            AddNation( "Iceland", "UEFA", 71);
            AddNation( "Northern Ireland", "UEFA", 70);
-           AddNation( "Russia", "UEFA", 75);
+           AddNation( "Russia", "UEFA", 75);*/
 
-            AddClub("Manchester United", "Premier League", 90);
+            /*AddClub("Manchester United", "Premier League", 90);
             AddClub("Manchester City", "Premier League", 95);
             AddClub("Levski", "Efbet Liga", 20);
             AddClub("CSKA", "Efbet Liga", 20);
@@ -61,9 +61,9 @@ namespace FutManager.Data
             AddClub("Nice", "Ligue 1", 20);
             AddClub("Hertha BSC", "Bundesliga", 20);
             AddClub("Ajax", "Eredivisie", 20);
-            AddClub("1. FC Koln", "Bundesliga", 20);
+            AddClub("1. FC Koln", "Bundesliga", 20);*/
 
-            AddPlayer("Lionel",
+            /*AddPlayer("Lionel",
                         "Messi",
                         "Forward",
                         34,
@@ -326,9 +326,9 @@ namespace FutManager.Data
                         GetNations().Where(nat => nat.Name == "Norway").First().Id,
                         GetClubs().Where(c => c.Name == "BVB").First().Id,
                         88,
-                        true);
+                        true);*/
 
-            AddManager("Pep",
+            /*AddManager("Pep",
                         "Guardiola",
                         51,
                         GetNations().Where(nat => nat.Name == "Spain").First().Id,
@@ -659,32 +659,6 @@ namespace FutManager.Data
 
         }
 
-        /*public static List<Player> GetPlayers()
-        {
-            return Players;
-        }
-        internal static void AddPlayer(string first_name, string last_name, string position, int age, int shirtnumber, int nationalityId, int clubId, int overall, bool isReal)
-        {
-            Players.Add(new Player(Players.Last().Id + 1, first_name, last_name, position, age, shirtnumber, nationalityId, clubId, overall, isReal));
-        }
-        internal static void DeletePlayer(int id)
-        {
-            Players.Remove(Players.FirstOrDefault(x => x.Id == id));
-        }
-        internal static void EditPlayer(int id, string first_name, string last_name, string position, int nationalityId, int clubId, int age, int shirtnumber, int overall, bool isReal)
-        {
-            Players.FirstOrDefault(x => x.Id == id).Age = age;
-            Players.FirstOrDefault(x => x.Id == id).FirstName = first_name;
-            Players.FirstOrDefault(x => x.Id == id).LastName = last_name;
-            Players.FirstOrDefault(x => x.Id == id).Position = position;
-            Players.FirstOrDefault(x => x.Id == id).NationalityId = nationalityId;
-            Players.FirstOrDefault(x => x.Id == id).ClubId = clubId;
-            Players.FirstOrDefault(x => x.Id == id).ShirtNumber = shirtnumber;
-            Players.FirstOrDefault(x => x.Id == id).Overall = overall;
-            Players.FirstOrDefault(x => x.Id == id).isReal = isReal;
-
-        }*/
-
         public static List<Manager> GetManagers()
         {
             MySqlConnection mySqlConnection = DataBase.GetConnection();
@@ -775,30 +749,6 @@ namespace FutManager.Data
 
         }
 
-        /*public static List<Manager> GetManagers()
-        {
-            return Managers;
-        }
-        internal static void AddManager(string first_name, string last_name, int age, int nationalityId, int clubId, int rating, bool isReal)
-        {
-            AddManager(Managers.Last().Id + 1, first_name, last_name, age, nationalityId, clubId, rating, isReal));
-        }
-        internal static void DeleteManager(int id)
-        {
-            Managers.Remove(Managers.FirstOrDefault(x => x.Id == id));
-        }
-        internal static void EditManager(int id, string first_name, string last_name, int nationalityId, int clubId, int age, int rating, bool isReal)
-        {
-            Managers.FirstOrDefault(x => x.Id == id).Age = age;
-            Managers.FirstOrDefault(x => x.Id == id).FirstName = first_name;
-            Managers.FirstOrDefault(x => x.Id == id).LastName = last_name;
-            Managers.FirstOrDefault(x => x.Id == id).NationalityId = nationalityId;
-            Managers.FirstOrDefault(x => x.Id == id).ClubId = clubId;
-            Managers.FirstOrDefault(x => x.Id == id).Rating = rating;
-            Managers.FirstOrDefault(x => x.Id == id).isReal = isReal;
-
-        }*/
-
         public static List<Draft> GetDrafts()
         {
             MySqlConnection mySqlConnection = DataBase.GetConnection();
@@ -872,6 +822,77 @@ namespace FutManager.Data
 
         public static List<DreamTeam> GetDreamTeams()
         {
+            MySqlConnection mySqlConnection = DataBase.GetConnection();
+            mySqlConnection.Open();
+            List<DreamTeam> dreamTeams = new List<DreamTeam>();
+
+            using (mySqlConnection)
+            {
+                string sql = "SELECT * FROM dreamteams";
+                MySqlCommand command = new MySqlCommand(sql, mySqlConnection);
+                MySqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    DreamTeam dreamTeam = new DreamTeam();
+                    dreamTeam.Id = reader.GetInt32(0);
+                    dreamTeam.Name = reader.GetString(1);
+                    dreamTeam.Creator = reader.GetString(2);
+                    dreamTeam.GoalkeeperId = reader.GetInt32(3);
+                    dreamTeam.LeftDefenderId = reader.GetInt32(4);
+                    dreamTeam.RightDefenderId = reader.GetInt32(5);
+                    dreamTeam.LeftMidfielderId = reader.GetInt32(6);
+                    dreamTeam.RightMidfielderId = reader.GetInt32(7);
+                    dreamTeam.LeftForwardId = reader.GetInt32(8);
+                    dreamTeam.RightForwardId = reader.GetInt32(9);
+                    dreamTeam.ManagerId = reader.GetInt32(10);
+
+                    dreamTeams.Add(dreamTeam);
+                }
+            }
+
+            return dreamTeams;
+        }
+        internal static void AddDreamTeam(string name, string creator, int GoalkeeperId, int LeftDefenderId, int RightDefenderId, int LeftMidfielderId, int RightMidfielderId, int LeftForwardId, int RightForwardId, int ManagerId)
+        {
+            MySqlConnection mySqlConnection = DataBase.GetConnection();
+            mySqlConnection.Open();
+
+            using (mySqlConnection)
+            {
+                string sql = "INSERT INTO dreamteams(name, creator, goalkeeper_id, leftdefender_id, rightdefender_id, leftmidfielder_id,rightmidfielder_id, leftforward_id,rightforward_id,manager_id) " +
+                                "VALUES (@name, @creator, @goalkeeper_id, @leftdefender_id, @rightdefender_id, @leftmidfielder_id,@rightmidfielder_id, @leftforward_id,@rightforward_id,@manager_id)";
+                MySqlCommand command = new MySqlCommand(sql, mySqlConnection);
+                command.Parameters.AddWithValue("@name", name);
+                command.Parameters.AddWithValue("@creator", creator);
+                command.Parameters.AddWithValue("@goalkeeper_id", GoalkeeperId);
+                command.Parameters.AddWithValue("@leftdefender_id", LeftDefenderId);
+                command.Parameters.AddWithValue("@rightdefender_id", RightDefenderId);
+                command.Parameters.AddWithValue("@leftmidfielder_id", LeftMidfielderId);
+                command.Parameters.AddWithValue("@rightmidfielder_id", RightMidfielderId);
+                command.Parameters.AddWithValue("@leftforward_id", LeftForwardId);
+                command.Parameters.AddWithValue("@rightforward_id", RightForwardId);
+                command.Parameters.AddWithValue("@manager_id", ManagerId);
+                command.ExecuteNonQuery();
+            }
+        }
+        internal static void DeleteDreamTeam(int id)
+        {
+            MySqlConnection mySqlConnection = DataBase.GetConnection();
+            mySqlConnection.Open();
+
+            using (mySqlConnection)
+            {
+                string sql = "DELETE FROM dreamteams " +
+                                "WHERE id = @id";
+                MySqlCommand command = new MySqlCommand(sql, mySqlConnection);
+                command.Parameters.AddWithValue("@id", id);
+                command.ExecuteNonQuery();
+            }
+        }
+
+        /*public static List<DreamTeam> GetDreamTeams()
+        {
             return DreamTeams;
         }
         internal static void AddDreamTeam(string name, string creator, int GoalkeeperId, int LeftDefenderId, int RightDefenderId, int LeftMidfielderId, int RightMidfielder, int LeftForward, int RightForward, int Manager)
@@ -881,6 +902,6 @@ namespace FutManager.Data
         internal static void DeleteDreamteam(int id)
         {
             DreamTeams.Remove(DreamTeams.FirstOrDefault(x => x.Id == id));
-        }        
+        } */
     }
 }

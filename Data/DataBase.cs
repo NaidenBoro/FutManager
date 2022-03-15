@@ -114,6 +114,47 @@ namespace FutManager.Data
 
                 MySqlCommand commandDrafts = new MySqlCommand(sqlDrafts, connection);
                 commandDrafts.ExecuteNonQuery();
+
+                string sqlDreamTeams = "CREATE TABLE IF NOT EXISTS dreamteams( " +
+                                        "id INT PRIMARY KEY AUTO_INCREMENT, " +
+                                        "name VARCHAR(50) NOT NULL, " +
+                                        "creator VARCHAR(50) NOT NULL, " +
+                                        "goalkeeper_id INT NOT NULL, " +
+                                        "leftdefender_id INT NOT NULL, " +
+                                        "rightdefender_id INT NOT NULL, " +
+                                        "leftmidfielder_id INT NOT NULL, " +
+                                        "rightmidfielder_id INT NOT NULL, " +
+                                        "leftforward_id INT NOT NULL, " +
+                                        "rightforward_id INT NOT NULL, " +
+                                        "manager_id INT NOT NULL, " +
+
+                                        "CONSTRAINT fk_dreamteams_goalkeeper " +
+                                        "FOREIGN KEY(goalkeeper_id) REFERENCES players(id) ON DELETE CASCADE, " +
+
+                                        "CONSTRAINT fk_dreamteams_leftd " +
+                                        "FOREIGN KEY(leftdefender_id) REFERENCES players(id) ON DELETE CASCADE, " +
+
+                                        "CONSTRAINT fk_dreamteams_rightd " +
+                                        "FOREIGN KEY(rightdefender_id) REFERENCES players(id) ON DELETE CASCADE, " +
+
+                                        "CONSTRAINT fk_dreamteams_leftm " +
+                                        "FOREIGN KEY(leftmidfielder_id) REFERENCES players(id) ON DELETE CASCADE, " +
+
+                                        "CONSTRAINT fk_dreamteams_rightm " +
+                                        "FOREIGN KEY(rightmidfielder_id) REFERENCES players(id) ON DELETE CASCADE, " +
+
+                                        "CONSTRAINT fk_dreamteams_leftf " +
+                                        "FOREIGN KEY(leftforward_id) REFERENCES players(id) ON DELETE CASCADE, " +
+
+                                        "CONSTRAINT fk_dreamteams_rightf " +
+                                        "FOREIGN KEY(rightforward_id) REFERENCES players(id) ON DELETE CASCADE, " +
+
+                                        "CONSTRAINT fk_dreamteams_manager " +
+                                        "FOREIGN KEY(manager_id) REFERENCES managers(id) ON DELETE CASCADE" +
+                                        ")";
+
+                MySqlCommand commandDreamTeams = new MySqlCommand(sqlDreamTeams, connection);
+                commandDreamTeams.ExecuteNonQuery();
             }
 
 
