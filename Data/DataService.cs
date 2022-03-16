@@ -891,17 +891,44 @@ namespace FutManager.Data
             }
         }
 
-        /*public static List<DreamTeam> GetDreamTeams()
+        public static void EditDreamTeam(int id, string name, string creator, int GoalkeeperId, int LeftDefenderId, int RightDefenderId, int LeftMidfielderId, int RightMidfielderId, int LeftForwardId, int RightForwardId, int ManagerId)
         {
-            return DreamTeams;
+            MySqlConnection mySqlConnection = DataBase.GetConnection();
+            mySqlConnection.Open();
+
+            using (mySqlConnection)
+            {
+                string sql = "UPDATE dreamteams " +
+                                "SET name = @name, creator = @creator, goalkeeper_id = @goalkeeper_id, leftdefender_id = @leftdefender_id, rightdefender_id = @rightdefender_id, leftmidfielder_id = @leftmidfielder_id, rightmidfielder_id = @rightmidfielder_id, leftforward_id = @leftforward_id,rightforward_id = @rightforward_id,manager_id = @manager_id " +
+                                "WHERE id = @id";
+                MySqlCommand command = new MySqlCommand(sql, mySqlConnection);
+                command.Parameters.AddWithValue("@id", id);
+                command.Parameters.AddWithValue("@name", name);
+                command.Parameters.AddWithValue("@creator", creator);
+                command.Parameters.AddWithValue("@goalkeeper_id", GoalkeeperId);
+                command.Parameters.AddWithValue("@leftdefender_id", LeftDefenderId);
+                command.Parameters.AddWithValue("@rightdefender_id", RightDefenderId);
+                command.Parameters.AddWithValue("@leftmidfielder_id", LeftMidfielderId);
+                command.Parameters.AddWithValue("@rightmidfielder_id", RightMidfielderId);
+                command.Parameters.AddWithValue("@leftforward_id", LeftForwardId);
+                command.Parameters.AddWithValue("@rightforward_id", RightForwardId);
+                command.Parameters.AddWithValue("@manager_id", ManagerId);
+                command.ExecuteNonQuery();
+            }
         }
-        internal static void AddDreamTeam(string name, string creator, int GoalkeeperId, int LeftDefenderId, int RightDefenderId, int LeftMidfielderId, int RightMidfielder, int LeftForward, int RightForward, int Manager)
-        {
-            DreamTeams.Add(new DreamTeam(Drafts.Last().Id + 1, name, creator, GoalkeeperId, LeftDefenderId, RightDefenderId, LeftMidfielderId, RightMidfielder, LeftForward, RightForward, Manager));
+
+
+            /*public static List<DreamTeam> GetDreamTeams()
+            {
+                return DreamTeams;
+            }
+            internal static void AddDreamTeam(string name, string creator, int GoalkeeperId, int LeftDefenderId, int RightDefenderId, int LeftMidfielderId, int RightMidfielder, int LeftForward, int RightForward, int Manager)
+            {
+                DreamTeams.Add(new DreamTeam(Drafts.Last().Id + 1, name, creator, GoalkeeperId, LeftDefenderId, RightDefenderId, LeftMidfielderId, RightMidfielder, LeftForward, RightForward, Manager));
+            }
+            internal static void DeleteDreamteam(int id)
+            {
+                DreamTeams.Remove(DreamTeams.FirstOrDefault(x => x.Id == id));
+            } */
         }
-        internal static void DeleteDreamteam(int id)
-        {
-            DreamTeams.Remove(DreamTeams.FirstOrDefault(x => x.Id == id));
-        } */
     }
-}

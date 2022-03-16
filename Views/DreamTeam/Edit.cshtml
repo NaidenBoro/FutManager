@@ -1,0 +1,128 @@
+﻿@model FutManager.Data.DreamTeamAndPlayersAndManager
+
+<h4>DreamTeamAndPlayersAndManager</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="EditConfirm">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Creator" class="control-label"></label>
+                <input asp-for="Creator" class="form-control" />
+                <span asp-validation-for="Creator" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label name="Goalkeeper" class="control-label">Goalkeeper</label>
+                <select asp-for="GoalkeeperId" class="form-control" name="GoalkeeperId">
+                    <option value="" selected disabled hidden>Choose here</option>
+                    @foreach(var gk in @Model.GoalKeepers)
+                    {
+                        <option value="@gk.Id">@gk.FirstName @gk.LastName</option>
+                    }
+                </select>
+                <span asp-validation-for="GoalkeeperId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label name="LeftDefender" class="control-label">Left Defender</label>
+                <select asp-for="LeftDefenderId" class="form-control" name="LeftDefenderId">
+                    <option value="" selected disabled hidden>Choose here</option>
+                    
+                    @foreach(var ld in @Model.LeftDefenders)
+                    {
+                        <option value="@ld.Id">@ld.FirstName @ld.LastName</option>
+                    }
+                </select>
+                <span asp-validation-for="LeftDefenderId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label name="RightDefender" class="control-label">Right Defender</label>
+                <select asp-for="RightDefenderId" class="form-control" name="RightDefenderId">
+                    <option value="" selected disabled hidden>Choose here</option>
+                    
+                    @foreach(var rd in @Model.RightDefenders)
+                    {
+                        <option value="@rd.Id">@rd.FirstName @rd.LastName</option>
+                    }
+                </select>
+                <span asp-validation-for="RightDefenderId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label name="LeftMidfielder" class="control-label">Left Midfielder</label>
+                <select asp-for="LeftMidfielderId" class="form-control" name="LeftMidfielderId">
+                    <option value="" selected disabled hidden>Choose here</option>
+                    
+                    @foreach(var lm in @Model.LeftMidfielders)
+                    {
+                        <option value="@lm.Id">@lm.FirstName @lm.LastName</option>
+                    }
+                </select>
+                 <span asp-validation-for="LeftMidfielderId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label name="RightMidfielder" class="control-label">Right Midfileder</label>
+                <select asp-for="RightMidfielderId" class="form-control" name="RightMidfielderId">
+                    <option value="" selected disabled hidden>Choose here</option>
+                    
+                    @foreach(var rm in @Model.RightMidfielders)
+                    {
+                        <option value="@rm.Id">@rm.FirstName @rm.LastName</option>
+                    }
+                </select>
+                 <span asp-validation-for="RightMidfielderId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label name="LeftForwards" class="control-label">Left Forwards</label>
+                <select asp-for="LeftForwardId" class="form-control" name="LeftForwardId">
+                    <option value="" selected disabled hidden>Choose here</option>
+                    
+                    @foreach(var lf in @Model.LeftForwards)
+                    {
+                        <option value="@lf.Id">@lf.FirstName @lf.LastName</option>
+                    }
+                </select>
+                 <span asp-validation-for="LeftForwardId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label name="RightForwards" class="control-label">Right Forwards</label>
+                <select asp-for="RightForwardId" class="form-control" name="RightForwardId">
+                    <option value="" selected disabled hidden>Choose here</option>
+                    
+                    @foreach(var rf in @Model.RightForwards)
+                    {
+                        <option value="@rf.Id">@rf.FirstName @rf.LastName</option>
+                    }
+                </select>
+                 <span asp-validation-for="RightForwardId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label name="Managers" class="control-label">Managers</label>
+                <select asp-for="ManagerId" class="form-control" name="ManagerId">
+                    <option value="" selected disabled hidden>Choose here</option>
+                    
+                    @foreach(var mngr in @Model.Managers)
+                    {
+                        <option value="@mngr.Id">@mngr.FirstName @mngr.LastName</option>
+                    }
+                </select>
+                 <span asp-validation-for="ManagerId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="hidden" value = @Model.Id name="id">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

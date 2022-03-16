@@ -14,7 +14,7 @@ namespace FutManager.Controllers
             
             return View(x);
         }
-        public RedirectToActionResult Add(string First_name,string Last_name,string Position,int NationalityId,int ClubId,int Age,int ShirtNumber,int Overall,bool isReal)
+        public RedirectToActionResult Add(string FirstName, string LastName, string Position,int NationalityId,int ClubId,int Age,int ShirtNumber,int Overall,bool isReal)
         {
             List<string> positions = new List<string>();
             positions.Add("Goalkeeper");
@@ -28,11 +28,11 @@ namespace FutManager.Controllers
             {
                 return RedirectToAction(actionName: "Index", controllerName: "Error");
             }
-             else if (First_name == null || Last_name == null || Overall < 1 || ShirtNumber<1 || Age<1 || !DataService.GetClubs().Any(y => y.Id == ClubId) || !DataService.GetNations().Any(y=>y.Id == NationalityId))
+             else if (FirstName == null || LastName == null || Overall < 1 || ShirtNumber<1 || Age<1 || !DataService.GetClubs().Any(y => y.Id == ClubId) || !DataService.GetNations().Any(y=>y.Id == NationalityId))
             {
                 return RedirectToAction(actionName: "Index", controllerName: "Error");
             }
-            DataService.AddPlayer(First_name,Last_name,Position,Age,ShirtNumber,NationalityId,ClubId,Overall,isReal);
+            DataService.AddPlayer(FirstName, LastName, Position,Age,ShirtNumber,NationalityId,ClubId,Overall,isReal);
             return RedirectToAction(actionName: "Index");
         }
 

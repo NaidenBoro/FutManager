@@ -17,10 +17,8 @@
 
         public Nation()
         {
-            Id=-1;
-            Name = "Unknow";
-            Confederation = "Unknow";
-            Rating = 0;
+            Name = "";
+            Confederation = "";
         }
     }
 }

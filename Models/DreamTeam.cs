@@ -39,8 +39,8 @@
 
         public DreamTeam()
         {
-            Name = "Uknown";
-            Creator = "Unknwon";
+            Name = "";
+            Creator = "";
 
         }
     }

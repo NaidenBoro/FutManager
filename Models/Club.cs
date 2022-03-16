@@ -17,10 +17,8 @@
 
         public Club()
         {
-            Id = -1;
-            Name = "Unknow";
-            League = "Unknow";
-            Rating = 0;
+            Name = "";
+            League = "";
         }
     }
 }

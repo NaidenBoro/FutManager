@@ -36,16 +36,9 @@ namespace FutManager.Models
 
         public Player()
         {
-            Id = -1;
-            FirstName = "Uknown";
-            LastName = "Uknown";
-            Position = "Uknown";
-            Age = 0;
-            ShirtNumber = 0;
-            NationalityId = -1;
-            ClubId = -1;
-            Overall = 0;
-            isReal = false;
+            FirstName = "";
+            LastName = "";
+            Position = "";            
         }
     }
 }

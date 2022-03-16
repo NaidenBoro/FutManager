@@ -32,17 +32,8 @@ namespace FutManager.Models
 
         public Manager()
         {
-            NationalityId = -1;  
-            ClubId = -1;
-            Id = -1;
-            FirstName = "Uknown";
-            LastName = "Uknown";
-           
-            Age = 0;
-            NationalityId = -1;
-            ClubId = -1;
-            Rating = 0;
-            isReal = false;
+            FirstName = "";
+            LastName = "";
         }
     }
 }
