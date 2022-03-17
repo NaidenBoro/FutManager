@@ -51,28 +51,31 @@ namespace Testing
         [Test]
         public void AddShouldRedirectToErrorPageOnInvalidId()
         {
+            DataService.AddClub("3", "3", 3);
             ClubController cntr = new ClubController();
-            var result = cntr.Add(name: null, league: "1", rating: 1) as RedirectToActionResult;
-            Assert.AreEqual("Error", result.ControllerName);
+            cntr.Add(name: null, league: "1", rating: 1);
+            Assert.AreEqual("3", DataService.GetClubs().Last().League);
 
-            result = cntr.Add(name: "1", league: null, rating: 1) as RedirectToActionResult;
+            var result = cntr.Add(name: "1", league: null, rating: 1) as RedirectToActionResult;
             Assert.AreEqual("Error", result.ControllerName);
 
             result = cntr.Add("1", "1", -1) as RedirectToActionResult;
             Assert.AreEqual("Error", result.ControllerName);
+            DataService.DeleteClub(DataService.GetClubs().Last().Id);
+
         }
 
         [Test]
-        public void AddShouldRedirectToViewOnValidId()
+        public void AddShouldCreateItem()
         {
             ClubController cntr = new ClubController();
-            var result = cntr.Add("1", "1", 1) as RedirectToActionResult;
+            cntr.Add("1", "1", 1);
             Assert.AreEqual("1", DataService.GetClubs().Last().Name);
             DataService.DeleteClub(DataService.GetClubs().Last().Id);
         }
 
         [Test]
-        public void EditConfirmedShouldRedirectToErrorPageOnInvalidId()
+        public void EditConfirmedShouldRedirectToErrorPageOnInvalidInput()
         {
             DataService.AddClub("2", "2", 2);
             int id = DataService.GetClubs().Last().Id;
@@ -95,7 +98,7 @@ namespace Testing
             DataService.AddClub("2", "2", 2);
             ClubController cntr = new ClubController();
             int id = DataService.GetClubs().Last().Id;
-            var result = cntr.EditConfirmed(id: id, name: "1", league: "1", password: "password", rating: 1) as RedirectToActionResult;
+            cntr.EditConfirmed(id: id, name: "1", league: "1", password: "password", rating: 1);
             Assert.AreEqual("1", DataService.GetClubs().Last().Name);
             DataService.DeleteClub(id);
         }
@@ -106,7 +109,7 @@ namespace Testing
             DataService.AddClub("2", "2", 2);
             ClubController cntr = new ClubController();
             int id = DataService.GetClubs().Last().Id;
-            var result = cntr.EditConfirmed(id: id, name: "1", league: "1", password: "passord", rating: 1) as RedirectToActionResult;
+            cntr.EditConfirmed(id: id, name: "1", league: "1", password: "passord", rating: 1);
             Assert.AreEqual("2", DataService.GetClubs().Last().Name);
             DataService.DeleteClub(id);
         }
