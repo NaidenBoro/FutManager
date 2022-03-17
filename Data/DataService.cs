@@ -463,7 +463,7 @@ namespace FutManager.Data
                 command.ExecuteNonQuery();
             }
         }
-        internal static void EditClub(int id, string name, string league, int rating)
+        public static void EditClub(int id, string name, string league, int rating)
         {
             MySqlConnection mySqlConnection = DataBase.GetConnection();
             mySqlConnection.Open();
@@ -526,7 +526,7 @@ namespace FutManager.Data
                 command1.ExecuteNonQuery();
             }
 }
-        internal static void EditNation(int id, string name, string confederation, int rating)
+        public static void EditNation(int id, string name, string confederation, int rating)
         {
             MySqlConnection mySqlConnection = DataBase.GetConnection();
             mySqlConnection.Open();
@@ -782,7 +782,7 @@ namespace FutManager.Data
 
             return drafts;
         }
-        internal static void AddDraft(string name, string creator, int GoalkeeperId, int LeftDefenderId, int RightDefenderId, int LeftMidfielderId, int RightMidfielderId, int LeftForwardId, int RightForwardId, int ManagerId)
+        public static void AddDraft(string name, string creator, int GoalkeeperId, int LeftDefenderId, int RightDefenderId, int LeftMidfielderId, int RightMidfielderId, int LeftForwardId, int RightForwardId, int ManagerId)
         {
             MySqlConnection mySqlConnection = DataBase.GetConnection();
             mySqlConnection.Open();
@@ -805,7 +805,7 @@ namespace FutManager.Data
                 command.ExecuteNonQuery();
             }
         }
-        internal static void DeleteDraft(int id)
+        public static void DeleteDraft(int id)
         {
             MySqlConnection mySqlConnection = DataBase.GetConnection();
             mySqlConnection.Open();
@@ -853,7 +853,7 @@ namespace FutManager.Data
 
             return dreamTeams;
         }
-        internal static void AddDreamTeam(string name, string creator, int GoalkeeperId, int LeftDefenderId, int RightDefenderId, int LeftMidfielderId, int RightMidfielderId, int LeftForwardId, int RightForwardId, int ManagerId)
+        public static void AddDreamTeam(string name, string creator, int GoalkeeperId, int LeftDefenderId, int RightDefenderId, int LeftMidfielderId, int RightMidfielderId, int LeftForwardId, int RightForwardId, int ManagerId)
         {
             MySqlConnection mySqlConnection = DataBase.GetConnection();
             mySqlConnection.Open();
@@ -876,7 +876,7 @@ namespace FutManager.Data
                 command.ExecuteNonQuery();
             }
         }
-        internal static void DeleteDreamTeam(int id)
+        public static void DeleteDreamTeam(int id)
         {
             MySqlConnection mySqlConnection = DataBase.GetConnection();
             mySqlConnection.Open();
