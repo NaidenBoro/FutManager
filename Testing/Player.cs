@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using NUnit.Framework;
 using System.Linq;
 
+
 namespace Testing
 {
     internal class Player
@@ -22,12 +23,14 @@ namespace Testing
             Assert.AreEqual("2", DataService.GetPlayers().Last().LastName);
             Assert.AreEqual(1, DataService.GetPlayers().Last().Age);
             Assert.AreEqual(2, DataService.GetPlayers().Last().ShirtNumber);
-            // to do
+            Assert.AreEqual(nat_id, DataService.GetPlayers().Last().NationalityId);
+            Assert.AreEqual(club_id, DataService.GetPlayers().Last().ClubId);
+            Assert.AreEqual(1, DataService.GetPlayers().Last().Overall);
+            Assert.AreEqual(true, DataService.GetPlayers().Last().isReal);
+            
             DataService.DeletePlayer(DataService.GetPlayers().Last().Id);
             DataService.DeleteClub(club_id);
             DataService.DeleteNation(nat_id);
-
-            //...
         }
 
         [Test]
