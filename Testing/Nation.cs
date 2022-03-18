@@ -46,7 +46,6 @@ namespace Testing
             var result = cntr.Details(1) as ViewResult;
             Assert.IsNotNull(result);
             DataService.DeleteNation(DataService.GetNations().Last().Id);
-<<<<<<< HEAD
 
             
         }
@@ -149,8 +148,6 @@ namespace Testing
             var result = cntr.Remove(id: -1, password: "password") as RedirectToActionResult;
             Assert.AreEqual("Error", result.ControllerName);
             DataService.DeleteNation(id);
-=======
->>>>>>> 616f520262db240f13a612301680166757ac587d
         }
     }
 }

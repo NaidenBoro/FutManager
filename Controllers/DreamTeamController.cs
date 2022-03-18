@@ -37,72 +37,71 @@ namespace FutManager.Controllers
                 return View(players);
             }*/
 
-            Random rnd = new Random();
             //Goalkeeper
-            List<Player> goalkeepers = players.Where(y => y.Position == "Goalkeeper").OrderBy(y => rnd.Next()).ToList();
+            List<Player> goalkeepers = players.Where(y => y.Position == "Goalkeeper").ToList();
             if (goalkeepers.Count < 1)
             {
-                goalkeepers.AddRange(players.Where(y => y.Position != "Goalkeeper").OrderBy(y => rnd.Next()));
+                goalkeepers.AddRange(players.Where(y => y.Position != "Goalkeeper"));
             }
             x.GoalKeepers = goalkeepers;
             //players = players.Except(goalkeepers).ToList();
 
             //Defenders
-            List<Player> leftDefenders = players.Where(y => y.Position == "Defender").OrderBy(y => rnd.Next()).ToList();
+            List<Player> leftDefenders = players.Where(y => y.Position == "Defender").ToList();
             if (leftDefenders.Count < 1)
             {
-                leftDefenders.AddRange(players.Where(y => y.Position != "Defender").OrderBy(y => rnd.Next()));
+                leftDefenders.AddRange(players.Where(y => y.Position != "Defender"));
             }
             x.LeftDefenders = leftDefenders;
             //players = players.Except(leftDefenders).ToList();
 
 
-            List<Player> rightDefenders = players.Where(y => y.Position == "Defender").OrderBy(y => rnd.Next()).ToList();
+            List<Player> rightDefenders = players.Where(y => y.Position == "Defender").ToList();
             if (rightDefenders.Count < 1)
             {
-                rightDefenders.AddRange(players.Where(y => y.Position != "Defender").OrderBy(y => rnd.Next()));
+                rightDefenders.AddRange(players.Where(y => y.Position != "Defender"));
             }
             x.RightDefenders = rightDefenders;
             //players = players.Except(rightDefenders).ToList();
 
             //Midfielders
-            List<Player> leftMidfielders = players.Where(y => y.Position == "Midfielder").OrderBy(y => rnd.Next()).ToList();
+            List<Player> leftMidfielders = players.Where(y => y.Position == "Midfielder").ToList();
             if (leftMidfielders.Count < 1)
             {
-                leftMidfielders.AddRange(players.Where(y => y.Position != "Midfielder").OrderBy(y => rnd.Next()));
+                leftMidfielders.AddRange(players.Where(y => y.Position != "Midfielder"));
             }
             x.LeftMidfielders = leftMidfielders;
             //players = players.Except(leftMidfielders).ToList();
 
 
-            List<Player> rightMidfielders = players.Where(y => y.Position == "Midfielder").OrderBy(y => rnd.Next()).ToList();
+            List<Player> rightMidfielders = players.Where(y => y.Position == "Midfielder").ToList();
             if (rightMidfielders.Count < 1)
             {
-                rightMidfielders.AddRange(players.Where(y => y.Position != "Midfielder").OrderBy(y => rnd.Next()));
+                rightMidfielders.AddRange(players.Where(y => y.Position != "Midfielder"));
             }
             x.RightMidfielders = rightMidfielders;
             //players = players.Except(rightMidfielders).ToList();
 
             // Forwards
-            List<Player> leftForwards = players.Where(y => y.Position == "Forward").OrderBy(y => rnd.Next()).ToList();
+            List<Player> leftForwards = players.Where(y => y.Position == "Forward").ToList();
             if (leftForwards.Count < 1)
             {
-                leftForwards.AddRange(players.Where(y => y.Position != "Forward").OrderBy(y => rnd.Next()));
+                leftForwards.AddRange(players.Where(y => y.Position != "Forward"));
             }
             x.LeftForwards = leftForwards;
             //players = players.Except(leftForwards).ToList();
 
 
-            List<Player> rightForwards = players.Where(y => y.Position == "Forward").OrderBy(y => rnd.Next()).ToList();
+            List<Player> rightForwards = players.Where(y => y.Position == "Forward").ToList();
             if (rightForwards.Count < 1)
             {
-                rightForwards.AddRange(players.Where(y => y.Position != "Forward").OrderBy(y => rnd.Next()));
+                rightForwards.AddRange(players.Where(y => y.Position != "Forward"));
             }
             x.RightForwards = rightForwards;
             //players = players.Except(rightForwards).ToList();
 
             //Manager
-            List<Manager> coaches = managers.OrderBy(y => rnd.Next()).ToList();
+            List<Manager> coaches = managers.ToList();
             x.Managers = coaches;
             //managers = managers.Except(coaches).ToList();
 
