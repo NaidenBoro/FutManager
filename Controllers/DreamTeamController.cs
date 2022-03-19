@@ -270,7 +270,7 @@ namespace FutManager.Controllers
 
             
 
-            return View(x);
+            return View(x);                                                                                                                                                                                                                                   
         }
         public RedirectToActionResult EditConfirm(int id,string name, string creator, int GoalkeeperId, int LeftDefenderId, int RightDefenderId, int LeftMidfielderId, int RightMidfielderId, int LeftForwardId, int RightForwardId, int ManagerId)
         {
