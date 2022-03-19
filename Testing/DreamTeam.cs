@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Testing
 {
-    public class Draft
+    public class DreamTeam
     {
         [OneTimeSetUp]
         public static void Setup()
@@ -21,7 +21,7 @@ namespace Testing
             int c = DataService.GetClubs().Last().Id;
             for (int i = 0; i < 28; i++)
             {
-                DataService.AddPlayer("a","b","Forward",i+2,i+2,nat,c,i+2,true);
+                DataService.AddPlayer("a", "b", "Forward", i + 2, i + 2, nat, c, i + 2, true);
             }
             for (int i = 0; i < 4; i++)
             {
@@ -31,8 +31,8 @@ namespace Testing
         [OneTimeTearDown]
         public static void Teardown()
         {
-            
-            
+
+
             for (int i = 0; i < 28; i++)
             {
                 DataService.DeletePlayer(DataService.GetPlayers().Last().Id);
@@ -51,30 +51,30 @@ namespace Testing
         {
             int id = DataService.GetPlayers().Last().Id;
             int manager = DataService.GetManagers().Last().Id;
-            DataService.AddDraft("a", "b", id, id - 1, id - 2, id - 3, id - 4, id - 5, id - 6, manager);
-            DataService.AddDraft("x", "b", id, id - 1, id - 2, id - 3, id - 4, id - 5, id - 6, manager);
+            DataService.AddDreamTeam("a", "b", id, id - 1, id - 2, id - 3, id - 4, id - 5, id - 6, manager);
+            DataService.AddDreamTeam("x", "b", id, id - 1, id - 2, id - 3, id - 4, id - 5, id - 6, manager);
 
-            Assert.AreEqual("x", DataService.GetDrafts().Last().Name);
-            Assert.AreEqual("b", DataService.GetDrafts().Last().Creator);
-            Assert.AreEqual(id+1-1, DataService.GetDrafts().Last().GoalkeeperId);
-            Assert.AreEqual(id+1-2, DataService.GetDrafts().Last().LeftDefenderId);
-            Assert.AreEqual(id+1-3, DataService.GetDrafts().Last().RightDefenderId);
-            Assert.AreEqual(id+1-4, DataService.GetDrafts().Last().LeftMidfielderId);
-            Assert.AreEqual(id+1-5, DataService.GetDrafts().Last().RightMidfielderId);
-            Assert.AreEqual(id+1-6, DataService.GetDrafts().Last().LeftForwardId);
-            Assert.AreEqual(id+1-7, DataService.GetDrafts().Last().RightForwardId);
-            Assert.AreEqual(manager, DataService.GetDrafts().Last().ManagerId);
+            Assert.AreEqual("x", DataService.GetDreamTeams().Last().Name);
+            Assert.AreEqual("b", DataService.GetDreamTeams().Last().Creator);
+            Assert.AreEqual(id + 1 - 1, DataService.GetDreamTeams().Last().GoalkeeperId);
+            Assert.AreEqual(id + 1 - 2, DataService.GetDreamTeams().Last().LeftDefenderId);
+            Assert.AreEqual(id + 1 - 3, DataService.GetDreamTeams().Last().RightDefenderId);
+            Assert.AreEqual(id + 1 - 4, DataService.GetDreamTeams().Last().LeftMidfielderId);
+            Assert.AreEqual(id + 1 - 5, DataService.GetDreamTeams().Last().RightMidfielderId);
+            Assert.AreEqual(id + 1 - 6, DataService.GetDreamTeams().Last().LeftForwardId);
+            Assert.AreEqual(id + 1 - 7, DataService.GetDreamTeams().Last().RightForwardId);
+            Assert.AreEqual(manager, DataService.GetDreamTeams().Last().ManagerId);
 
-            
 
-            DataService.DeleteDraft(DataService.GetDrafts().Last().Id);
-            Assert.AreEqual("a", DataService.GetDrafts().Last().Name);
-            DataService.DeleteDraft(DataService.GetDrafts().Last().Id);
+
+            DataService.DeleteDreamTeam(DataService.GetDreamTeams().Last().Id);
+            Assert.AreEqual("a", DataService.GetDreamTeams().Last().Name);
+            DataService.DeleteDreamTeam(DataService.GetDreamTeams().Last().Id);
         }
         [Test]
         public void DetailsShouldRedirectToErrorPageOnInvalidId()
         {
-            DraftController cntr = new DraftController();
+            DreamTeamController cntr = new DreamTeamController();
             var result = cntr.Details(-1) as RedirectToActionResult;
             Assert.AreEqual("Error", result.ControllerName);
         }
@@ -84,11 +84,11 @@ namespace Testing
         {
             int id = DataService.GetPlayers().Last().Id;
             int manager = DataService.GetManagers().Last().Id;
-            DataService.AddDraft("x", "b", id, id - 1, id - 2, id - 3, id - 4, id - 5, id - 6, manager);
-            DraftController cntr = new DraftController();
-            var result = cntr.Details(DataService.GetDrafts().Last().Id) as ViewResult;
+            DataService.AddDreamTeam("x", "b", id, id - 1, id - 2, id - 3, id - 4, id - 5, id - 6, manager);
+            DreamTeamController cntr = new DreamTeamController();
+            var result = cntr.Details(DataService.GetDreamTeams().Last().Id) as ViewResult;
             Assert.IsNotNull(result);
-            DataService.DeleteDraft(DataService.GetDrafts().Last().Id);
+            DataService.DeleteDreamTeam(DataService.GetDreamTeams().Last().Id);
         }
 
         [Test]
@@ -96,10 +96,10 @@ namespace Testing
         {
             int id = DataService.GetPlayers().Last().Id;
             int manager = DataService.GetManagers().Last().Id;
-            DataService.AddDraft("x", "b", id, id-1, id-2, id-3, id-4, id-5, id-6, manager);
-            DraftController cntr = new DraftController();
+            DataService.AddDreamTeam("x", "b", id, id - 1, id - 2, id - 3, id - 4, id - 5, id - 6, manager);
+            DreamTeamController cntr = new DreamTeamController();
             cntr.Add("a", creator: null, 1, 2, 3, 4, 5, 6, 7, 1);
-            Assert.AreEqual("x", DataService.GetDrafts().Last().Name);
+            Assert.AreEqual("x", DataService.GetDreamTeams().Last().Name);
 
             var result = cntr.Add("a", "b", -1, 2, 3, 4, 5, 6, 7, 1) as RedirectToActionResult;
             Assert.AreEqual("Error", result.ControllerName);
@@ -112,7 +112,7 @@ namespace Testing
 
             result = cntr.Add("a", "b", 1, 2, 2, 2, 5, 2, 7, 1) as RedirectToActionResult;
             Assert.AreEqual("Error", result.ControllerName);
-            DataService.DeleteDraft(DataService.GetDrafts().Last().Id);
+            DataService.DeleteDreamTeam(DataService.GetDreamTeams().Last().Id);
 
 
         }
@@ -120,46 +120,46 @@ namespace Testing
         [Test]
         public void AddShouldCreateItem()
         {
-            DraftController cntr = new DraftController();
+            DreamTeamController cntr = new DreamTeamController();
             int id = DataService.GetPlayers().Last().Id;
             int manager = DataService.GetManagers().Last().Id;
             cntr.Add("x", "b", id, id - 1, id - 2, id - 3, id - 4, id - 5, id - 6, manager);
-            Assert.AreEqual("x", DataService.GetDrafts().Last().Name);
-            DataService.DeleteDraft(DataService.GetDrafts().Last().Id);
+            Assert.AreEqual("x", DataService.GetDreamTeams().Last().Name);
+            DataService.DeleteDreamTeam(DataService.GetDreamTeams().Last().Id);
         }
 
         [Test]
         public void RemoveWrongPasswordShouldNotChangeItem()
         {
-            DraftController cntr = new DraftController();
+            DreamTeamController cntr = new DreamTeamController();
             int id = DataService.GetPlayers().Last().Id;
             int manager = DataService.GetManagers().Last().Id;
             cntr.Add("x", "b", id, id - 1, id - 2, id - 3, id - 4, id - 5, id - 6, manager);
             cntr.Add("a", "b", id, id - 1, id - 2, id - 3, id - 4, id - 5, id - 6, manager);
-            cntr.Remove(DataService.GetDrafts().Last().Id,"passord");
-            Assert.AreEqual("a", DataService.GetDrafts().Last().Name);
-            DataService.DeleteDraft(DataService.GetDrafts().Last().Id);
-            DataService.DeleteDraft(DataService.GetDrafts().Last().Id);
+            cntr.Remove(DataService.GetDreamTeams().Last().Id, "passord");
+            Assert.AreEqual("a", DataService.GetDreamTeams().Last().Name);
+            DataService.DeleteDreamTeam(DataService.GetDreamTeams().Last().Id);
+            DataService.DeleteDreamTeam(DataService.GetDreamTeams().Last().Id);
         }
 
         [Test]
         public void ValidRemoveShouldDeleteItem()
         {
-            DraftController cntr = new DraftController();
+            DreamTeamController cntr = new DreamTeamController();
 
             int id = DataService.GetPlayers().Last().Id;
             int manager = DataService.GetManagers().Last().Id;
             cntr.Add("x", "b", id, id - 1, id - 2, id - 3, id - 4, id - 5, id - 6, manager);
             cntr.Add("a", "b", id, id - 1, id - 2, id - 3, id - 4, id - 5, id - 6, manager);
-            int draft = DataService.GetDrafts().Last().Id;
-            cntr.Remove(id: draft, password: "password");
-            Assert.AreEqual("x", DataService.GetDrafts().Last().Name);
-            DataService.DeleteDraft(draft - 1);
+            int dreamteam = DataService.GetDreamTeams().Last().Id;
+            cntr.Remove(id: dreamteam, password: "password");
+            Assert.AreEqual("x", DataService.GetDreamTeams().Last().Name);
+            DataService.DeleteDreamTeam(dreamteam - 1);
         }
         [Test]
         public void RemoveWithInvalidIdShouldRedirectToError()
         {
-            DraftController cntr = new DraftController();
+            DreamTeamController cntr = new DreamTeamController();
             var result = cntr.Remove(id: -1, password: "password") as RedirectToActionResult;
             Assert.AreEqual("Error", result.ControllerName);
         }
@@ -167,10 +167,11 @@ namespace Testing
         public void DeleteWithInvalidIdShouldRedirectToError()
         {
 
-            DraftController controller = new DraftController();
+            DreamTeamController controller = new DreamTeamController();
             var result = controller.Delete(-1) as RedirectToActionResult;
             Assert.AreEqual("Error", result.ControllerName);
 
         }
     }
 }
+
