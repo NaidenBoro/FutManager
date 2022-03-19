@@ -231,7 +231,7 @@ namespace Testing
         }
 
         [Test]
-        public void DeleteWithInvalidIdShouldRedirectToError()
+        public void RemoveWithInvalidIdShouldRedirectToError()
         {
             DataService.AddClub("2", "2", 2);
             DataService.AddNation("2", "2", 2);
@@ -247,6 +247,15 @@ namespace Testing
             DataService.DeleteManager(DataService.GetManagers().Last().Id);
             DataService.DeleteClub(club_id);
             DataService.DeleteNation(nat_id);
+
+        }
+        [Test]
+        public void DeleteWithInvalidIdShouldRedirectToError()
+        {
+
+            ManagerController controller = new ManagerController();
+            var result = controller.Delete(-1) as RedirectToActionResult;
+            Assert.AreEqual("Error", result.ControllerName);
 
         }
 

@@ -245,7 +245,7 @@ namespace Testing
         }
 
         [Test]
-        public void DeleteWithInvalidIdShouldRedirectToError()
+        public void RemoveWithInvalidIdShouldRedirectToError()
         {
             DataService.AddClub("2", "2", 2);
             DataService.AddNation("2", "2", 2);
@@ -261,6 +261,15 @@ namespace Testing
             DataService.DeletePlayer(DataService.GetPlayers().Last().Id);
             DataService.DeleteClub(club_id);
             DataService.DeleteNation(nat_id);
+
+        }
+        [Test]
+        public void DeleteWithInvalidIdShouldRedirectToError()
+        {
+
+            PlayerController controller = new PlayerController();
+            var result = controller.Delete(-1) as RedirectToActionResult;
+            Assert.AreEqual("Error", result.ControllerName);
 
         }
     }

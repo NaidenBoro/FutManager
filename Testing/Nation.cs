@@ -141,7 +141,7 @@ namespace Testing
             DataService.DeleteNation(id - 1);
         }
         [Test]
-        public void DeleteWithInvalidIdShouldRedirectToError()
+        public void RemoveWithInvalidIdShouldRedirectToError()
         {
             DataService.AddNation("2", "2", 2);
             int id = DataService.GetNations().Last().Id;
@@ -149,6 +149,15 @@ namespace Testing
             var result = cntr.Remove(id: -1, password: "password") as RedirectToActionResult;
             Assert.AreEqual("Error", result.ControllerName);
             DataService.DeleteNation(id);
+        }
+        [Test]
+        public void DeleteWithInvalidIdShouldRedirectToError()
+        {
+
+            NationController controller = new NationController();
+            var result = controller.Delete(-1) as RedirectToActionResult;
+            Assert.AreEqual("Error", result.ControllerName);
+
         }
     }
 }

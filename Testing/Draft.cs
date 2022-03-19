@@ -154,11 +154,20 @@ namespace Testing
             DataService.DeleteDraft(dreamteam - 1);
         }
         [Test]
-        public void DeleteWithInvalidIdShouldRedirectToError()
+        public void RemoveWithInvalidIdShouldRedirectToError()
         {
             DraftController cntr = new DraftController();
             var result = cntr.Remove(id: -1, password: "password") as RedirectToActionResult;
             Assert.AreEqual("Error", result.ControllerName);
+        }
+        [Test]
+        public void DeleteWithInvalidIdShouldRedirectToError()
+        {
+
+            DraftController controller = new DraftController();
+            var result = controller.Delete(-1) as RedirectToActionResult;
+            Assert.AreEqual("Error", result.ControllerName);
+
         }
     }
 }

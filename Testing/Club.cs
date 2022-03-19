@@ -140,7 +140,7 @@ namespace Testing
             DataService.DeleteClub(id - 1);
         }
         [Test]
-        public void DeleteWithInvalidIdShouldRedirectToError()
+        public void RemoveWithInvalidIdShouldRedirectToError()
         {
             DataService.AddClub("2", "2", 2);
             int id = DataService.GetClubs().Last().Id;
@@ -149,5 +149,13 @@ namespace Testing
             Assert.AreEqual("Error", result.ControllerName);
             DataService.DeleteClub(id);
         }
+        [Test]
+        public void DeleteWithInvalidIdShouldRedirectToError()
+        {
+            ClubController cntr = new ClubController();
+            var result = cntr.Delete(-1) as RedirectToActionResult;
+            Assert.AreEqual("Error", result.ControllerName);
+        }
+
     }
 }
