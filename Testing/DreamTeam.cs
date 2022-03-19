@@ -31,8 +31,6 @@ namespace Testing
         [OneTimeTearDown]
         public static void Teardown()
         {
-
-
             for (int i = 0; i < 28; i++)
             {
                 DataService.DeletePlayer(DataService.GetPlayers().Last().Id);
@@ -137,30 +135,25 @@ namespace Testing
             DataService.AddDreamTeam("x", "b", player_id, player_id - 1, player_id - 2, player_id - 3, player_id - 4, player_id - 5, player_id - 6, manager_id);
 
             int id = DataService.GetDreamTeams().Last().Id;
-            int player = DataService.GetDreamTeams().Last().Id;
-            int manager = DataService.GetDreamTeams().Last().Id;
 
             DreamTeamController controller = new DreamTeamController();
 
-            var result = controller.EditConfirm(id, "x", "b", player, player - 1, player - 2, player - 3, player - 4, player - 5, player - 6, manager);
+            var result = controller.EditConfirm(id, "x", "b", player_id, player_id, player_id - 2, player_id - 3, player_id - 4, player_id - 5, player_id - 6, manager_id);
             Assert.AreEqual("Error", result.ControllerName);
 
-            result = controller.EditConfirm(id, "x", "b", player, player - 1, player - 2, player - 3, player - 4, player - 5, player - 6, manager);
+            result = controller.EditConfirm(id, "x", "b", -1 , player_id, player_id - 2, player_id - 3, player_id - 4, player_id - 5, player_id - 6, manager_id);
             Assert.AreEqual("Error", result.ControllerName);
 
-            result = controller.EditConfirm(id, "x", "b", player, player - 1, player - 2, player - 3, player - 4, player - 5, player - 6, manager);
+            result = controller.EditConfirm(id, name: null, "b", -1, player_id-1, player_id - 2, player_id - 3, player_id - 4, player_id - 5, player_id - 6, manager_id);
             Assert.AreEqual("Error", result.ControllerName);
 
-            result = controller.EditConfirm(id, "x", "b", player, player - 1, player - 2, player - 3, player - 4, player - 5, player - 6, manager);
+            result = controller.EditConfirm(id, "x", creator: null, player_id, player_id-1, player_id - 2, player_id - 3, player_id - 4, player_id - 5, player_id - 6, manager_id);
             Assert.AreEqual("Error", result.ControllerName);
 
-            result = controller.EditConfirm(id, "x", "b", player, player - 1, player - 2, player - 3, player - 4, player - 5, player - 6, manager);
+            result = controller.EditConfirm(-1, "x", "b", player_id, player_id-1, player_id - 2, player_id - 3, player_id - 4, player_id - 5, player_id - 6, manager_id);
             Assert.AreEqual("Error", result.ControllerName);
 
-            result = controller.EditConfirm(id, "x", "b", player, player - 1, player - 2, player - 3, player - 4, player - 5, player - 6, manager);
-            Assert.AreEqual("Error", result.ControllerName);
-
-            DataService.DeleteDreamTeam(DataService.GetDreamTeams().Last().Id);
+            DataService.DeleteDreamTeam(id);
             
         }
 

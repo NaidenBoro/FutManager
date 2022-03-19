@@ -45,7 +45,6 @@ namespace FutManager.Controllers
                 goalkeepers.AddRange(players.Where(y => y.Position != "Goalkeeper"));
             }
             x.GoalKeepers = goalkeepers;
-            //players = players.Except(goalkeepers).ToList();
 
             //Defenders
             List<Player> leftDefenders = players.Where(y => y.Position == "Defender").ToList();
@@ -54,7 +53,6 @@ namespace FutManager.Controllers
                 leftDefenders.AddRange(players.Where(y => y.Position != "Defender"));
             }
             x.LeftDefenders = leftDefenders;
-            //players = players.Except(leftDefenders).ToList();
 
 
             List<Player> rightDefenders = players.Where(y => y.Position == "Defender").ToList();
@@ -63,7 +61,6 @@ namespace FutManager.Controllers
                 rightDefenders.AddRange(players.Where(y => y.Position != "Defender"));
             }
             x.RightDefenders = rightDefenders;
-            //players = players.Except(rightDefenders).ToList();
 
             //Midfielders
             List<Player> leftMidfielders = players.Where(y => y.Position == "Midfielder").ToList();
@@ -72,7 +69,6 @@ namespace FutManager.Controllers
                 leftMidfielders.AddRange(players.Where(y => y.Position != "Midfielder"));
             }
             x.LeftMidfielders = leftMidfielders;
-            //players = players.Except(leftMidfielders).ToList();
 
 
             List<Player> rightMidfielders = players.Where(y => y.Position == "Midfielder").ToList();
@@ -81,7 +77,6 @@ namespace FutManager.Controllers
                 rightMidfielders.AddRange(players.Where(y => y.Position != "Midfielder"));
             }
             x.RightMidfielders = rightMidfielders;
-            //players = players.Except(rightMidfielders).ToList();
 
             // Forwards
             List<Player> leftForwards = players.Where(y => y.Position == "Forward").ToList();
@@ -90,7 +85,6 @@ namespace FutManager.Controllers
                 leftForwards.AddRange(players.Where(y => y.Position != "Forward"));
             }
             x.LeftForwards = leftForwards;
-            //players = players.Except(leftForwards).ToList();
 
 
             List<Player> rightForwards = players.Where(y => y.Position == "Forward").ToList();
@@ -99,12 +93,10 @@ namespace FutManager.Controllers
                 rightForwards.AddRange(players.Where(y => y.Position != "Forward"));
             }
             x.RightForwards = rightForwards;
-            //players = players.Except(rightForwards).ToList();
 
             //Manager
             List<Manager> coaches = managers.ToList();
             x.Managers = coaches;
-            //managers = managers.Except(coaches).ToList();
 
             return View(x);
         }
@@ -207,7 +199,6 @@ namespace FutManager.Controllers
                 goalkeepers.AddRange(players.Where(y => y.Position != "Goalkeeper").OrderBy(y => rnd.Next()));
             }
             x.GoalKeepers = goalkeepers;
-            //players = players.Except(goalkeepers).ToList();
 
             //Defenders
             List<Player> leftDefenders = players.Where(y => y.Position == "Defender").OrderBy(y => rnd.Next()).ToList();
@@ -216,7 +207,6 @@ namespace FutManager.Controllers
                 leftDefenders.AddRange(players.Where(y => y.Position != "Defender").OrderBy(y => rnd.Next()));
             }
             x.LeftDefenders = leftDefenders;
-            //players = players.Except(leftDefenders).ToList();
 
 
             List<Player> rightDefenders = players.Where(y => y.Position == "Defender").OrderBy(y => rnd.Next()).ToList();
@@ -225,7 +215,6 @@ namespace FutManager.Controllers
                 rightDefenders.AddRange(players.Where(y => y.Position != "Defender").OrderBy(y => rnd.Next()));
             }
             x.RightDefenders = rightDefenders;
-            //players = players.Except(rightDefenders).ToList();
 
             //Midfielders
             List<Player> leftMidfielders = players.Where(y => y.Position == "Midfielder").OrderBy(y => rnd.Next()).ToList();
@@ -234,7 +223,6 @@ namespace FutManager.Controllers
                 leftMidfielders.AddRange(players.Where(y => y.Position != "Midfielder").OrderBy(y => rnd.Next()));
             }
             x.LeftMidfielders = leftMidfielders;
-            //players = players.Except(leftMidfielders).ToList();
 
 
             List<Player> rightMidfielders = players.Where(y => y.Position == "Midfielder").OrderBy(y => rnd.Next()).ToList();
@@ -243,7 +231,6 @@ namespace FutManager.Controllers
                 rightMidfielders.AddRange(players.Where(y => y.Position != "Midfielder").OrderBy(y => rnd.Next()));
             }
             x.RightMidfielders = rightMidfielders;
-            //players = players.Except(rightMidfielders).ToList();
 
             // Forwards
             List<Player> leftForwards = players.Where(y => y.Position == "Forward").OrderBy(y => rnd.Next()).ToList();
@@ -252,7 +239,6 @@ namespace FutManager.Controllers
                 leftForwards.AddRange(players.Where(y => y.Position != "Forward").OrderBy(y => rnd.Next()));
             }
             x.LeftForwards = leftForwards;
-            //players = players.Except(leftForwards).ToList();
 
 
             List<Player> rightForwards = players.Where(y => y.Position == "Forward").OrderBy(y => rnd.Next()).ToList();
@@ -261,12 +247,10 @@ namespace FutManager.Controllers
                 rightForwards.AddRange(players.Where(y => y.Position != "Forward").OrderBy(y => rnd.Next()));
             }
             x.RightForwards = rightForwards;
-            //players = players.Except(rightForwards).ToList();
 
             //Manager
             List<Manager> coaches = managers.OrderBy(y => rnd.Next()).ToList();
             x.Managers = coaches;
-            //managers = managers.Except(coaches).ToList();
 
             
 
@@ -274,7 +258,7 @@ namespace FutManager.Controllers
         }
         public RedirectToActionResult EditConfirm(int id,string name, string creator, int GoalkeeperId, int LeftDefenderId, int RightDefenderId, int LeftMidfielderId, int RightMidfielderId, int LeftForwardId, int RightForwardId, int ManagerId)
         {
-            if (name == null || creator == null || !DataService.GetPlayers().Any(x => x.Id == GoalkeeperId) || !DataService.GetPlayers().Any(x => x.Id == LeftDefenderId) || !DataService.GetPlayers().Any(x => x.Id == RightDefenderId) || !DataService.GetPlayers().Any(x => x.Id == LeftMidfielderId) || !DataService.GetPlayers().Any(x => x.Id == RightMidfielderId) || !DataService.GetPlayers().Any(x => x.Id == LeftForwardId) || !DataService.GetPlayers().Any(x => x.Id == RightForwardId) || !DataService.GetManagers().Any(x => x.Id == ManagerId))
+            if (name == null || creator == null || !DataService.GetPlayers().Any(x => x.Id == GoalkeeperId) || !DataService.GetPlayers().Any(x => x.Id == LeftDefenderId) || !DataService.GetPlayers().Any(x => x.Id == RightDefenderId) || !DataService.GetPlayers().Any(x => x.Id == LeftMidfielderId) || !DataService.GetPlayers().Any(x => x.Id == RightMidfielderId) || !DataService.GetPlayers().Any(x => x.Id == LeftForwardId) || !DataService.GetPlayers().Any(x => x.Id == RightForwardId) || !DataService.GetManagers().Any(x => x.Id == ManagerId)|| !DataService.GetDreamTeams().Any(x => x.Id == id))
             {
                 return RedirectToAction(actionName: "Index", controllerName: "Error");
             }
