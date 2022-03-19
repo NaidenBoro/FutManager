@@ -14,7 +14,7 @@ namespace FutManager.Data
 
         public static void Initialize()
         {
-            /*AddNation("Bulgaria", "UEFA", 70);
+           /* AddNation("Bulgaria", "UEFA", 70);
             AddNation("Italy", "UEFA", 83);
             AddNation("USA", "CONCACAF", 75);
             AddNation("Spain", "UEFA", 84);
@@ -61,9 +61,9 @@ namespace FutManager.Data
             AddClub("Nice", "Ligue 1", 20);
             AddClub("Hertha BSC", "Bundesliga", 20);
             AddClub("Ajax", "Eredivisie", 20);
-            AddClub("1. FC Koln", "Bundesliga", 20);*/
-
-            /*AddPlayer("Lionel",
+            AddClub("1. FC Koln", "Bundesliga", 20);
+*//*
+            AddPlayer("Lionel",
                         "Messi",
                         "Forward",
                         34,
@@ -327,8 +327,7 @@ namespace FutManager.Data
                         GetClubs().Where(c => c.Name == "BVB").First().Id,
                         88,
                         true);*/
-
-            /*AddManager("Pep",
+/*AddManager("Pep",
                         "Guardiola",
                         51,
                         GetNations().Where(nat => nat.Name == "Spain").First().Id,

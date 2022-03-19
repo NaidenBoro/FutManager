@@ -131,18 +131,7 @@ namespace Testing
         [Test]
         public void EditConfirmedShouldRedirectToErrorPageOnInvalidInput()
         {
-            DataService.AddClub("2", "2", 2);
-            DataService.AddNation("2", "2", 2);
-            int club_id = DataService.GetClubs().Last().Id;
-            int nat_id = DataService.GetNations().Last().Id;
-            DataService.AddPlayer("1", "2", "Goalkeeper", 1, 2, nat_id, club_id, 1, true);
-            DataService.AddPlayer("1", "2", "Defefender", 1, 2, nat_id, club_id, 1, true);
-            DataService.AddPlayer("1", "2", "Defender", 1, 2, nat_id, club_id, 1, true);
-            DataService.AddPlayer("1", "2", "Midfielder", 1, 2, nat_id, club_id, 1, true);
-            DataService.AddPlayer("1", "2", "Midfielder", 1, 2, nat_id, club_id, 1, true);
-            DataService.AddPlayer("1", "2", "Forward", 1, 2, nat_id, club_id, 1, true);
-            DataService.AddPlayer("1", "2", "Forward", 1, 2, nat_id, club_id, 1, true);
-            DataService.AddManager("1", "2", 1, nat_id, club_id, 1, true);
+           
             int player_id = DataService.GetPlayers().Last().Id;
             int manager_id = DataService.GetManagers().Last().Id;
             DataService.AddDreamTeam("x", "b", player_id, player_id - 1, player_id - 2, player_id - 3, player_id - 4, player_id - 5, player_id - 6, manager_id);
@@ -172,26 +161,14 @@ namespace Testing
             Assert.AreEqual("Error", result.ControllerName);
 
             DataService.DeleteDreamTeam(DataService.GetDreamTeams().Last().Id);
-            DataService.DeleteClub(club_id);
-            DataService.DeleteNation(nat_id);
+            
         }
 
         [Test]
         public void EditShouldRedirectToViewOnValidId()
         {
 
-            DataService.AddClub("2", "2", 2);
-            DataService.AddNation("2", "2", 2);
-            int club_id = DataService.GetClubs().Last().Id;
-            int nat_id = DataService.GetNations().Last().Id;
-            DataService.AddPlayer("1", "2", "Goalkeeper", 1, 2, nat_id, club_id, 1, true);
-            DataService.AddPlayer("1", "2", "Defefender", 1, 2, nat_id, club_id, 1, true);
-            DataService.AddPlayer("1", "2", "Defender", 1, 2, nat_id, club_id, 1, true);
-            DataService.AddPlayer("1", "2", "Midfielder", 1, 2, nat_id, club_id, 1, true);
-            DataService.AddPlayer("1", "2", "Midfielder", 1, 2, nat_id, club_id, 1, true);
-            DataService.AddPlayer("1", "2", "Forward", 1, 2, nat_id, club_id, 1, true);
-            DataService.AddPlayer("1", "2", "Forward", 1, 2, nat_id, club_id, 1, true);
-            DataService.AddManager("1", "2", 1, nat_id, club_id, 1, true);
+            
             int player_id = DataService.GetPlayers().Last().Id;
             int manager_id = DataService.GetManagers().Last().Id;
             DataService.AddDreamTeam("x", "b", player_id, player_id - 1, player_id - 2, player_id - 3, player_id - 4, player_id - 5, player_id - 6, manager_id);
@@ -199,12 +176,12 @@ namespace Testing
             DreamTeamController controller = new DreamTeamController();
             int id = DataService.GetPlayers().Last().Id;
             int manager = DataService.GetManagers().Last().Id;
-            controller.EditConfirm(1, "x", "b", id, id - 1, id - 2, id - 3, id - 4, id - 5, id - 6, manager);
-            Assert.AreEqual("1", DataService.GetManagers().Last().FirstName);
+            int dreamteam_id = DataService.GetDreamTeams().Last().Id;
+            controller.EditConfirm(dreamteam_id, "1", "b", id, id - 1, id - 2, id - 3, id - 4, id - 5, id - 6, manager);
+            Assert.AreEqual("1", DataService.GetDreamTeams().Last().Name);
 
             DataService.DeleteDreamTeam(DataService.GetDreamTeams().Last().Id);
-            DataService.DeleteClub(club_id);
-            DataService.DeleteNation(nat_id);
+           
         }
 
         
