@@ -43,7 +43,8 @@ namespace Testing
         {
             DataService.AddNation("2", "2", 2);
             NationController cntr = new NationController();
-            var result = cntr.Details(1) as ViewResult;
+            int id =  DataService.GetNations().Last().Id;
+            var result = cntr.Details(id) as ViewResult;
             Assert.IsNotNull(result);
             DataService.DeleteNation(DataService.GetNations().Last().Id);
 

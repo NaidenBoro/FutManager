@@ -32,10 +32,10 @@ namespace FutManager.Controllers
             List<Player> players = new List<Player>(DataService.GetPlayers());
             List<Manager> managers = new List<Manager>(DataService.GetManagers());
 
-            /*if(players.Count() < 28)
+            if(players.Count() < 28 || managers.Count()<4)
             {
-                return View(players);
-            }*/
+                return RedirectToAction(actionName: "NotEnough", controllerName: "Error");
+            }
 
             Random rnd = new Random();
             //Goalkeeper
@@ -133,6 +133,18 @@ namespace FutManager.Controllers
         public RedirectToActionResult Add(string name, string creator, int GoalkeeperId, int LeftDefenderId, int RightDefenderId, int LeftMidfielderId, int RightMidfielderId,int LeftForwardId, int RightForwardId, int ManagerId)
         {
             if (name==null||creator==null||!DataService.GetPlayers().Any(x=>x.Id==GoalkeeperId) || !DataService.GetPlayers().Any(x => x.Id == LeftDefenderId) || !DataService.GetPlayers().Any(x => x.Id == RightDefenderId) || !DataService.GetPlayers().Any(x => x.Id == LeftMidfielderId) || !DataService.GetPlayers().Any(x => x.Id == RightMidfielderId) || !DataService.GetPlayers().Any(x => x.Id == LeftForwardId) || !DataService.GetPlayers().Any(x => x.Id == RightForwardId) || !DataService.GetManagers().Any(x => x.Id == ManagerId))
+            {
+                return RedirectToAction(actionName: "Index", controllerName: "Error");
+            }
+            List<int> ids = new List<int>();
+            ids.Add(GoalkeeperId);
+            ids.Add(LeftDefenderId);
+            ids.Add(RightDefenderId);
+            ids.Add(LeftMidfielderId);
+            ids.Add(RightMidfielderId);
+            ids.Add(LeftForwardId);
+            ids.Add(RightForwardId);
+            if (ids.Count != ids.Distinct().ToList().Count)
             {
                 return RedirectToAction(actionName: "Index", controllerName: "Error");
             }

@@ -43,7 +43,8 @@ namespace Testing
         {
             DataService.AddClub("2", "2", 2);
             ClubController cntr = new ClubController();
-            var result = cntr.Details(1) as ViewResult;
+            int id = DataService.GetClubs().Last().Id;
+            var result = cntr.Details(id) as ViewResult;
             Assert.IsNotNull(result);
             DataService.DeleteClub(DataService.GetClubs().Last().Id);
         }

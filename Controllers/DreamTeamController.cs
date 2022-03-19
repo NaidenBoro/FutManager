@@ -32,10 +32,11 @@ namespace FutManager.Controllers
             List<Player> players = new List<Player>(DataService.GetPlayers());
             List<Manager> managers = new List<Manager>(DataService.GetManagers());
 
-            /*if(players.Count() < 28)
+
+            if (players.Count() < 28 || managers.Count() < 4)
             {
-                return View(players);
-            }*/
+                return RedirectToAction(actionName: "NotEnough", controllerName: "Error");
+            }
 
             //Goalkeeper
             List<Player> goalkeepers = players.Where(y => y.Position == "Goalkeeper").ToList();

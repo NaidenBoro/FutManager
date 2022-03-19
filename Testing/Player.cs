@@ -50,11 +50,12 @@ namespace Testing
             int nat_id = DataService.GetNations().Last().Id;
             DataService.AddPlayer("1", "2", "Forward", 1, 2, nat_id, club_id, 1, true);
            
+            int id = DataService.GetPlayers().Last().Id;
             PlayerController controller = new PlayerController();
-            var result = controller.Details(1) as ViewResult;
+            var result = controller.Details(id) as ViewResult;
             Assert.IsNotNull(result);
 
-            DataService.DeletePlayer(DataService.GetPlayers().Last().Id);
+            DataService.DeletePlayer(id);
             DataService.DeleteClub(club_id);
             DataService.DeleteNation(nat_id);
         }

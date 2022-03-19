@@ -8,5 +8,10 @@ namespace FutManager.Controllers
         {
             return View();
         }
+
+        public IActionResult NotEnough()
+        {
+            return View();
+        }
     }
 }

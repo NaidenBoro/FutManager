@@ -48,8 +48,9 @@ namespace Testing
             int nat_id = DataService.GetNations().Last().Id;
             DataService.AddManager("1", "2", 1, nat_id, club_id, 1, true);
 
+            int id = DataService.GetManagers().Last().Id ;
             ManagerController controller = new ManagerController();
-            var result = controller.Details(1) as ViewResult;
+            var result = controller.Details(id) as ViewResult;
             Assert.IsNotNull(result);
 
             DataService.DeleteManager(DataService.GetManagers().Last().Id);

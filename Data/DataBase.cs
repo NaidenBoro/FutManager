@@ -4,7 +4,7 @@ namespace FutManager.Data
 {
     public static class DataBase
     {
-        private const string ConnectionString = "Server=localhost;Database=futManager;Uid=root;Pwd=;";
+        private const string ConnectionString = "Server=localhost;Database=futManager;Uid=root;Pwd=naiden04;";
         // Mahaite parolata 
 
         static DataBase()
